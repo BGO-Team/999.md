@@ -7,6 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
+    //bgoautomationtest@gmail.com
+    //Welcome2Endava
+    //Git: ProBook6570b
 
     //vvdtest1@mail.ru
     //testpassword
