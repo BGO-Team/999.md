@@ -17,8 +17,6 @@ public class HomePage {
     }
 
     public TopBar toTopBar(){
-        driver.switchTo().defaultContent();
-        driver.switchTo().frame("topbar-panel");
         return new TopBar(driver);
     }
 

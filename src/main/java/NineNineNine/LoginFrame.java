@@ -13,6 +13,8 @@ public class LoginFrame {
 
     public LoginFrame(WebDriver driver) {
         this.driver = driver;
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame("topbar-popup");
     }
 
     private LoginFrame typeUsername(String username) {
@@ -25,12 +27,12 @@ public class LoginFrame {
         return this;
     }
 
-    private HomePage submitLogin() {
+    private Header.HomePage submitLogin() {
         driver.findElement(loginButtonLocator).submit();
-        return new HomePage(driver);
+        return new Header.HomePage(driver);
     }
 
-    public HomePage loginAs(String username, String password) {
+    public Header.HomePage loginAs(String username, String password) {
         typeUsername(username);
         typePassword(password);
         return submitLogin();
