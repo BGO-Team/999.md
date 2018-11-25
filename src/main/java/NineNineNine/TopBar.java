@@ -6,17 +6,25 @@ import org.openqa.selenium.WebDriver;
 public class TopBar {
 
     private By loginButtonLocator = By.id("user-login-btn");
+    private By languageButtonLocator = By.id("user-language");
+    private By otherLanguageButtonLocator = By.cssSelector("#user-language > ul > li:not(.is-active)");
 
     private final WebDriver driver;
 
     public TopBar(WebDriver driver) {
         this.driver = driver;
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame("topbar-panel");
     }
 
     public LoginFrame toLoginFrame(){
         driver.findElement(loginButtonLocator).click();
-        driver.switchTo().defaultContent();
-        driver.switchTo().frame("topbar-popup");
         return new LoginFrame(driver);
+    }
+
+    public TopBar changeLanguage(){
+        driver.findElement(languageButtonLocator).click();
+        driver.findElement(otherLanguageButtonLocator).click();
+        return this;
     }
 }

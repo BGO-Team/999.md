@@ -6,6 +6,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
+    //TODO: Access Category -> Sub-category -> Product
+    //TODO: Add to favorite
+    //TODO: Change language (DONE)
+
 public class Main {
 
     //vvdtest1@mail.ru
@@ -28,6 +32,8 @@ public class Main {
         HomePage homePage = new HomePage(driver);
 
         homePage.toTopBar().toLoginFrame().loginAs(login, password);
+        homePage.toTopBar().changeLanguage();
+        homePage.toTopBar().changeLanguage();
 
     }
 }

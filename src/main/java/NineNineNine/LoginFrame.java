@@ -12,6 +12,8 @@ public class LoginFrame {
     private final WebDriver driver;
 
     public LoginFrame(WebDriver driver) {
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame("topbar-popup");
         this.driver = driver;
     }
 
