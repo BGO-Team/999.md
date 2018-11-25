@@ -31,7 +31,6 @@ public class Main {
 
         HomePage homePage = new HomePage(driver);
 
-        homePage.toTopBar().toLoginFrame().loginAs(login, password);
         homePage.toTopBar().changeLanguage();
         homePage.toTopBar().changeLanguage();
 
