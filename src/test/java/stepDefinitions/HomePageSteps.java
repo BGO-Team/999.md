@@ -14,13 +14,11 @@ public class HomePageSteps {
         homePage = testContext.getPageObjectManager().getHomePage();
     }
 
+    //TODO: HomePageSteps
+
     @Given("^user is on Home Page$")
     public void userIsOnHomePage(){
         homePage.toHomePage();
     }
 
-    @When("^he search for \"([^\"]*)\"$")
-    public void heSearchFor(String product){
-//        homePage.performSearch(product);
-    }
 }
