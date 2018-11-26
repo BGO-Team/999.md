@@ -1,36 +1,27 @@
 package NineNineNine.vdones;
 
-import NineNineNine.HomePage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+    //TODO: Access Category -> Sub-category -> Product
+    //TODO: Add to favorite
+    //TODO: Change language (DONE)
 
-import java.util.concurrent.TimeUnit;
+import NineNineNine.dataProviders.ConfigFileReader;
+import NineNineNine.managers.PageObjectManager;
+import NineNineNine.managers.WebDriverManager;
+import NineNineNine.pageObjects.HomePage;
 
 public class Main {
     //bgoautomationtest@gmail.com
 
     //Git: ProBook6570b
 
-    //vvdtest1@mail.ru
-    //testpassword
-
-    private static final String login = "vvdtest1@mail.ru";
-    private static final String password = "testpassword";
-
     public static void main(String[] args) {
 
-        WebDriver driver = new ChromeDriver();
-
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-        driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
-
-        driver.get("https://999.md");
-
-
-        HomePage homePage = new HomePage(driver);
-
-        homePage.toTopBar().toLoginFrame().loginAs(login, password);
-
+        WebDriverManager webDriverManager = new WebDriverManager();
+        PageObjectManager pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
+        HomePage homePage = pageObjectManager.getHomePage();
+        homePage.toHomePage();
+        homePage.toTopBar().toLoginFrame().loginAs(ConfigFileReader.getUserLogin(), ConfigFileReader.getUserPassword());
+        homePage.toTopBar().changeLanguage();
+        homePage.toTopBar().changeLanguage();
     }
 }
