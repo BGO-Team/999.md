@@ -19,8 +19,9 @@ public class HomePage {
         return instance;
     }
 
-    public void toHomePage(){
+    public HomePage toHomePage(){
         driver.get(ConfigFileReader.getApplicationUrl());
+        return this;
     }
 
     public TopBar toTopBar(){

@@ -36,8 +36,9 @@ public class TopBar {
         return LoginFrame.getInstance(driver);
     }
 
-    public void changeLanguage(){
+    public HomePage changeLanguage(){
         languageButton.click();
         otherLanguageButtonLocator.click();
+        return HomePage.getInstance(driver);
     }
 }

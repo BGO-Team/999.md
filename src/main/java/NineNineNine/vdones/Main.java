@@ -4,22 +4,21 @@ package NineNineNine.vdones;
     //TODO: Add to favorite
     //TODO: Change language (DONE)
 
+import NineNineNine.dataProviders.ConfigFileReader;
+import NineNineNine.managers.PageObjectManager;
+import NineNineNine.managers.WebDriverManager;
+import NineNineNine.pageObjects.HomePage;
+
 public class Main {
 
-    //vvdtest1@mail.ru
-    //testpassword
-
-//    private static final String login = "vvdtest1@mail.ru";
-//    private static final String password = "testpassword";
-//
     public static void main(String[] args) {
-//
-//        WebDriver driver = new ChromeDriver();
-//
-//        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-//        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-//        driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
-//
-//        driver.get("https://999.md");
+
+        WebDriverManager webDriverManager = new WebDriverManager();
+        PageObjectManager pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
+        HomePage homePage = pageObjectManager.getHomePage();
+        homePage.toHomePage();
+        homePage.toTopBar().toLoginFrame().loginAs(ConfigFileReader.getUserLogin(), ConfigFileReader.getUserPassword());
+        homePage.toTopBar().changeLanguage();
+        homePage.toTopBar().changeLanguage();
     }
 }

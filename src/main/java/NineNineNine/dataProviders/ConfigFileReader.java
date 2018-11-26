@@ -26,6 +26,18 @@ public class ConfigFileReader {
         else throw new RuntimeException("Application Url not specified in the data.properties file for the Key:url");
     }
 
+    public static String getUserLogin() {
+        String login = properties.getProperty("user.login");
+        if(login != null) return login;
+        else throw new RuntimeException("Application login not specified in the data.properties file for the Key:login");
+    }
+
+    public static String getUserPassword() {
+        String password = properties.getProperty("user.password");
+        if(password != null) return password;
+        else throw new RuntimeException("Application password not specified in the data.properties file for the Key:password");
+    }
+
     public static DriverType getBrowser() {
         String browserName = properties.getProperty("browser");
         if(browserName == null || browserName.equals("chrome")) return DriverType.CHROME;
