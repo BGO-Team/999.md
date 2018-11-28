@@ -1,12 +1,12 @@
 package NineNineNine.pageObjects;
 
+import NineNineNine.managers.PageObjectManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class TopBar {
-    private static TopBar instance;
     private final WebDriver driver;
 
     @FindBy(id = "user-login-btn")
@@ -18,27 +18,32 @@ public class TopBar {
     @FindBy(css = "#user-language > ul > li:not(.is-active)")
     private WebElement otherLanguageButtonLocator;
 
-    private TopBar(WebDriver driver) {
+    @FindBy(id = "user-username-btn")
+    private WebElement userNameButton;
+
+    public TopBar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-    }
-
-    public static TopBar getInstance(WebDriver driver){
         driver.switchTo().defaultContent();
         driver.switchTo().frame("topbar-panel");
-        if (instance == null)
-            instance = new TopBar(driver);
-        return instance;
     }
 
-    public LoginFrame toLoginFrame(){
+    public TopBar toTopBar(){
+        driver.switchTo().defaultContent();
+        driver.switchTo().frame("topbar-panel");
+        return this;
+    }
+
+    public void toLoginFrame(){
         loginButton.click();
-        return LoginFrame.getInstance(driver);
     }
 
-    public HomePage changeLanguage(){
+    public void changeLanguage(){
         languageButton.click();
         otherLanguageButtonLocator.click();
-        return HomePage.getInstance(driver);
+    }
+
+    public String getUserName() {
+        return userNameButton.getText();
     }
 }

@@ -1,12 +1,14 @@
 package NineNineNine.pageObjects;
 
+import NineNineNine.managers.PageObjectManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.security.PublicKey;
+
 public class Header {
-    private static Header instance;
     private final WebDriver driver;
 
     @FindBy(id = "js-search-input")
@@ -15,17 +17,12 @@ public class Header {
     @FindBy(className = "header__search__button")
     private WebElement searchButton;
 
-    private Header(WebDriver driver) {
+    @FindBy(css = "a[href=\"/cabinet/favorites\"]")
+    private WebElement favoritesButton;
+
+    public Header(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-    }
-
-    public static Header getInstance(WebDriver driver){
-        driver.switchTo().defaultContent();
-        driver.switchTo().frame("topbar-popup");
-        if (instance == null)
-            instance = new Header(driver);
-        return instance;
     }
 
     private Header typeSearch(String search) {
@@ -33,14 +30,16 @@ public class Header {
         return this;
     }
 
-    private HomePage submitSearch() {
+    private void submitSearch() {
         searchButton.submit();
-        return HomePage.getInstance(driver);
     }
 
-    public HomePage searchThis(String search) {
+    public void searchThis(String search) {
         typeSearch(search);
-        return submitSearch();
+    }
+
+    public void toFavorites(){
+        favoritesButton.click();
     }
 
 }

@@ -1,16 +1,17 @@
 package NineNineNine.managers;
 
-import NineNineNine.pageObjects.Header;
-import NineNineNine.pageObjects.HomePage;
-import NineNineNine.pageObjects.LoginFrame;
-import NineNineNine.pageObjects.TopBar;
+import NineNineNine.pageObjects.*;
 import org.openqa.selenium.WebDriver;
 
 public class PageObjectManager {
     private WebDriver driver;
+    private CategoryPage categoryPage;
+    private FavoritesPage favoritesPage;
+    private Header header;
     private HomePage homePage;
     private LoginFrame loginFrame;
-    private Header header;
+    private ProductPage productPage;
+    private SubCategoryPage subCategoryPage;
     private TopBar topBar;
 
     public PageObjectManager(WebDriver driver){
@@ -18,18 +19,33 @@ public class PageObjectManager {
     }
 
     public HomePage getHomePage() {
-        return (homePage == null) ? homePage = HomePage.getInstance(driver) : homePage;
+        return (homePage == null) ? homePage = new HomePage(driver) : homePage;
     }
 
     public LoginFrame getLoginFrame() {
-        return (loginFrame == null) ? loginFrame = LoginFrame.getInstance(driver) : loginFrame;
+        return (loginFrame == null) ? loginFrame = new LoginFrame(driver) : loginFrame;
     }
 
     public Header getHeader() {
-        return (header == null) ? header = Header.getInstance(driver) : header;
+        return (header == null) ? header = new Header(driver) : header;
     }
 
     public TopBar getTopBar() {
-        return (topBar == null) ? topBar = TopBar.getInstance(driver) : topBar;
+        return (topBar == null) ? topBar = new TopBar(driver) : topBar;    }
+
+    public CategoryPage getCategoryPage() {
+        return (categoryPage == null) ? categoryPage = new CategoryPage(driver) : categoryPage;
+    }
+
+    public SubCategoryPage getSubCategoryPage() {
+        return (subCategoryPage == null) ? subCategoryPage = new SubCategoryPage(driver) : subCategoryPage;
+    }
+
+    public ProductPage getProductPage() {
+        return (productPage == null) ? productPage = new ProductPage(driver) : productPage;
+    }
+
+    public FavoritesPage getFavoritesPage() {
+        return (favoritesPage == null) ? favoritesPage = new FavoritesPage(driver) : favoritesPage;
     }
 }
