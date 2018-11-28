@@ -20,6 +20,7 @@ public class WebDriverManager {
     public WebDriver getDriver(){
         if (driver == null) driver = createDriver();
         return driver;
+//        return createDriver();
     }
 
     private WebDriver createDriver(){

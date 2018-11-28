@@ -7,9 +7,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/features",
+        features = "src/test/testResources/features",
         glue = "stepDefinitions",
-        snippets = SnippetType.CAMELCASE
+        snippets = SnippetType.CAMELCASE,
+        tags = "@Run"
 )
 public class RunnerVdones {
 }
