@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import NineNineNine.cucumber.TestContext;
 import NineNineNine.dataProviders.TestDataFileReader;
+import NineNineNine.managers.WebDriverManager;
 import NineNineNine.pageObjects.HomePage;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -10,12 +11,13 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Random;
 
-public class HomePageSteps {
+public class HomePageSteps extends Throwable{
     private TestContext testContext;
     private HomePage homePage;
 
@@ -28,15 +30,6 @@ public class HomePageSteps {
 
     @When("^user click on \"([^\"]*)\" category$")
     public void userClickOnCategory(String category) {
-        if (category.equals("Random")) {
-            Random random = new Random();
-            int randomCategory = random.nextInt(testContext.getPageObjectManager().getHomePage().category.size()) + 1;
-            homePage.toCategory(randomCategory);
-        }
-        else {
-
-        }
-
+        homePage.toCategory(category);
     }
-
 }

@@ -9,7 +9,6 @@ public class TestContext {
     private WebDriverManager webDriverManager;
     private PageObjectManager pageObjectManager;
     private ScenarioContext scenarioContext;
-    private ConfigFileReader configFileReader;
     private TestDataFileReader testDataFileReader;
 
     public TestContext(){

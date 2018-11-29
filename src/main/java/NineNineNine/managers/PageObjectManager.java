@@ -4,6 +4,7 @@ import NineNineNine.pageObjects.*;
 import org.openqa.selenium.WebDriver;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.Driver;
 import java.util.HashMap;
 
@@ -22,9 +23,11 @@ public class PageObjectManager {
         this.driver = driver;
     }
 
-    public static Object getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
+    public static void getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
             IllegalAccessException, InvocationTargetException, InstantiationException {
-        return Class.forName("NineNineNine.pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver);
+        Class clazz = Class.forName("NineNineNine.pageObjects." + page);
+        Method method = clazz.getMethod("getPage");
+        method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
     }
 
     public HomePage getHomePage() {

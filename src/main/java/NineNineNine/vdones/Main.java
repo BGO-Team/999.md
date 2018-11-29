@@ -23,17 +23,12 @@ public class Main {
 
         WebDriverManager webDriverManager = new WebDriverManager();
 //        PageObjectManager pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
-//        HomePage homePage = pageObjectManager.getHomePage();
-//        homePage.toHomePage();
-////        homePage.toTopBar().toLoginFrame().loginAs(ConfigFileReader.getUserLogin(), ConfigFileReader.getUserPassword());
-//        TopBar topBar = new TopBar(webDriverManager.getDriver());
-//        topBar.toLoginFrame();
-//        LoginFrame loginFrame = new LoginFrame(webDriverManager.getDriver());
-//        loginFrame.loginAs(ConfigFileReader.getUserLogin(), ConfigFileReader.getUserPassword());
-//        System.out.println(topBar.toTopBar().getUserName());
-        Object homePage = PageObjectManager.getPage("HomePage", webDriverManager.getDriver());
-//        homePage.getPage(webDriverManager.getDriver());
-        TopBar topBar = new TopBar(webDriverManager.getDriver());
-        topBar.changeLanguage();
+//        PageObjectManager.getPage("HomePage", webDriverManager.getDriver());
+//        topBar.changeLanguage();
+        HomePage homePage = new HomePage(webDriverManager.getDriver());
+        homePage.getPage();
+        homePage.toCategory(1);
+        CategoryPage categoryPage = new CategoryPage(webDriverManager.getDriver());
+        categoryPage.toSubCategory(1);
     }
 }
