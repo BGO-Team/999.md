@@ -9,20 +9,16 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class HomePage {
+public class HomePage{
     private final WebDriver driver;
 
     @FindBy(css = "section > nav > ul > li > a")
-    private List<WebElement> category;
+    public List<WebElement> category;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-    }
-
-    public HomePage toHomePage(){
         driver.get(ConfigFileReader.getApplicationUrl());
-        return this;
     }
 
     public void toCategory(int number){

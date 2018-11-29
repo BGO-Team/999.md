@@ -22,11 +22,12 @@ public class TopBarSteps {
 
     @Then("^User Name is showing on Top Bar$")
     public void userNameIsShowingOnTopBar() {
+        topBar.getPage();
         Assert.assertEquals(ConfigFileReader.getUserLogin(), topBar.getUserName());
     }
 
     @When("^user change language$")
     public void userChangeLanguage() {
-//        testContext.getPageObjectManager().getHomePage().toTopBar().changeLanguage();
+    topBar.changeLanguage();
     }
 }

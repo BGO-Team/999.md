@@ -16,7 +16,6 @@ public class TestContext {
         webDriverManager = new WebDriverManager();
         pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
         scenarioContext = ScenarioContext.getInstance();
-        configFileReader = new ConfigFileReader();
         testDataFileReader = new TestDataFileReader();
     }
 
@@ -30,10 +29,6 @@ public class TestContext {
 
     public ScenarioContext getScenarioContext(){
         return scenarioContext;
-    }
-
-    public ConfigFileReader getConfigFileReader(){
-        return configFileReader;
     }
 
     public TestDataFileReader getTestDataFileReader(){

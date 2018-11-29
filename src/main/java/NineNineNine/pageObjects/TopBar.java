@@ -24,11 +24,10 @@ public class TopBar {
     public TopBar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        driver.switchTo().defaultContent();
-        driver.switchTo().frame("topbar-panel");
+        getPage();
     }
 
-    public TopBar toTopBar(){
+    public TopBar getPage(){
         driver.switchTo().defaultContent();
         driver.switchTo().frame("topbar-panel");
         return this;

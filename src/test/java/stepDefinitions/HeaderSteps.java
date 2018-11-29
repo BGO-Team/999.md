@@ -22,15 +22,14 @@ public class HeaderSteps {
 
     @Then("^language was changed on \"([^\"]*)\"$")
     public void languageWasChangedOn(String language) {
-        WebElement checkLanguage;
         switch (language){
             case "Romanian" :
-                checkLanguage = testContext.getWebDriverManager().getDriver().findElement(
-                        By.xpath("//meta[contains(@content,\"https://999.md/ro/\")]"));
+                Assert.assertNotNull(testContext.getWebDriverManager().getDriver().findElement(
+                        By.xpath("//meta[contains(@content,\"https://999.md/ro/\")]")));
                 break;
             case "Russian" :
-                checkLanguage = testContext.getWebDriverManager().getDriver().findElement(
-                        By.xpath("//meta[contains(@content,\"https://999.md/ru/\")]"));
+                Assert.assertNotNull(testContext.getWebDriverManager().getDriver().findElement(
+                        By.xpath("//meta[contains(@content,\"https://999.md/ru/\")]")));
                 break;
             default :
                 throw new IllegalArgumentException("This language does not supported");

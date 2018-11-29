@@ -13,6 +13,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Random;
+
 public class HomePageSteps {
     private TestContext testContext;
     private HomePage homePage;
@@ -24,9 +26,17 @@ public class HomePageSteps {
 
     //TODO: HomePageSteps
 
-    @Given("^user is on Home Page$")
-    public void userIsOnHomePage(){
-        homePage.toHomePage();
+    @When("^user click on \"([^\"]*)\" category$")
+    public void userClickOnCategory(String category) {
+        if (category.equals("Random")) {
+            Random random = new Random();
+            int randomCategory = random.nextInt(testContext.getPageObjectManager().getHomePage().category.size()) + 1;
+            homePage.toCategory(randomCategory);
+        }
+        else {
+
+        }
+
     }
 
 }
