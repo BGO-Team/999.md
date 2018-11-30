@@ -1,5 +1,6 @@
 package NineNineNine.pageObjects;
 
+import NineNineNine.cucumber.ScenarioContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,9 +15,16 @@ public class CategoryPage {
     @FindBy(className = "category__subCategories-collection")
     private List<WebElement> subCategories;
 
+    @FindBy(css = "header.categoryPage__header > h1")
+    private WebElement categoryName;
+
     public CategoryPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public String getCategoryName(){
+        return categoryName.getText();
     }
 
     public void toSubCategory(int number){

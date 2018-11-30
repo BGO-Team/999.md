@@ -1,11 +1,13 @@
 package NineNineNine.cucumber;
 
+import NineNineNine.enums.Context;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class ScenarioContext {
     private static ScenarioContext instance;
-    private Map<String, Object> scenarioContext;
+    private Map<Context, Object> scenarioContext;
 
     private ScenarioContext(){
         scenarioContext = new HashMap<>();
@@ -17,15 +19,15 @@ public class ScenarioContext {
         return instance;
     }
 
-    public void setContext(String key, Object value){
+    public void setContext(Context key, Object value){
         scenarioContext.put(key, value);
     }
 
-    public Object getContext(String key){
+    public Object getContext(Context key){
         return scenarioContext.get(key);
     }
 
-    public Boolean isCintains(String key){
+    public Boolean isCintains(Context key){
         return scenarioContext.containsKey(key);
     }
 

@@ -1,5 +1,6 @@
 package NineNineNine.pageObjects;
 
+import NineNineNine.cucumber.ScenarioContext;
 import NineNineNine.dataProviders.ConfigFileReader;
 import NineNineNine.managers.PageObjectManager;
 import org.openqa.selenium.WebDriver;

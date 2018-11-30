@@ -28,7 +28,8 @@ public class Main {
         HomePage homePage = new HomePage(webDriverManager.getDriver());
         homePage.getPage();
         homePage.toCategory(1);
-        CategoryPage categoryPage = new CategoryPage(webDriverManager.getDriver());
-        categoryPage.toSubCategory(1);
+//        CategoryPage categoryPage = new CategoryPage(webDriverManager.getDriver());
+//        System.out.println(categoryPage.getCategoryName());
+//        categoryPage.toSubCategory(1);
     }
 }

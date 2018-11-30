@@ -16,9 +16,16 @@ public class SubCategoryPage {
             "and not(./span[@class=\"booster-label\"])]")
     private List<WebElement> products;
 
+    @FindBy(css = "header.page-header > h1")
+    private WebElement subCategoryName;
+
     public SubCategoryPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public String getSubCategoryName(){
+        return subCategoryName.getText();
     }
 
     public void toProduct(int number){

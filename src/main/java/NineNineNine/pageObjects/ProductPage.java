@@ -11,9 +11,16 @@ public class ProductPage {
     @FindBy(css = ".favorite-toggle")
     private WebElement favoriteButton;
 
+    @FindBy(css = "header.adPage__header > h1")
+    private WebElement productName;
+
     public ProductPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public String getProductName(){
+        return productName.getText();
     }
 
     public ProductPage addFavorite(){

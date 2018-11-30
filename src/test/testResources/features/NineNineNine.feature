@@ -19,4 +19,4 @@ Feature: Vadim's Features
     When user click on "Random" category
     And user click on "Random" sub-category
     And user click on "Random" product
-#    Then user is on this product
+    Then user is on this product
