@@ -19,11 +19,6 @@ public class GeneralSteps {
 
     //TODO: GeneralSteps
 
-    @After
-    public void afterScenarios(){
-        testContext.getWebDriverManager().closeDriver();
-    }
-
     @Given("^user is on \"([^\"]*)\"$")
     public void userIsOn(String page) throws Throwable{
         PageObjectManager.getPage(page, testContext.getWebDriverManager().getDriver());

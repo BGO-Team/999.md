@@ -1,0 +1,20 @@
+дек. 01, 2018 11:16:04 ПП NineNineNine.managers.EventHandler beforeFindBy
+INFO: Should be [By.id: user-language]
+дек. 01, 2018 11:16:05 ПП NineNineNine.managers.EventHandler afterFindBy
+INFO: Element found
+дек. 01, 2018 11:16:05 ПП NineNineNine.managers.EventHandler beforeClickOn
+INFO: Should click [русский : li]
+дек. 01, 2018 11:16:05 ПП NineNineNine.managers.EventHandler afterClickOn
+INFO: Clicked successful
+дек. 01, 2018 11:16:05 ПП NineNineNine.managers.EventHandler beforeFindBy
+INFO: Should be [By.cssSelector: #user-language > ul > li:not(.is-active)]
+дек. 01, 2018 11:16:05 ПП NineNineNine.managers.EventHandler afterFindBy
+INFO: Element found
+дек. 01, 2018 11:16:05 ПП NineNineNine.managers.EventHandler beforeClickOn
+INFO: Should click [română : li]
+дек. 01, 2018 11:16:05 ПП NineNineNine.managers.EventHandler afterClickOn
+INFO: Clicked successful
+дек. 01, 2018 11:16:05 ПП NineNineNine.managers.EventHandler beforeFindBy
+INFO: Should be [By.xpath: //meta[contains(@content,"https://999.md/ro/")]]
+дек. 01, 2018 11:16:08 ПП NineNineNine.managers.EventHandler afterFindBy
+INFO: Element found

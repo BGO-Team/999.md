@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class CategoryPage extends Page{
 
-    @FindBy(className = "category__subCategories-collection")
+    @FindBy(css = ".category__subCategories-collection > a")
     private List<WebElement> subCategories;
 
     @FindBy(className = ".ads-list-work-detail__item__title")
@@ -45,7 +45,7 @@ public class CategoryPage extends Page{
                     existSubCategory = false;
                     element.click();
                     break;
-                }
+            }
             if (existSubCategory)
                 throw new IllegalArgumentException("This sub-category does not exist");
         }

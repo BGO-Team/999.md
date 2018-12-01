@@ -5,6 +5,7 @@ import NineNineNine.enums.DriverType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,20 +21,23 @@ public class WebDriverManager {
     public WebDriver getDriver(){
         if (driver == null) driver = createDriver();
         return driver;
-//        return createDriver();
     }
 
     private WebDriver createDriver(){
         switch (driverType) {
-            case CHROME: driver = new ChromeDriver();
+            case CHROME:
+                driver = new ChromeDriver();
             break;
-            case FIREFOX: driver = new FirefoxDriver();
+            case FIREFOX:
+                driver = new FirefoxDriver();
             break;
         }
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
-        return driver;
+        EventFiringWebDriver eventDriver = new EventFiringWebDriver(driver);
+        eventDriver.register(new EventHandler());
+        return eventDriver;
     }
 
     public void closeDriver(){

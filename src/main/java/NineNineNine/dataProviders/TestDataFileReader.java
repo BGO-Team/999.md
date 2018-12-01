@@ -33,18 +33,4 @@ public class TestDataFileReader {
         if(password != null) return password;
         else throw new RuntimeException("Application password not specified in the data.properties file for the Key:password");
     }
-
-    public static String getRussianWord() {
-        String password = properties.getProperty("russianWord");
-        if(password != null) return password;
-        else throw new RuntimeException("Application password not specified in the data.properties file for the Key:password");
-    }
-
-    public static String getRomanianWord() {
-        String password = properties.getProperty("romanianWord");
-        if(password != null) return password;
-        else throw new RuntimeException("Application password not specified in the data.properties file for the Key:password");
-    }
-
-
 }

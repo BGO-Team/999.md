@@ -2,6 +2,7 @@ package NineNineNine.cucumber;
 
 import NineNineNine.dataProviders.ConfigFileReader;
 import NineNineNine.dataProviders.TestDataFileReader;
+import NineNineNine.managers.EventHandler;
 import NineNineNine.managers.PageObjectManager;
 import NineNineNine.managers.WebDriverManager;
 
@@ -10,6 +11,7 @@ public class TestContext {
     private PageObjectManager pageObjectManager;
     private ScenarioContext scenarioContext;
     private TestDataFileReader testDataFileReader;
+    private EventHandler eventHandler;
 
     public TestContext(){
         webDriverManager = new WebDriverManager();
@@ -32,6 +34,10 @@ public class TestContext {
 
     public TestDataFileReader getTestDataFileReader(){
         return testDataFileReader;
+    }
+
+    public EventHandler getEventHandler() {
+        return eventHandler;
     }
 }
  
