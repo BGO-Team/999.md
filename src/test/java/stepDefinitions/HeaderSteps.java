@@ -3,7 +3,9 @@ package stepDefinitions;
 import NineNineNine.cucumber.TestContext;
 import NineNineNine.dataProviders.TestDataFileReader;
 import NineNineNine.pageObjects.Header;
+import NineNineNine.pageObjects.Page;
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -26,14 +28,22 @@ public class HeaderSteps {
             case "Romanian" :
                 Assert.assertNotNull(testContext.getWebDriverManager().getDriver().findElement(
                         By.xpath("//meta[contains(@content,\"https://999.md/ro/\")]")));
+                Assert.assertEquals(testContext.getWebDriverManager().getDriver().getCurrentUrl().substring(15, 17), "ro");
                 break;
             case "Russian" :
                 Assert.assertNotNull(testContext.getWebDriverManager().getDriver().findElement(
                         By.xpath("//meta[contains(@content,\"https://999.md/ru/\")]")));
+                Assert.assertEquals(testContext.getWebDriverManager().getDriver().getCurrentUrl().substring(15, 17), "ru");
+
                 break;
             default :
                 throw new IllegalArgumentException("This language does not supported");
         }
 
+    }
+
+    @And("user go to FavoritesPage")
+    public void userGoToFavoritesPage() {
+        header.toFavorites();
     }
 }

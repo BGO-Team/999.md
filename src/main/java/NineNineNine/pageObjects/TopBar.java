@@ -1,6 +1,5 @@
 package NineNineNine.pageObjects;
 
-import NineNineNine.managers.PageObjectManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,10 +23,10 @@ public class TopBar {
     public TopBar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        getPage();
+        toTopBar();
     }
 
-    public TopBar getPage(){
+    public TopBar toTopBar(){
         driver.switchTo().defaultContent();
         driver.switchTo().frame("topbar-panel");
         return this;

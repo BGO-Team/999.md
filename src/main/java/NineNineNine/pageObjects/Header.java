@@ -6,19 +6,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class Header {
-    private final WebDriver driver;
-
     @FindBy(id = "js-search-input")
     private WebElement searchInput;
 
     @FindBy(className = "header__search__button")
     private WebElement searchButton;
 
-    @FindBy(css = "a[href=\"/cabinet/favorites\"]")
+    @FindBy(css = "li > a[href=\"/cabinet/favorites\"]")
     private WebElement favoritesButton;
 
     public Header(WebDriver driver) {
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -33,6 +30,7 @@ public class Header {
 
     public void searchThis(String search) {
         typeSearch(search);
+        submitSearch();
     }
 
     public void toFavorites(){

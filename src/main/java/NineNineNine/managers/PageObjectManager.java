@@ -26,7 +26,7 @@ public class PageObjectManager {
     public static void getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
             IllegalAccessException, InvocationTargetException, InstantiationException {
         Class clazz = Class.forName("NineNineNine.pageObjects." + page);
-        Method method = clazz.getMethod("getPage");
+        Method method = clazz.getMethod("toPage");
         method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
     }
 

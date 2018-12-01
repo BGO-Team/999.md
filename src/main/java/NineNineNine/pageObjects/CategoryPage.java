@@ -1,26 +1,25 @@
 package NineNineNine.pageObjects;
 
-import NineNineNine.cucumber.ScenarioContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 import java.util.Random;
 
-public class CategoryPage {
-    private WebDriver driver;
+public class CategoryPage extends Page{
 
     @FindBy(className = "category__subCategories-collection")
     private List<WebElement> subCategories;
 
-    @FindBy(css = "header.categoryPage__header > h1")
+    @FindBy(className = ".ads-list-work-detail__item__title")
+    private List<WebElement> subCategoriesWork;
+
+    @FindBy(className = "categoryPage__header")
     private WebElement categoryName;
 
     public CategoryPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public String getCategoryName(){
@@ -29,7 +28,7 @@ public class CategoryPage {
 
     public void toSubCategory(int number){
         if (number < 1 || number > subCategories.size())
-            throw new IllegalArgumentException("Does not exist such category");
+            throw new IllegalArgumentException("Does not exist such sub-category");
         subCategories.get(number - 1).click();
     }
 

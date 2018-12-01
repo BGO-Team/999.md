@@ -16,7 +16,6 @@ public class SubCategoryPageSteps {
         testContext = context;
         subCategoryPage = testContext.getPageObjectManager().getSubCategoryPage();
         testContext.getScenarioContext().setContext(Context.SUBCATEGORY, subCategoryPage.getSubCategoryName());
-
     }
 
     //TODO: SubCategoryPageSteps

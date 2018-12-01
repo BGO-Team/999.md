@@ -30,7 +30,7 @@ public class GeneralSteps {
     }
 
     @When("^user click on \"([^\"]*)\" button$")
-    public void userClickOn(String button) throws Throwable {
+    public void userClickOn(String button) {
         switch (button) {
             case "Log In" :
                 testContext.getPageObjectManager().getTopBar().toLoginFrame();

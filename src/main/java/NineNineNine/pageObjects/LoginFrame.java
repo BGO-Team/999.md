@@ -1,14 +1,10 @@
 package NineNineNine.pageObjects;
 
-import NineNineNine.managers.PageObjectManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class LoginFrame {
-    private final WebDriver driver;
-
+public class LoginFrame extends Page{
     @FindBy(name = "login")
     private WebElement usernameInput;
 
@@ -22,8 +18,7 @@ public class LoginFrame {
     private WebElement closeLoginButton;
 
     public LoginFrame(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
         driver.switchTo().defaultContent();
         driver.switchTo().frame("topbar-popup");
 
