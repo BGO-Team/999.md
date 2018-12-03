@@ -3,6 +3,11 @@ package NineNineNine.managers;
 import NineNineNine.pageObjects.*;
 import org.openqa.selenium.WebDriver;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.sql.Driver;
+import java.util.HashMap;
+
 public class PageObjectManager {
     private WebDriver driver;
     private CategoryPage categoryPage;
@@ -16,6 +21,13 @@ public class PageObjectManager {
 
     public PageObjectManager(WebDriver driver){
         this.driver = driver;
+    }
+
+    public static void getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException, InstantiationException {
+        Class clazz = Class.forName("NineNineNine.pageObjects." + page);
+        Method method = clazz.getMethod("toPage");
+        method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
     }
 
     public HomePage getHomePage() {

@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import NineNineNine.cucumber.TestContext;
+import NineNineNine.managers.PageObjectManager;
 import NineNineNine.pageObjects.HomePage;
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
@@ -18,24 +19,13 @@ public class GeneralSteps {
 
     //TODO: GeneralSteps
 
-    @After
-    public void afterStep() {
-        testContext.getPageObjectManager().getHomePage().toHomePage();
-    }
-
     @Given("^user is on \"([^\"]*)\"$")
     public void userIsOn(String page) throws Throwable{
-        switch (page) {
-            case "Home Page" :
-                testContext.getPageObjectManager().getHomePage().toHomePage();
-                break;
-            default :
-                throw new IllegalArgumentException("This page does not exist");
-        }
+        PageObjectManager.getPage(page, testContext.getWebDriverManager().getDriver());
     }
 
     @When("^user click on \"([^\"]*)\" button$")
-    public void userClickOn(String button) throws Throwable {
+    public void userClickOn(String button) {
         switch (button) {
             case "Log In" :
                 testContext.getPageObjectManager().getTopBar().toLoginFrame();
@@ -44,5 +34,4 @@ public class GeneralSteps {
                 throw new IllegalArgumentException("This button does not exist");
         }
     }
-
 }

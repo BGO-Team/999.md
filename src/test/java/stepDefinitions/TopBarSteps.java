@@ -2,8 +2,8 @@ package stepDefinitions;
 
 import NineNineNine.cucumber.TestContext;
 import NineNineNine.dataProviders.ConfigFileReader;
+import NineNineNine.dataProviders.TestDataFileReader;
 import NineNineNine.pageObjects.TopBar;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -22,11 +22,13 @@ public class TopBarSteps {
 
     @Then("^User Name is showing on Top Bar$")
     public void userNameIsShowingOnTopBar() {
-        Assert.assertEquals(ConfigFileReader.getUserLogin(), topBar.getUserName());
+        topBar.toTopBar();
+        Assert.assertEquals(TestDataFileReader.getUserLogin(), topBar.getUserName());
     }
 
     @When("^user change language$")
     public void userChangeLanguage() {
-//        testContext.getPageObjectManager().getHomePage().toTopBar().changeLanguage();
+        topBar.toTopBar();
+        topBar.changeLanguage();
     }
 }

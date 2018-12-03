@@ -6,14 +6,11 @@ package NineNineNine.vdones;
     //TODO: Cucumber Scenarios
     //TODO: Add Product
 
-import NineNineNine.cucumber.ScenarioContext;
 import NineNineNine.dataProviders.ConfigFileReader;
-import NineNineNine.managers.PageObjectManager;
 import NineNineNine.managers.WebDriverManager;
-import NineNineNine.pageObjects.Header;
-import NineNineNine.pageObjects.HomePage;
-import NineNineNine.pageObjects.LoginFrame;
-import NineNineNine.pageObjects.TopBar;
+import NineNineNine.pageObjects.*;
+
+import java.util.Set;
 
 public class Main {
     //bgoautomationtest@gmail.com
@@ -21,16 +18,19 @@ public class Main {
     //Git: ProBook6570b
 
     public static void main(String[] args) {
-
         WebDriverManager webDriverManager = new WebDriverManager();
-        PageObjectManager pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
-        HomePage homePage = pageObjectManager.getHomePage();
-        homePage.toHomePage();
-//        homePage.toTopBar().toLoginFrame().loginAs(ConfigFileReader.getUserLogin(), ConfigFileReader.getUserPassword());
-        TopBar topBar = new TopBar(webDriverManager.getDriver());
-        topBar.toLoginFrame();
-        LoginFrame loginFrame = new LoginFrame(webDriverManager.getDriver());
-        loginFrame.loginAs(ConfigFileReader.getUserLogin(), ConfigFileReader.getUserPassword());
-        System.out.println(topBar.toTopBar().getUserName());
+        Page homePage = new HomePage(webDriverManager.getDriver());
+        ((HomePage) homePage).toPage();
+        homePage.topBar().changeLanguage();
+//        homePage.topBar().toLoginFrame();
+//        LoginFrame loginFrame = new LoginFrame(webDriverManager.getDriver());
+//        loginFrame.loginAs(ConfigFileReader.getUserLogin(), ConfigFileReader.getUserPassword());
+
+
+//        Set<String> logTypes = getWebDriver().manage().logs().getAvailableLogTypes();
+//        Set<String> logTypes = webDriverManager.getDriver().manage().logs().getAvailableLogTypes();
+//        for (String s : logTypes)
+//            System.out.println(s);
+
     }
 }
