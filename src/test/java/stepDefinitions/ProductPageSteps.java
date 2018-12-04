@@ -7,8 +7,6 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
 
-import java.util.List;
-
 public class ProductPageSteps {
     private TestContext testContext;
     private ProductPage productPage;

@@ -1,5 +1,6 @@
 package NineNineNine.pageObjects;
 
+import NineNineNine.managers.WaitManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TopBar {
     private final WebDriver driver;
+    private WaitManager wait;
+    private String topBarName = "topbar-panel";
 
     @FindBy(id = "user-login-btn")
     private WebElement loginButton;
@@ -15,20 +18,25 @@ public class TopBar {
     private WebElement languageButton;
 
     @FindBy(css = "#user-language > ul > li:not(.is-active)")
-    private WebElement otherLanguageButtonLocator;
+    private WebElement otherLanguageButton;
 
-    @FindBy(id = "user-username-btn")
+    @FindBy(css = "li > .user-item-btn#user-username-btn")
     private WebElement userNameButton;
 
     public TopBar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         toTopBar();
+        wait = new WaitManager(driver);
+    }
+
+    public String getTopBarName() {
+        return topBarName;
     }
 
     public TopBar toTopBar(){
         driver.switchTo().defaultContent();
-        driver.switchTo().frame("topbar-panel");
+        driver.switchTo().frame(topBarName);
         return this;
     }
 
@@ -37,11 +45,14 @@ public class TopBar {
     }
 
     public void changeLanguage(){
+        wait.toBeClickable(languageButton);
         languageButton.click();
-        otherLanguageButtonLocator.click();
+        wait.toBeClickable(otherLanguageButton);
+        otherLanguageButton.click();
     }
 
     public String getUserName() {
+        wait.toBeClickable(userNameButton);
         return userNameButton.getText();
     }
 }

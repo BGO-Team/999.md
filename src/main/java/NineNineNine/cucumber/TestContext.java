@@ -1,23 +1,23 @@
 package NineNineNine.cucumber;
 
-import NineNineNine.dataProviders.ConfigFileReader;
 import NineNineNine.dataProviders.TestDataFileReader;
-import NineNineNine.managers.EventHandler;
 import NineNineNine.managers.PageObjectManager;
 import NineNineNine.managers.WebDriverManager;
+import NineNineNine.managers.WaitManager;
 
 public class TestContext {
     private WebDriverManager webDriverManager;
     private PageObjectManager pageObjectManager;
     private ScenarioContext scenarioContext;
     private TestDataFileReader testDataFileReader;
-    private EventHandler eventHandler;
+    private WaitManager wait;
 
     public TestContext(){
         webDriverManager = new WebDriverManager();
         pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
         scenarioContext = ScenarioContext.getInstance();
         testDataFileReader = new TestDataFileReader();
+        wait = new WaitManager(webDriverManager.getDriver());
     }
 
     public WebDriverManager getWebDriverManager(){
@@ -36,8 +36,8 @@ public class TestContext {
         return testDataFileReader;
     }
 
-    public EventHandler getEventHandler() {
-        return eventHandler;
+    public WaitManager getWait() {
+        return wait;
     }
 }
  

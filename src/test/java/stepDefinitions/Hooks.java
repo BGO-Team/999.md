@@ -4,8 +4,8 @@ import NineNineNine.cucumber.TestContext;
 import cucumber.api.java.After;
 
 public class Hooks {
-
     private TestContext testContext;
+
 
     public Hooks(TestContext context) {
         testContext = context;
@@ -13,6 +13,7 @@ public class Hooks {
 
     @After
     public void tearDown(){
+        testContext.getWebDriverManager().getLoggerManager().close();
         testContext.getWebDriverManager().closeDriver();
     }
 }

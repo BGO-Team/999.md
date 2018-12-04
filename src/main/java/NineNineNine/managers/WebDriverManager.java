@@ -2,9 +2,11 @@ package NineNineNine.managers;
 
 import NineNineNine.dataProviders.ConfigFileReader;
 import NineNineNine.enums.DriverType;
+import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.ErrorHandler;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -12,6 +14,8 @@ import java.util.concurrent.TimeUnit;
 public class WebDriverManager {
     private WebDriver driver;
     private DriverType driverType;
+    private EventFiringWebDriver eventDriver;
+    private LoggerManager loggerManager;
 
     public WebDriverManager(){
         ConfigFileReader configFileReader = new ConfigFileReader();
@@ -21,6 +25,10 @@ public class WebDriverManager {
     public WebDriver getDriver(){
         if (driver == null) driver = createDriver();
         return driver;
+    }
+
+    public LoggerManager getLoggerManager() {
+        return loggerManager;
     }
 
     private WebDriver createDriver(){
@@ -35,13 +43,13 @@ public class WebDriverManager {
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
-        EventFiringWebDriver eventDriver = new EventFiringWebDriver(driver);
-        eventDriver.register(new EventHandler());
+        eventDriver = new EventFiringWebDriver(driver);
+        loggerManager = new LoggerManager();
+        eventDriver.register(loggerManager);
         return eventDriver;
     }
 
     public void closeDriver(){
-        driver.close();
-        driver.quit();
+        eventDriver.quit();
     }
 }

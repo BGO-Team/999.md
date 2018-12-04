@@ -8,7 +8,7 @@ Feature: Vadim's Features
     And user fill in Login and Password Input field and click Submit
     Then User Name is showing on Top Bar
 
-  @Vadim @Language @Run
+  @Vadim @Language
   Scenario: Change Language
     Given user is on "HomePage"
     When user change language
@@ -30,7 +30,7 @@ Feature: Vadim's Features
     Then user is on this product
     Examples:
     | category    | subCategory          | product |
-    | Random      | Random               | Random  |
+#    | Random      | Random               | Random  |
     | Транспорт   | Легковые автомобили  | Random  |
     | Недвижимость| Дома и дачи          | Random  |
 

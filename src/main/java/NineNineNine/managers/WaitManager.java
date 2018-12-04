@@ -1,0 +1,26 @@
+package NineNineNine.managers;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class WaitManager {
+    private WebDriverWait wait;
+
+    public WaitManager(WebDriver driver) {
+        wait = new WebDriverWait(driver, 30);
+    }
+
+    public WebDriverWait getWait() {
+        return wait;
+    }
+
+    public void toBeClickable(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void toBeVisible(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+}

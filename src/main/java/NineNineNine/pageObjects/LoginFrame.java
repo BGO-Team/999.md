@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginFrame extends Page{
     @FindBy(name = "login")
-    private WebElement usernameInput;
+    public WebElement usernameInput;
 
     @FindBy(name = "password")
     private WebElement passwordInput;
@@ -19,9 +19,13 @@ public class LoginFrame extends Page{
 
     public LoginFrame(WebDriver driver) {
         super(driver);
+        toPage();
+
+    }
+
+    public void toPage(){
         driver.switchTo().defaultContent();
         driver.switchTo().frame("topbar-popup");
-
     }
 
     private void typeUsername(String username) {
