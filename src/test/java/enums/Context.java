@@ -4,5 +4,6 @@ public enum Context {
     PRODUCT,
     CATEGORY,
     SUBCATEGORY,
-    PAGE
+    PAGE,
+    ClASSOBJECT
 }

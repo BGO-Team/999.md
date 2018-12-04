@@ -1,7 +1,10 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.PendingException;
+import cucumber.api.java.en.Then;
 import dataProviders.TestDataFileReader;
+import org.junit.Assert;
 import pageObjects.LoginFrame;
 import cucumber.api.java.en.And;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,4 +27,11 @@ public class LoginFrameSteps {
         testContext.getWait().toBeVisible(testContext.getPageObjectManager().getHeader().getHeaderPicture());
     }
 
+    @Then("^a new pop up window is displayed$")
+    public void aNewPopUpWindowIsDisplayed(){
+
+        testContext.getWait().waitFor().until(ExpectedConditions.visibilityOf(loginFrame.getFrameTitle()));
+        Assert.assertEquals("popup-login-header-title",loginFrame.getFrameTitle().getAttribute("class"));
+
+    }
 }

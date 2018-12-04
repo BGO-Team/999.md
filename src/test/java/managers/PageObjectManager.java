@@ -25,8 +25,9 @@ public class PageObjectManager {
     private SubCategoryPage subCategoryPage;
     private TopBar topBar;
     private SettingsFrame settingsFrame;
+    private Object object;
 
-    public PageObjectManager(WebDriver driver){
+    public PageObjectManager(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -37,43 +38,61 @@ public class PageObjectManager {
         method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
     }
 
-    public void clickButton(String buttonName, WebDriver driver) throws ClassNotFoundException, IllegalAccessException {
-        boolean switcher = false;
-        String packageName = "NineNineNine.pageObjects";
-        List<Class> commands = new ArrayList<>();
-        URL root = Thread.currentThread().getContextClassLoader().getResource(packageName.replace(".", "/"));
+    public void clickButton(String pageName, String buttonName, Object value) throws ClassNotFoundException, InterruptedException {
+        WebElement webElement = null;
+        Class referenceClass = Class.forName("pageObjects." + pageName);
 
+        Field[] fields = referenceClass.getDeclaredFields();
+        for (Field field : fields) {
+            if (field.getType() == WebElement.class) {
+                field.setAccessible(true);
+                if (field.getName().equals(buttonName)) {
+                    try {
+                        System.out.println(field.getName());
+                        webElement = ( WebElement ) field.get(value);
+                        webElement.click();
+                        Thread.sleep(5000);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
 
-        File[] files = new File(root.getFile()).listFiles(new FilenameFilter() {
-            public boolean accept(File dir, String name) {
-                return name.endsWith(".class");
-            }
-        });
-
-        for (File file : files){
-            String className = file.getName().replaceAll(".class", "");
-//            System.out.println(className);
-            Class referenceClass = Class.forName(packageName + "." + className);
-
-            Field[] allObjects = referenceClass.getFields();
-            WebElement element;
-            for(Field value: allObjects){
-                if(value.getName().equalsIgnoreCase(buttonName)){
-                    element = (WebElement) value.get(buttonName);
-                    switcher = false;
-                    PageFactory.initElements(driver,referenceClass);
-                    element.click();
-                    break;
                 }
 
             }
-
-            if (switcher == false){
-                System.out.println("gaist");
-                break;
-            }
-
         }
+    }
+
+
+        public void clickBsssutton(String buttonName, String pageName) throws ClassNotFoundException, IllegalAccessException {
+//        boolean switcher = false;
+//        List<Class> commands = new ArrayList<>();
+//        URL root = Thread.currentThread().getContextClassLoader().getResource(packageName.replace(".", "/"));
+//
+//
+//        File[] files = new File(root.getFile()).listFiles(new FilenameFilter() {
+//            public boolean accept(File dir, String name) {
+//                return name.endsWith(".class");
+//            }
+//        });
+//
+//        for (File file : files){
+//            String className = file.getName().replaceAll(".class", "");
+//            System.out.println(className);
+//            Class referenceClass = Class.forName(packageName + "." + className);
+
+        Class referenceClass = Class.forName("pageObjects." + pageName);
+
+            Field[] allObjects = referenceClass.getFields();
+
+            for (Field value : allObjects) {
+                if (value.getName().equalsIgnoreCase(buttonName)) {
+                    System.out.println(value.getName());
+                    WebElement element = ( WebElement ) value.get(buttonName);
+                    PageFactory.initElements(driver, referenceClass+".class");
+                    element.click();
+                    break;
+                }
+            }
     }
 
     public HomePage getHomePage() {
@@ -89,7 +108,8 @@ public class PageObjectManager {
     }
 
     public TopBar getTopBar() {
-        return (topBar == null) ? topBar = new TopBar(driver) : topBar;    }
+        return (topBar == null) ? topBar = new TopBar(driver) : topBar;
+    }
 
     public CategoryPage getCategoryPage() {
         return (categoryPage == null) ? categoryPage = new CategoryPage(driver) : categoryPage;

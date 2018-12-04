@@ -1,12 +1,14 @@
-Feature: As a user , after login I can change my profile details So that they will be up to date.
+Feature:Andrew's features
 
-  @Test @asecu
+  @Test @asecu1
   Scenario: test scenario
     Given user is on "HomePage"
-    When user click on "Log In" button
+    When user click on "loginButton" button
     Then a new pop up window is displayed
     When user fill in Login and Password Input field and click Submit
     Then User Name is showing on Top Bar
+
+
 
 
   @Test @asecu
@@ -26,7 +28,7 @@ Feature: As a user , after login I can change my profile details So that they wi
     When user click on "Log In" button
     Then a new pop up window is displayed
     When user fill in Login and Password Input field and click Submit
-#    Then User Name is showing on Top Bar
+    Then User Name is showing on Top Bar
     When user click on "settingsButton" buttons
     Then a settings frame is opened
     When user inserts "<FirstName>" and "<LastName>"

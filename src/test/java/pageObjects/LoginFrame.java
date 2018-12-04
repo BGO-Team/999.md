@@ -5,6 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginFrame extends Page{
+
+    @FindBy(css = "header h2")
+    private WebElement frameTitle;
+
     @FindBy(name = "login")
     public WebElement usernameInput;
 
@@ -44,6 +48,9 @@ public class LoginFrame extends Page{
         typeUsername(username);
         typePassword(password);
         submitLogin();
+    }
+    public WebElement getFrameTitle(){
+        return frameTitle;
     }
 
     public void closeLoginFrame() {
