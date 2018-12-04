@@ -1,6 +1,5 @@
-package NineNineNine.pageObjects;
+package pageObjects;
 
-import NineNineNine.dataProviders.ConfigFileReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 

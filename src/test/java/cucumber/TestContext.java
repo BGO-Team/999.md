@@ -1,9 +1,9 @@
-package NineNineNine.cucumber;
+package cucumber;
 
-import NineNineNine.dataProviders.TestDataFileReader;
-import NineNineNine.managers.PageObjectManager;
-import NineNineNine.managers.WebDriverManager;
-import NineNineNine.managers.WaitManager;
+import dataProviders.TestDataFileReader;
+import managers.PageObjectManager;
+import managers.WebDriverManager;
+import managers.WaitManager;
 
 public class TestContext {
     private WebDriverManager webDriverManager;

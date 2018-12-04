@@ -1,4 +1,4 @@
-package NineNineNine.enums;
+package enums;
 
 public enum DriverType {
     FIREFOX,

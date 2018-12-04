@@ -1,12 +1,10 @@
-package NineNineNine.managers;
+package managers;
 
-import NineNineNine.pageObjects.*;
+import pageObjects.*;
 import org.openqa.selenium.WebDriver;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.sql.Driver;
-import java.util.HashMap;
 
 public class PageObjectManager {
     private WebDriver driver;
@@ -25,7 +23,7 @@ public class PageObjectManager {
 
     public static void getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
             IllegalAccessException, InvocationTargetException, InstantiationException {
-        Class clazz = Class.forName("NineNineNine.pageObjects." + page);
+        Class clazz = Class.forName("pageObjects." + page);
         Method method = clazz.getMethod("toPage");
         method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
     }

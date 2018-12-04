@@ -1,6 +1,6 @@
-package NineNineNine.cucumber;
+package cucumber;
 
-import NineNineNine.enums.Context;
+import enums.Context;
 
 import java.util.HashMap;
 import java.util.Map;

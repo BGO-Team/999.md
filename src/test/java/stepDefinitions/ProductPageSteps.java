@@ -1,8 +1,8 @@
 package stepDefinitions;
 
-import NineNineNine.cucumber.TestContext;
-import NineNineNine.enums.Context;
-import NineNineNine.pageObjects.ProductPage;
+import cucumber.TestContext;
+import enums.Context;
+import pageObjects.ProductPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
@@ -16,8 +16,6 @@ public class ProductPageSteps {
         productPage = testContext.getPageObjectManager().getProductPage();
         testContext.getScenarioContext().setContext(Context.PRODUCT, productPage.getProductName());
     }
-
-    //TODO: ProductPageSteps
 
     @Then("^user is on this product$")
     public void userIsOnThisProduct() {

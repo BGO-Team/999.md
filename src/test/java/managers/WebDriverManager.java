@@ -1,12 +1,10 @@
-package NineNineNine.managers;
+package managers;
 
-import NineNineNine.dataProviders.ConfigFileReader;
-import NineNineNine.enums.DriverType;
-import org.openqa.selenium.SessionNotCreatedException;
+import dataProviders.ConfigFileReader;
+import enums.DriverType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.ErrorHandler;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.util.concurrent.TimeUnit;

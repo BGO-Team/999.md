@@ -1,6 +1,6 @@
-package NineNineNine.pageObjects;
+package pageObjects;
 
-import NineNineNine.dataProviders.ConfigFileReader;
+import dataProviders.ConfigFileReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

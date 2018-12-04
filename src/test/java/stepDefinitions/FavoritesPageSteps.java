@@ -1,8 +1,8 @@
 package stepDefinitions;
 
-import NineNineNine.cucumber.TestContext;
-import NineNineNine.enums.Context;
-import NineNineNine.pageObjects.FavoritesPage;
+import cucumber.TestContext;
+import enums.Context;
+import pageObjects.FavoritesPage;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
 
@@ -15,8 +15,6 @@ public class FavoritesPageSteps {
         testContext = context;
         favoritesPage = testContext.getPageObjectManager().getFavoritesPage();
     }
-
-    //TODO: ProductPageSteps
 
     @Then("product is in Favorite List")
     public void productIsInFavoriteList() {

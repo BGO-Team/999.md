@@ -1,6 +1,6 @@
-package NineNineNine.dataProviders;
+package dataProviders;
 
-import NineNineNine.enums.DriverType;
+import enums.DriverType;
 
 import java.io.*;
 import java.util.Properties;

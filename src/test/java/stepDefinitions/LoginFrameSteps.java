@@ -1,14 +1,9 @@
 package stepDefinitions;
 
-import NineNineNine.cucumber.TestContext;
-import NineNineNine.dataProviders.ConfigFileReader;
-import NineNineNine.dataProviders.TestDataFileReader;
-import NineNineNine.pageObjects.LoginFrame;
-import NineNineNine.pageObjects.Page;
-import cucumber.api.PendingException;
+import cucumber.TestContext;
+import dataProviders.TestDataFileReader;
+import pageObjects.LoginFrame;
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import org.junit.Assert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginFrameSteps {
@@ -20,13 +15,13 @@ public class LoginFrameSteps {
         loginFrame = testContext.getPageObjectManager().getLoginFrame();
     }
 
-    //TODO: LoginFrameSteps
-
     @And("^user fill in Login and Password Input field and click Submit$")
     public void userFillInLoginAndPasswordInputField() {
         loginFrame.loginAs(TestDataFileReader.getUserLogin(), TestDataFileReader.getUserPassword());
         testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
-        testContext.getWait().getWait().until(ExpectedConditions.not(ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-popup")));
+        testContext.getWait().waitFor().until(ExpectedConditions.not(ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-popup")));
+        testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
+        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getHeader().getHeaderPicture());
     }
 
 }

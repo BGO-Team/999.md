@@ -1,8 +1,9 @@
 package stepDefinitions;
 
-import NineNineNine.cucumber.TestContext;
-import NineNineNine.dataProviders.TestDataFileReader;
-import NineNineNine.pageObjects.TopBar;
+import cucumber.TestContext;
+import dataProviders.TestDataFileReader;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import pageObjects.TopBar;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
@@ -15,8 +16,6 @@ public class TopBarSteps {
         testContext = context;
         topBar = testContext.getPageObjectManager().getTopBar();
     }
-
-    //TODO: TopBarSteps
 
     @Then("^User Name is showing on Top Bar$")
     public void userNameIsShowingOnTopBar() {
@@ -32,14 +31,16 @@ public class TopBarSteps {
 
     @Then("^language was changed on \"([^\"]*)\"$")
     public void languageWasChangedOn(String language) {
-        testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
-        testContext.getWait().toBeClickable(testContext.getPageObjectManager().getHeader().getSearchButton());
+//        testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
+//        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getHeader().getHeaderPicture());
         switch (language){
             case "Romanian" :
-                Assert.assertEquals(testContext.getWebDriverManager().getDriver().getCurrentUrl().substring(15, 17), "ro");
+                testContext.getWait().waitFor().until(ExpectedConditions.urlContains("ro"));
+                Assert.assertEquals("ro", testContext.getWebDriverManager().getDriver().getCurrentUrl().substring(15, 17));
                 break;
             case "Russian" :
-                Assert.assertEquals(testContext.getWebDriverManager().getDriver().getCurrentUrl().substring(15, 17), "ru");
+                testContext.getWait().waitFor().until(ExpectedConditions.urlContains("ru"));
+                Assert.assertEquals("ru", testContext.getWebDriverManager().getDriver().getCurrentUrl().substring(15, 17));
                 break;
             default :
                 throw new IllegalArgumentException("This language does not supported");

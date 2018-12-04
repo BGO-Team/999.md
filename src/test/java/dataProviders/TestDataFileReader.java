@@ -1,6 +1,4 @@
-package NineNineNine.dataProviders;
-
-import NineNineNine.enums.DriverType;
+package dataProviders;
 
 import java.io.File;
 import java.io.FileReader;

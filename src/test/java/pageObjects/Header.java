@@ -1,4 +1,4 @@
-package NineNineNine.pageObjects;
+package pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +15,9 @@ public class Header {
     @FindBy(css = "li > a[href=\"/cabinet/favorites\"]")
     private WebElement favoritesButton;
 
+    @FindBy(css = "#header > div.header_numbersTop")
+    private WebElement headerPicture;
+
     public Header(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -22,6 +25,10 @@ public class Header {
     private Header typeSearch(String search) {
         searchInput.sendKeys(search);
         return this;
+    }
+
+    public WebElement getHeaderPicture() {
+        return headerPicture;
     }
 
     public WebElement getSearchButton() {
