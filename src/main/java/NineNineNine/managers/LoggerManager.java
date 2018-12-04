@@ -34,6 +34,11 @@ public class LoggerManager extends AbstractWebDriverEventListener {
     @Override
     public void afterNavigateTo(String s, WebDriver webDriver) {
         LOGGER.info("WebDriver navigated to [" + s + "]");
+        try {
+            ScreenshotManager.takeScreenshot(webDriver);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -45,6 +50,11 @@ public class LoggerManager extends AbstractWebDriverEventListener {
     @Override
     public void afterClickOn(WebElement webElement, WebDriver webDriver) {
         LOGGER.info("Clicked successful");
+        try {
+            ScreenshotManager.takeScreenshot(webDriver);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -56,6 +66,11 @@ public class LoggerManager extends AbstractWebDriverEventListener {
     @Override
     public void afterChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
         LOGGER.info("WebDriver changed value for element - " + elementDescription(webElement));
+        try {
+            ScreenshotManager.takeScreenshot(webDriver);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private String elementDescription(WebElement element) {

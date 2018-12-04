@@ -24,6 +24,10 @@ public class Header {
         return this;
     }
 
+    public WebElement getSearchButton() {
+        return searchButton;
+    }
+
     private void submitSearch() {
         searchButton.submit();
     }
