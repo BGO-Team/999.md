@@ -20,9 +20,5 @@ public class HomePageSteps{
         homePage.toCategory(category);
     }
 
-    @When("^user click on \"([^\"]*)\" buttons$")
-    public void userClickOnButtons(String arg0) throws IllegalAccessException, ClassNotFoundException, InterruptedException {
-//        testContext.getPageObjectManager().clickButton(arg0,testContext.getScenarioContext().getContext(Context.PAGE));
-//        testContext.getPageObjectManager().clikerrrr(testContext.getScenarioContext().getContext(Context.PAGE),arg0);
-    }
+
 }
