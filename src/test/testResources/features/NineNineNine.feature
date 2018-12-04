@@ -39,6 +39,7 @@ Feature: Vadim's Features
     Given user is on "HomePage"
     When user click on "Log In" button
     And user fill in Login and Password Input field and click Submit
+#    Vadim it is not a good practice to write and and and
     When user click on "<category>" category
     And user click on "<subCategory>" sub-category
     And user click on "Random" product

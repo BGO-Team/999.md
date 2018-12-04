@@ -1,10 +1,18 @@
 package managers;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import pageObjects.*;
 import org.openqa.selenium.WebDriver;
 
+import java.io.File;
+import java.io.FilenameFilter;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PageObjectManager {
     private WebDriver driver;
@@ -16,6 +24,7 @@ public class PageObjectManager {
     private ProductPage productPage;
     private SubCategoryPage subCategoryPage;
     private TopBar topBar;
+    private SettingsFrame settingsFrame;
 
     public PageObjectManager(WebDriver driver){
         this.driver = driver;
@@ -26,6 +35,45 @@ public class PageObjectManager {
         Class clazz = Class.forName("pageObjects." + page);
         Method method = clazz.getMethod("toPage");
         method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
+    }
+
+    public void clickButton(String buttonName, WebDriver driver) throws ClassNotFoundException, IllegalAccessException {
+        boolean switcher = false;
+        String packageName = "NineNineNine.pageObjects";
+        List<Class> commands = new ArrayList<>();
+        URL root = Thread.currentThread().getContextClassLoader().getResource(packageName.replace(".", "/"));
+
+
+        File[] files = new File(root.getFile()).listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.endsWith(".class");
+            }
+        });
+
+        for (File file : files){
+            String className = file.getName().replaceAll(".class", "");
+//            System.out.println(className);
+            Class referenceClass = Class.forName(packageName + "." + className);
+
+            Field[] allObjects = referenceClass.getFields();
+            WebElement element;
+            for(Field value: allObjects){
+                if(value.getName().equalsIgnoreCase(buttonName)){
+                    element = (WebElement) value.get(buttonName);
+                    switcher = false;
+                    PageFactory.initElements(driver,referenceClass);
+                    element.click();
+                    break;
+                }
+
+            }
+
+            if (switcher == false){
+                System.out.println("gaist");
+                break;
+            }
+
+        }
     }
 
     public HomePage getHomePage() {
@@ -57,5 +105,9 @@ public class PageObjectManager {
 
     public FavoritesPage getFavoritesPage() {
         return (favoritesPage == null) ? favoritesPage = new FavoritesPage(driver) : favoritesPage;
+    }
+
+    public SettingsFrame getSettingsFramePage() {
+        return (settingsFrame == null) ? settingsFrame = new SettingsFrame(driver) : settingsFrame;
     }
 }
