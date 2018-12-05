@@ -17,12 +17,12 @@ public class GeneralSteps {
     public void userIsOn(String page) throws Throwable{
         PageObjectManager.getPage(page, testContext.getWebDriverManager().getDriver());
         testContext.getScenarioContext().setContext(Context.PAGE,page);
-        testContext.getScenarioContext().setContext(Context.ClASSOBJECT, testContext.getPageObjectManager().getHomePage());
+        testContext.getScenarioContext().setContext(Context.CLASSOBJECT, testContext.getPageObjectManager().getHomePage());
     }
 
     @When("^user click on \"([^\"]*)\"$")
     public void userClickOn(String button) throws ClassNotFoundException {
         testContext.getPageObjectManager().clickElement(testContext.getScenarioContext().getContext(Context.PAGE),
-                button, testContext.getScenarioContext().getContext(Context.ClASSOBJECT));
+                button, testContext.getScenarioContext().getContext(Context.CLASSOBJECT));
     }
 }

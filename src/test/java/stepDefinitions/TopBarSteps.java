@@ -1,8 +1,6 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.PendingException;
-import dataProviders.TestDataFileReader;
 import enums.Context;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjects.TopBar;
@@ -54,9 +52,9 @@ public class TopBarSteps {
     }
 
     @When("^user go to the TopBar$")
-    public void userGoToTheTopBar() throws InterruptedException {
+    public void userGoToTheTopBar() {
         testContext.getScenarioContext().setContext(Context.PAGE,"TopBar");
-        testContext.getScenarioContext().setContext(Context.ClASSOBJECT, testContext.getPageObjectManager().getTopBar());
+        testContext.getScenarioContext().setContext(Context.CLASSOBJECT, testContext.getPageObjectManager().getTopBar());
         testContext.getPageObjectManager().getTopBar().toTopBar();
         testContext.getWait().toBeClickable(testContext.getPageObjectManager().getTopBar().getSettingsButton());
 

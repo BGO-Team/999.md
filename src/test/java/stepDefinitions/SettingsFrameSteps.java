@@ -7,17 +7,14 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import pageObjects.SettingsFrame;
-import pageObjects.TopBar;
 
 public class SettingsFrameSteps {
     private TestContext testContext;
     private SettingsFrame settingsFrame;
-    private TopBar topBar;
 
     public SettingsFrameSteps(TestContext context) {
         testContext = context;
         settingsFrame = testContext.getPageObjectManager().getSettingsFramePage();
-        topBar = testContext.getPageObjectManager().getTopBar();
     }
 
     @Then("^a settings frame is opened$")
@@ -33,7 +30,6 @@ public class SettingsFrameSteps {
     @And("^insert the folowing \"(.+?)\" \"(.+?)\" \"(.+?)\" birth details$")
     public void insertTheFolowingBirthday(String day, String month, String year) {
         settingsFrame.setBirthDay(Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
-
     }
 
     @And("^click on save button$")
@@ -49,9 +45,7 @@ public class SettingsFrameSteps {
     @And("^set the gender to \"([^\"]*)\"$")
     public void setTheGenderTo(String gender) {
         settingsFrame.selectGender(gender);
-
     }
-
 
     @Then("^new details are not saved$")
     public void newDetailsAreNotSaved() {

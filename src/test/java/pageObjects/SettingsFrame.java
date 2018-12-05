@@ -12,8 +12,6 @@ import java.time.Year;
 import java.util.List;
 
 public class SettingsFrame {
-    private static SettingsFrame instance;
-    private String selectedDateOfBirth;
     private final WebDriver driver;
     private WebDriverWait wait;
 
@@ -122,20 +120,7 @@ public class SettingsFrame {
         }
     }
 
-
     public void save() {
         saveButton.click();
     }
-
-
-    public String getSelectedDateOfBirth() {
-
-        return selectedDateOfBirth;
-    }
-
-    public WebElement getDateOfBirthField() {
-        return dateOfBirthField;
-    }
-
-
 }

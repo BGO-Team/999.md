@@ -5,5 +5,5 @@ public enum Context {
     CATEGORY,
     SUBCATEGORY,
     PAGE,
-    ClASSOBJECT
+    CLASSOBJECT
 }
