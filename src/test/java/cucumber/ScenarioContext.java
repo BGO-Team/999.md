@@ -8,10 +8,11 @@ import java.util.Map;
 public class ScenarioContext {
     private static ScenarioContext instance;
     private Map<Context, String> scenarioContext;
-    private Map<Context, Object> objectScenarioContext = new HashMap<>();
+    private Map<Context, Object> objectScenarioContext;
 
     private ScenarioContext(){
         scenarioContext = new HashMap<>();
+        objectScenarioContext = new HashMap<>();
     }
 
     public static ScenarioContext getInstance(){

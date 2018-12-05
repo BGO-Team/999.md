@@ -31,15 +31,15 @@ public class LoggerManager extends AbstractWebDriverEventListener {
         fileHandler.close();
     }
 
-//    @Override
-//    public void afterNavigateTo(String s, WebDriver webDriver) {
-//        LOGGER.info("WebDriver navigated to [" + s + "]");
-//        try {
-//            ScreenshotManager.takeScreenshot(webDriver);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Override
+    public void afterNavigateTo(String s, WebDriver webDriver) {
+        LOGGER.info("WebDriver navigated to [" + s + "]");
+        try {
+            ScreenshotManager.takeScreenshot(webDriver);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
@@ -47,15 +47,15 @@ public class LoggerManager extends AbstractWebDriverEventListener {
                 + elementDescription(webElement));
     }
 
-//    @Override
-//    public void afterClickOn(WebElement webElement, WebDriver webDriver) {
-//        LOGGER.info("Clicked successful");
-//        try {
-//            ScreenshotManager.takeScreenshot(webDriver);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Override
+    public void afterClickOn(WebElement webElement, WebDriver webDriver) {
+        LOGGER.info("Clicked successful");
+        try {
+            ScreenshotManager.takeScreenshot(webDriver);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void beforeChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
@@ -63,15 +63,15 @@ public class LoggerManager extends AbstractWebDriverEventListener {
                 " on [" + Arrays.toString(charSequences) + "]");
     }
 
-//    @Override
-//    public void afterChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
-//        LOGGER.info("WebDriver changed value for element - " + elementDescription(webElement));
-//        try {
-//            ScreenshotManager.takeScreenshot(webDriver);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Override
+    public void afterChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
+        LOGGER.info("WebDriver changed value for element - " + elementDescription(webElement));
+        try {
+            ScreenshotManager.takeScreenshot(webDriver);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private String elementDescription(WebElement element) {
         String description = "[tag:" + element.getTagName();
