@@ -1,10 +1,18 @@
 package managers;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import pageObjects.*;
 import org.openqa.selenium.WebDriver;
 
+import java.io.File;
+import java.io.FilenameFilter;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PageObjectManager {
     private WebDriver driver;
@@ -19,8 +27,9 @@ public class PageObjectManager {
     private TopBarSettings topBarSettings;
     private AddNewsPage addNewsPage;
     private MyNews myNews;
+    private SettingsFrame settingsFrame;
 
-    public PageObjectManager(WebDriver driver){
+    public PageObjectManager(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -29,6 +38,26 @@ public class PageObjectManager {
         Class clazz = Class.forName("pageObjects." + page);
         Method method = clazz.getMethod("toPage");
         method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
+    }
+
+    public void clickElement(Object pageName, String elementName, Object value) throws ClassNotFoundException{
+        WebElement webElement = null;
+        Class referenceClass = Class.forName("pageObjects." + pageName.toString());
+
+        Field[] fields = referenceClass.getDeclaredFields();
+        for (Field field : fields) {
+            if (field.getType() == WebElement.class) {
+                field.setAccessible(true);
+                if (field.getName().equals(elementName)) {
+                    try {
+                        webElement = ( WebElement ) field.get(value);
+                        webElement.click();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
 
     public HomePage getHomePage() {
@@ -44,7 +73,8 @@ public class PageObjectManager {
     }
 
     public TopBar getTopBar() {
-        return (topBar == null) ? topBar = new TopBar(driver) : topBar;    }
+        return (topBar == null) ? topBar = new TopBar(driver) : topBar;
+    }
 
     public TopBarSettings getTopBarSettings() { return (topBarSettings == null) ? topBarSettings = TopBarSettings.getInstance(driver) : topBarSettings;}
 
@@ -63,6 +93,10 @@ public class PageObjectManager {
 
     public FavoritesPage getFavoritesPage() {
         return (favoritesPage == null) ? favoritesPage = new FavoritesPage(driver) : favoritesPage;
+    }
+
+    public SettingsFrame getSettingsFramePage() {
+        return (settingsFrame == null) ? settingsFrame = new SettingsFrame(driver) : settingsFrame;
     }
 
     public AddNewsPage getAddNewsPage() {

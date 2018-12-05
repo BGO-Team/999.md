@@ -12,7 +12,6 @@ public class SubCategoryPageSteps {
     public SubCategoryPageSteps(TestContext context){
         testContext = context;
         subCategoryPage = testContext.getPageObjectManager().getSubCategoryPage();
-        testContext.getScenarioContext().setContext(Context.SUBCATEGORY, subCategoryPage.getSubCategoryName());
     }
 
     @And("^user click on \"([^\"]*)\" product$")

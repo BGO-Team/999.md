@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import enums.Context;
 import managers.PageObjectManager;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
@@ -15,16 +16,13 @@ public class GeneralSteps {
     @Given("^user is on \"([^\"]*)\"$")
     public void userIsOn(String page) throws Throwable{
         PageObjectManager.getPage(page, testContext.getWebDriverManager().getDriver());
+        testContext.getScenarioContext().setContext(Context.PAGE,page);
+        testContext.getScenarioContext().setContext(Context.ClASSOBJECT, testContext.getPageObjectManager().getHomePage());
     }
 
-    @When("^user click on \"([^\"]*)\" button$")
-    public void userClickOn(String button) {
-        switch (button) {
-            case "Log In" :
-                testContext.getPageObjectManager().getTopBar().toLoginFrame();
-                break;
-            default :
-                throw new IllegalArgumentException("This button does not exist");
-        }
+    @When("^user click on \"([^\"]*)\"$")
+    public void userClickOn(String button) throws ClassNotFoundException {
+        testContext.getPageObjectManager().clickElement(testContext.getScenarioContext().getContext(Context.PAGE),
+                button, testContext.getScenarioContext().getContext(Context.ClASSOBJECT));
     }
 }

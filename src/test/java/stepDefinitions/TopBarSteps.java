@@ -43,7 +43,6 @@ public class TopBarSteps {
             default :
                 throw new IllegalArgumentException("This language does not supported");
         }
-
     }
 
     @When("^user go to Settings Frame$")
