@@ -12,12 +12,13 @@ public class SubCategoryPageSteps {
     public SubCategoryPageSteps(TestContext context){
         testContext = context;
         subCategoryPage = testContext.getPageObjectManager().getSubCategoryPage();
-        testContext.getScenarioContext().setContext(Context.SUBCATEGORY, subCategoryPage.getSubCategoryName());
     }
 
     @And("^user click on \"([^\"]*)\" product$")
     public void userClickOnProduct(String product) {
         subCategoryPage.toProduct(product);
+        testContext.getScenarioContext().setContext(Context.PRODUCT, product);
+
     }
 
 }

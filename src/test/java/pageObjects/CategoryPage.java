@@ -15,15 +15,8 @@ public class CategoryPage extends Page{
     @FindBy(className = ".ads-list-work-detail__item__title")
     private List<WebElement> subCategoriesWork;
 
-    @FindBy(className = "categoryPage__header")
-    private WebElement categoryName;
-
     public CategoryPage(WebDriver driver) {
         super(driver);
-    }
-
-    public String getCategoryName(){
-        return categoryName.getText();
     }
 
     public void toSubCategory(int number){

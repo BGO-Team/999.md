@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginFrame extends Page{
     @FindBy(name = "login")
-    public WebElement usernameInput;
+    private WebElement usernameInput;
 
     @FindBy(name = "password")
     private WebElement passwordInput;
@@ -20,7 +20,22 @@ public class LoginFrame extends Page{
     public LoginFrame(WebDriver driver) {
         super(driver);
         toPage();
+    }
 
+    public WebElement getUsernameInput() {
+        return usernameInput;
+    }
+
+    public WebElement getPasswordInput() {
+        return passwordInput;
+    }
+
+    public WebElement getSubmitLoginButton() {
+        return submitLoginButton;
+    }
+
+    public WebElement getCloseLoginButton() {
+        return closeLoginButton;
     }
 
     public void toPage(){

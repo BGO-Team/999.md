@@ -31,8 +31,6 @@ public class TopBarSteps {
 
     @Then("^language was changed on \"([^\"]*)\"$")
     public void languageWasChangedOn(String language) {
-//        testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
-//        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getHeader().getHeaderPicture());
         switch (language){
             case "Romanian" :
                 testContext.getWait().waitFor().until(ExpectedConditions.urlContains("ro"));

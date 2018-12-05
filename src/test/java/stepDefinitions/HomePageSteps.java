@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import enums.Context;
 import pageObjects.HomePage;
 import cucumber.api.java.en.When;
 
@@ -16,5 +17,6 @@ public class HomePageSteps{
     @When("^user click on \"([^\"]*)\" category$")
     public void userClickOnCategory(String category) {
         homePage.toCategory(category);
+        testContext.getScenarioContext().setContext(Context.CATEGORY, category);
     }
 }
