@@ -3,6 +3,7 @@ package stepDefinitions;
 import cucumber.TestContext;
 import cucumber.api.PendingException;
 import dataProviders.TestDataFileReader;
+import enums.Context;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjects.TopBar;
 import cucumber.api.java.en.Then;
@@ -50,5 +51,15 @@ public class TopBarSteps {
             default :
                 throw new IllegalArgumentException("This language does not supported");
         }
+    }
+
+    @When("^user go to the TopBar$")
+    public void userGoToTheTopBar() throws InterruptedException {
+        testContext.getScenarioContext().setContext(Context.PAGE,"TopBar");
+        testContext.getScenarioContext().setContext(Context.ClASSOBJECT, testContext.getPageObjectManager().getTopBar());
+        testContext.getPageObjectManager().getTopBar().toTopBar();
+        testContext.getWait().toBeClickable(testContext.getPageObjectManager().getTopBar().getSettingsButton());
+
+
     }
 }

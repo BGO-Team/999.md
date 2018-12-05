@@ -14,6 +14,7 @@ public class CategoryPage extends Page{
 
     @FindBy(className = ".ads-list-work-detail__item__title")
     private List<WebElement> subCategoriesWork;
+// Vadim please explain why you added here the up element?
 
     public CategoryPage(WebDriver driver) {
         super(driver);

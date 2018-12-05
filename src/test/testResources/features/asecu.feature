@@ -1,14 +1,12 @@
 Feature:Andrew's features
 
-  @Test @asecu1
+  @Test @asecu
   Scenario: test scenario
     Given user is on "HomePage"
     When user click on "loginButton" button
     Then a new pop up window is displayed
     When user confirm Login and Password
     Then User Name is showing on Top Bar
-
-
 
 
   @Test @asecu
@@ -22,14 +20,15 @@ Feature:Andrew's features
     Then user is on this product
 
 
-  @TestB @asecu
-  Scenario Outline:  Add valid user firstName, lastName and gender details
+  @Test @asecu @1
+  Scenario Outline: Add <FirstName> <LastName> valid details in the system
     Given user is on "HomePage"
-    When user click on "Log In" button
+    When user click on "loginButton"
     Then a new pop up window is displayed
     When user fill in Login and Password Input field and click Submit
     Then User Name is showing on Top Bar
-    When user click on "settingsButton" buttons
+    When user go to the TopBar
+    And  user click on "settingsButton"
     Then a settings frame is opened
     When user inserts "<FirstName>" and "<LastName>"
     And insert the folowing "<dd>" "<mm>" "<yyyy>" birth details
@@ -41,23 +40,42 @@ Feature:Andrew's features
       | Andrei    | Secu     | male   | 1990 | 11 | 11 |
       | Elena     | Avram    | female | 2018 | 4  | 3  |
 
-
-  @TestB @asecu
-  Scenario Outline: Add invalid user firstName, lastName and gender details
+  @Test @asecu @asecu1
+  Scenario Outline: Add invalid <Context> in the system
     Given user is on "HomePage"
-    When user click on "Log In" button
+    When user click on "loginButton"
     Then a new pop up window is displayed
     When user fill in Login and Password Input field and click Submit
     Then User Name is showing on Top Bar
-    When user click on "Settings" button
+    When user go to the TopBar
+    And  user click on "settingsButton"
     Then a settings frame is opened
     When user inserts "<FirstName>" and "<LastName>"
-#    And insert the folowing 12 11 1997 birth details
+    And insert the folowing "<dd>" "<mm>" "<yyyy>" birth details
     And set the gender to "<gender>"
     And click on save button
     Then new details are not saved
     Examples:
-      | FirstName | LastName | gender |
-      | #$&%@$%&  | Secu     | masde  |
-      | Boris     | ##@$#    | hain   |
-      | 34234     | %$W$24   | femse  |
+      | Context    | FirstName | LastName | gender | yyyy | mm | dd |
+      | Fisrt Name | #$&%@$%&  | Secu     | male   | 1998 | 11 | 13 |
+      | Last Name  | Gicu      | ##@$#    | male   | 1995 | 10 | 11 |
+      | Gender     | Vitalie   | Boghian  | herzon | 1990 | 2  | 30 |
+      | Birth Date | Ion       | Vasile   | male   | 1990 | 2  | 30 |
+      | Birth Date | Maria     | Pojoga   | female | 2018 | 12 | 30 |
+      | Birth Date | Nicu      | Elvoir   | female | 2018 | 12 | 7  |
+      |            |           |          |        | 1990 | 2  | 30 |
+
+
+  Scenario Outline: Add <FirstName> <LastName> valid details in the system
+    Given user is on "HomePage"
+    When user go to header
+    Then detect search field
+    When user click on "SearchField"
+    And user enter "<searchData>" into the field
+    Then a new search page is displayed
+    When user fill in Login and Password Input field and click Submit
+    Then User Name is showing on Top Bar
+    When user go to the TopBar
+    And  user click on "settingsButton" button
+    Then a settings frame is opened
+    Examples:

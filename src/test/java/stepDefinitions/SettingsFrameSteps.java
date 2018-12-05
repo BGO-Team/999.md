@@ -21,7 +21,7 @@ public class SettingsFrameSteps {
     }
 
     @Then("^a settings frame is opened$")
-    public void aSettingsFrameIsOpened() {
+    public void aSettingsFrameIsOpened() throws InterruptedException {
         settingsFrame.changeFrame();
     }
 
@@ -43,7 +43,6 @@ public class SettingsFrameSteps {
 
     @Then("^The data is saved$")
     public void theDataIsSaved() {
-        System.out.println(settingsFrame.getSuccessMessage());
         Assert.assertTrue(settingsFrame.getSuccessMessage().equalsIgnoreCase("СОХРАНЕНО"));
     }
 
@@ -56,7 +55,6 @@ public class SettingsFrameSteps {
 
     @Then("^new details are not saved$")
     public void newDetailsAreNotSaved() {
-        System.out.println(settingsFrame.getSuccessMessage());
         Assert.assertFalse(settingsFrame.getSuccessMessage().equalsIgnoreCase("СОХРАНЕНО"));
     }
 

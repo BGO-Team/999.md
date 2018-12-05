@@ -17,13 +17,6 @@ public class SettingsFrame {
     private final WebDriver driver;
     private WebDriverWait wait;
 
-    public SettingsFrame(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver,50);
-
-    }
-
     @FindBy(css = "input[name=\"first_name\"]")
     private WebElement firstNameField;
 
@@ -52,6 +45,12 @@ public class SettingsFrame {
     @FindBy(id = "simpalsid-settings-tab-success")
     private WebElement successMessage;
 
+    public SettingsFrame(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, 50);
+
+    }
 
     public void setNameDetails(String firstName, String lastName) {
         setNameField(firstName);
@@ -65,10 +64,11 @@ public class SettingsFrame {
 
     }
 
-    public void changeFrame() {
+    public void changeFrame() throws InterruptedException {
         driver.switchTo().defaultContent();
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("iframe[id=\"topbar-settings\"]"))));
         driver.switchTo().frame("topbar-settings");
+        wait.until(ExpectedConditions.visibilityOf(firstNameField));
     }
 
     public void selectGender(String gender) {
@@ -86,10 +86,10 @@ public class SettingsFrame {
         }
     }
 
-        public String getSuccessMessage(){
+    public String getSuccessMessage() {
         wait.until(ExpectedConditions.visibilityOf(successMessage));
         return successMessage.getText();
-        }
+    }
 
     private void setNameField(String firstName) {
         firstNameField.clear();
