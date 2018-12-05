@@ -61,40 +61,7 @@ public class PageObjectManager {
             }
         }
     }
-
-
-        public void clickBsssutton(String buttonName, String pageName) throws ClassNotFoundException, IllegalAccessException {
-//        boolean switcher = false;
-//        List<Class> commands = new ArrayList<>();
-//        URL root = Thread.currentThread().getContextClassLoader().getResource(packageName.replace(".", "/"));
-//
-//
-//        File[] files = new File(root.getFile()).listFiles(new FilenameFilter() {
-//            public boolean accept(File dir, String name) {
-//                return name.endsWith(".class");
-//            }
-//        });
-//
-//        for (File file : files){
-//            String className = file.getName().replaceAll(".class", "");
-//            System.out.println(className);
-//            Class referenceClass = Class.forName(packageName + "." + className);
-
-        Class referenceClass = Class.forName("pageObjects." + pageName);
-
-            Field[] allObjects = referenceClass.getFields();
-
-            for (Field value : allObjects) {
-                if (value.getName().equalsIgnoreCase(buttonName)) {
-                    System.out.println(value.getName());
-                    WebElement element = ( WebElement ) value.get(buttonName);
-                    PageFactory.initElements(driver, referenceClass+".class");
-                    element.click();
-                    break;
-                }
-            }
-    }
-
+    
     public HomePage getHomePage() {
         return (homePage == null) ? homePage = new HomePage(driver) : homePage;
     }
