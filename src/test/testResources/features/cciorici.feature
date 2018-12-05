@@ -54,7 +54,7 @@ Feature: NineNineNine's Features
     Given user is on "HomePage"
     When user click on "Log In" button
     And user fill in Login and Password Input field as Corneliu and click Submit
-    When user is on UserSettings
+    When user go to Settings Frame
     Then user verify firstname and lastname
     And user verify email adress
 
@@ -75,4 +75,4 @@ Feature: NineNineNine's Features
     And user fill in Login and Password Input field and click Submit
     And user search the news that was already created
     And user click on news that was already created
-    And user sent message to product author
+    And user sent message to product's author

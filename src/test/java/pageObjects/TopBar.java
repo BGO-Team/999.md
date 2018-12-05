@@ -60,7 +60,7 @@ public class TopBar {
         return userNameButton.getText();
     }
 
-    public void userNameButton(){
+    public void toSettings(){
         userSettingsButton.click();
     }
 }

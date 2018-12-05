@@ -46,11 +46,11 @@ public class TopBarSteps {
 
     }
 
-    @When("^user is on UserSettings$")
-    public void userIsOnUserSettings(){
+    @When("^user go to Settings Frame$")
+    public void userGoToSettings(){
 
         topBar.toTopBar();
-        topBar.userNameButton();
+        topBar.toSettings();
 
 
     }
