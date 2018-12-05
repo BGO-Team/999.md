@@ -5,7 +5,7 @@ Feature:Andrew's features
     Given user is on "HomePage"
     When user click on "loginButton" button
     Then a new pop up window is displayed
-    When user fill in Login and Password Input field and click Submit
+    When user confirm Login and Password
     Then User Name is showing on Top Bar
 
 

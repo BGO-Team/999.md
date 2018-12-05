@@ -14,6 +14,7 @@ public class ProductPageSteps {
     public ProductPageSteps(TestContext context){
         testContext = context;
         productPage = testContext.getPageObjectManager().getProductPage();
+        testContext.getScenarioContext().setContext(Context.PRODUCT, productPage.getProductName());
     }
 
     @Then("^user is on this product$")

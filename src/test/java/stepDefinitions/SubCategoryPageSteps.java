@@ -17,8 +17,6 @@ public class SubCategoryPageSteps {
     @And("^user click on \"([^\"]*)\" product$")
     public void userClickOnProduct(String product) {
         subCategoryPage.toProduct(product);
-        testContext.getScenarioContext().setContext(Context.PRODUCT, product);
-
     }
 
 }

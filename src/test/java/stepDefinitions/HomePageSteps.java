@@ -1,7 +1,6 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.PendingException;
 import enums.Context;
 import pageObjects.HomePage;
 import cucumber.api.java.en.When;
