@@ -1,11 +1,11 @@
 #noinspection NonAsciiCharacters
-Feature: Vadim's Features
+Feature: NineNineNine's Features
 
   @Vadim @Login
   Scenario: Log in
     Given user is on "HomePage"
     When user click on "Log In" button
-    And user fill in Login and Password Input field and click Submit
+    And user confirm Login and Password
     Then User Name is showing on Top Bar
 
   @Vadim @Language
@@ -30,7 +30,6 @@ Feature: Vadim's Features
     Then user is on this product
     Examples:
     | category    | subCategory          | product |
-#    | Random      | Random               | Random  |
     | Транспорт   | Легковые автомобили  | Random  |
     | Недвижимость| Дома и дачи          | Random  |
 
@@ -38,8 +37,7 @@ Feature: Vadim's Features
   Scenario Outline: Add Product to favorite
     Given user is on "HomePage"
     When user click on "Log In" button
-    And user fill in Login and Password Input field and click Submit
-#    Vadim it is not a good practice to write and and and
+    And user confirm Login and Password
     When user click on "<category>" category
     And user click on "<subCategory>" sub-category
     And user click on "Random" product

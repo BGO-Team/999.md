@@ -18,7 +18,6 @@ public class HomePageSteps{
     @When("^user click on \"([^\"]*)\" category$")
     public void userClickOnCategory(String category) {
         homePage.toCategory(category);
+        testContext.getScenarioContext().setContext(Context.CATEGORY, category);
     }
-
-
 }

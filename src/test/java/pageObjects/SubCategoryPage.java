@@ -15,17 +15,10 @@ public class SubCategoryPage extends Page{
     @FindBy(className = "ads-list-work-detail__item__title ")
     private List<WebElement> alternativeProducts;
 
-    @FindBy(css = "header.page-header > h1")
-    private WebElement subCategoryName;
-
     public SubCategoryPage(WebDriver driver) {
         super(driver);
         if (products.size() < 1)
             products = alternativeProducts;
-    }
-
-    public String getSubCategoryName(){
-        return subCategoryName.getText();
     }
 
     public void toProduct(int number){
