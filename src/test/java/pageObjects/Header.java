@@ -18,6 +18,10 @@ public class Header {
     @FindBy(css = "#header > div.header_numbersTop")
     private WebElement headerPicture;
 
+    @FindBy(css = "#m__user_panel > ul > li:nth-child(1) > a")
+    private WebElement myNews;
+
+
     public Header(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -35,7 +39,7 @@ public class Header {
         return searchButton;
     }
 
-    private void submitSearch() {
+    public void submitSearch() {
         searchButton.submit();
     }
 
@@ -46,6 +50,10 @@ public class Header {
 
     public void toFavorites(){
         favoritesButton.click();
+    }
+
+    public void myNews() {
+        myNews.click();
     }
 
 }

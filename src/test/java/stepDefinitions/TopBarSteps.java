@@ -31,8 +31,6 @@ public class TopBarSteps {
 
     @Then("^language was changed on \"([^\"]*)\"$")
     public void languageWasChangedOn(String language) {
-//        testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
-//        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getHeader().getHeaderPicture());
         switch (language){
             case "Romanian" :
                 testContext.getWait().waitFor().until(ExpectedConditions.urlContains("ro"));
@@ -45,6 +43,15 @@ public class TopBarSteps {
             default :
                 throw new IllegalArgumentException("This language does not supported");
         }
+
+    }
+
+    @When("^user is on UserSettings$")
+    public void userIsOnUserSettings(){
+
+        topBar.toTopBar();
+        topBar.userNameButton();
+
 
     }
 }

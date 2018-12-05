@@ -16,6 +16,9 @@ public class PageObjectManager {
     private ProductPage productPage;
     private SubCategoryPage subCategoryPage;
     private TopBar topBar;
+    private TopBarSettings topBarSettings;
+    private AddNewsPage addNewsPage;
+    private MyNews myNews;
 
     public PageObjectManager(WebDriver driver){
         this.driver = driver;
@@ -43,6 +46,9 @@ public class PageObjectManager {
     public TopBar getTopBar() {
         return (topBar == null) ? topBar = new TopBar(driver) : topBar;    }
 
+    public TopBarSettings getTopBarSettings() { return (topBarSettings == null) ? topBarSettings = TopBarSettings.getInstance(driver) : topBarSettings;}
+
+
     public CategoryPage getCategoryPage() {
         return (categoryPage == null) ? categoryPage = new CategoryPage(driver) : categoryPage;
     }
@@ -58,4 +64,14 @@ public class PageObjectManager {
     public FavoritesPage getFavoritesPage() {
         return (favoritesPage == null) ? favoritesPage = new FavoritesPage(driver) : favoritesPage;
     }
+
+    public AddNewsPage getAddNewsPage() {
+        return (addNewsPage == null) ? addNewsPage = new AddNewsPage(driver) : addNewsPage;
+    }
+
+
+    public MyNews getMyNews() {
+        return (myNews == null) ? myNews = new MyNews(driver) : myNews;
+    }
+
 }

@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import dataProviders.TestDataFileReader;
 import enums.Context;
 import pageObjects.ProductPage;
 import cucumber.api.java.en.And;
@@ -29,5 +30,14 @@ public class ProductPageSteps {
     @And("user add product to Favorite List")
     public void userAddProductToFavoriteList() {
         productPage.addToFavorite();
+    }
+
+    @And("^user sent message to product author$")
+    public void userSentMessageToProductAuthor() throws InterruptedException {
+        Thread.sleep(5000);
+        productPage.inputMessage(TestDataFileReader.getInputMessage());
+
+        productPage.sendMessageButton();
+
     }
 }

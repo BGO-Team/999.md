@@ -20,6 +20,12 @@ public class ProductPage extends Page{
     @FindBy(css = "#m__breadcrumbs > li.last")
     private WebElement productCrumb;
 
+    @FindBy(css = "#js-ad-message-textarea")
+    private WebElement inputMessage;
+
+    @FindBy(css = ".adPage__content__message__send")
+    private WebElement sendMessage;
+
     public ProductPage(WebDriver driver) {
         super(driver);
     }
@@ -36,4 +42,14 @@ public class ProductPage extends Page{
     public String getBreadCrumbs(){
         return categoryCrumb.getText() + ">" + subCategoryCrumb.getText() + ">" + productCrumb.getText();
     }
+
+    public void inputMessage(String message) {
+        inputMessage.sendKeys(message);
+    }
+
+    public ProductPage sendMessageButton(){
+        sendMessage.click();
+        return this;
+    }
+
 }

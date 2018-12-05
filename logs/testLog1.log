@@ -1,14 +1,22 @@
-Dec 04, 2018 3:56:50 PM managers.LoggerManager afterNavigateTo
+Dec 05, 2018 4:21:05 PM managers.LoggerManager afterNavigateTo
 INFO: WebDriver navigated to [https://999.md/]
-Dec 04, 2018 3:56:53 PM managers.LoggerManager beforeClickOn
+Dec 05, 2018 4:21:07 PM managers.LoggerManager beforeClickOn
 INFO: WebDriver click on element - [tag:button id: user-login-btn ('вход')]
-Dec 04, 2018 3:56:53 PM managers.LoggerManager afterClickOn
+Dec 05, 2018 4:21:08 PM managers.LoggerManager afterClickOn
 INFO: Clicked successful
-Dec 04, 2018 3:56:56 PM managers.LoggerManager beforeChangeValueOf
+Dec 05, 2018 4:21:10 PM managers.LoggerManager beforeChangeValueOf
 INFO: WebDriver will change value for element - [tag:input id:  ('')] on [[vvdtest1]]
-Dec 04, 2018 3:56:56 PM managers.LoggerManager afterChangeValueOf
+Dec 05, 2018 4:21:10 PM managers.LoggerManager afterChangeValueOf
 INFO: WebDriver changed value for element - [tag:input id:  ('')]
-Dec 04, 2018 3:56:57 PM managers.LoggerManager beforeChangeValueOf
+Dec 05, 2018 4:21:10 PM managers.LoggerManager beforeChangeValueOf
 INFO: WebDriver will change value for element - [tag:input id:  ('')] on [[testpassword]]
-Dec 04, 2018 3:56:57 PM managers.LoggerManager afterChangeValueOf
+Dec 05, 2018 4:21:10 PM managers.LoggerManager afterChangeValueOf
 INFO: WebDriver changed value for element - [tag:input id:  ('')]
+Dec 05, 2018 4:21:15 PM managers.LoggerManager beforeChangeValueOf
+INFO: WebDriver will change value for element - [tag:input id: js-search-input ('')] on [[Sell iphone 999]]
+Dec 05, 2018 4:21:15 PM managers.LoggerManager afterChangeValueOf
+INFO: WebDriver changed value for element - [tag:input id: js-search-input ('')]
+Dec 05, 2018 4:21:18 PM managers.LoggerManager beforeClickOn
+INFO: WebDriver click on element - [tag:a id:  ('Sell iphone 999')]
+Dec 05, 2018 4:21:18 PM managers.LoggerManager afterClickOn
+INFO: Clicked successful

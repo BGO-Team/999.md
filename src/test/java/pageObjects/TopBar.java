@@ -23,6 +23,10 @@ public class TopBar {
     @FindBy(css = "li > .user-item-btn#user-username-btn")
     private WebElement userNameButton;
 
+
+    @FindBy(css = "#simpalsid-user > ul > li:nth-child(4) > button > span")
+    private WebElement userSettingsButton;
+
     public TopBar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -54,5 +58,9 @@ public class TopBar {
     public String getUserName() {
         wait.toBeClickable(userNameButton);
         return userNameButton.getText();
+    }
+
+    public void userNameButton(){
+        userSettingsButton.click();
     }
 }

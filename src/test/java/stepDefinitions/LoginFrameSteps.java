@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.PendingException;
 import dataProviders.TestDataFileReader;
 import pageObjects.LoginFrame;
 import cucumber.api.java.en.And;
@@ -18,6 +19,15 @@ public class LoginFrameSteps {
     @And("^user fill in Login and Password Input field and click Submit$")
     public void userFillInLoginAndPasswordInputField() {
         loginFrame.loginAs(TestDataFileReader.getUserLogin(), TestDataFileReader.getUserPassword());
+        testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
+        testContext.getWait().waitFor().until(ExpectedConditions.not(ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-popup")));
+        testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
+        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getHeader().getHeaderPicture());
+    }
+
+    @And("^user fill in Login and Password Input field as Corneliu and click Submit$")
+    public void userFillInLoginAndPasswordInputFieldAsCorneliu() {
+        loginFrame.loginAs(TestDataFileReader.getUser2Login(), TestDataFileReader.getUser2Password());
         testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
         testContext.getWait().waitFor().until(ExpectedConditions.not(ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-popup")));
         testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
