@@ -18,6 +18,6 @@ public class FavoritesPageSteps {
 
     @Then("product is in Favorite List")
     public void productIsInFavoriteList() {
-        Assert.assertTrue(favoritesPage.containsProduct(testContext.getScenarioContext().getContext(Context.PRODUCT)));
+        Assert.assertTrue(favoritesPage.containsProduct(testContext.getScenarioContext().getContext(Context.PRODUCT).toString()));
     }
 }

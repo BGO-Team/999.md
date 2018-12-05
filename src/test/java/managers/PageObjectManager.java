@@ -38,20 +38,18 @@ public class PageObjectManager {
         method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
     }
 
-    public void clickButton(String pageName, String buttonName, Object value) throws ClassNotFoundException, InterruptedException {
+    public void clickButton(Object pageName, String buttonName, Object value) throws ClassNotFoundException {
         WebElement webElement = null;
-        Class referenceClass = Class.forName("pageObjects." + pageName);
-
+        Class referenceClass = Class.forName("pageObjects." + pageName.toString());
         Field[] fields = referenceClass.getDeclaredFields();
         for (Field field : fields) {
             if (field.getType() == WebElement.class) {
                 field.setAccessible(true);
                 if (field.getName().equals(buttonName)) {
                     try {
-                        System.out.println(field.getName());
                         webElement = ( WebElement ) field.get(value);
                         webElement.click();
-                        Thread.sleep(5000);
+
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     }
