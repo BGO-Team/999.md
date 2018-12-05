@@ -1,23 +1,23 @@
 Feature:Andrew's features
 
-  @Test @asecu
-  Scenario: test scenario
-    Given user is on "HomePage"
-    When user click on "loginButton" button
-    Then a new pop up window is displayed
-    When user confirm Login and Password
-    Then User Name is showing on Top Bar
-
-
-  @Test @asecu
-  Scenario: Access any product
-    Given user is on "HomePage"
-    When user click on "Random" category
-    Then user is on a category page
-    When user click on "Random" sub-category
-    Then user is on a cateogry page
-    When user click on "Random" product
-    Then user is on this product
+#  @Test @asecu
+#  Scenario: test scenario
+#    Given user is on "HomePage"
+#    When user click on "loginButton" button
+#    Then a new pop up window is displayed
+#    When user confirm Login and Password
+#    Then User Name is showing on Top Bar
+#
+#
+#  @Test @asecu
+#  Scenario: Access any product
+#    Given user is on "HomePage"
+#    When user click on "Random" category
+#    Then user is on a category page
+#    When user click on "Random" sub-category
+#    Then user is on a cateogry page
+#    When user click on "Random" product
+#    Then user is on this product
 
 
   @Test @asecu @1
@@ -25,8 +25,8 @@ Feature:Andrew's features
     Given user is on "HomePage"
     When user click on "loginButton"
     Then a new pop up window is displayed
-    When user fill in Login and Password Input field and click Submit
-    Then User Name is showing on Top Bar
+    And "First" user confirm Login and Password
+    Then "First" User Name is showing on Top Bar
     When user go to the TopBar
     And  user click on "settingsButton"
     Then a settings frame is opened
@@ -45,8 +45,8 @@ Feature:Andrew's features
     Given user is on "HomePage"
     When user click on "loginButton"
     Then a new pop up window is displayed
-    When user fill in Login and Password Input field and click Submit
-    Then User Name is showing on Top Bar
+    And "First" user confirm Login and Password
+    Then "First" User Name is showing on Top Bar
     When user go to the TopBar
     And  user click on "settingsButton"
     Then a settings frame is opened
@@ -66,16 +66,16 @@ Feature:Andrew's features
       |            |           |          |        | 1990 | 2  | 30 |
 
 
-  Scenario Outline: Add <FirstName> <LastName> valid details in the system
-    Given user is on "HomePage"
-    When user go to header
-    Then detect search field
-    When user click on "SearchField"
-    And user enter "<searchData>" into the field
-    Then a new search page is displayed
-    When user fill in Login and Password Input field and click Submit
-    Then User Name is showing on Top Bar
-    When user go to the TopBar
-    And  user click on "settingsButton" button
-    Then a settings frame is opened
-    Examples:
+#  Scenario Outline: Add <FirstName> <LastName> valid details in the system
+#    Given user is on "HomePage"
+#    When user go to header
+#    Then detect search field
+#    When user click on "SearchField"
+#    And user enter "<searchData>" into the field
+#    Then a new search page is displayed
+#    When user fill in Login and Password Input field and click Submit
+#    Then User Name is showing on Top Bar
+#    When user go to the TopBar
+#    And  user click on "settingsButton" button
+#    Then a settings frame is opened
+#    Examples:
