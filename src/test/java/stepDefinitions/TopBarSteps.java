@@ -1,12 +1,15 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.PendingException;
 import dataProviders.TestDataFileReader;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjects.TopBar;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
+
+import java.lang.reflect.Method;
 
 public class TopBarSteps {
     private TestContext testContext;
@@ -17,10 +20,14 @@ public class TopBarSteps {
         topBar = testContext.getPageObjectManager().getTopBar();
     }
 
-    @Then("^User Name is showing on Top Bar$")
-    public void userNameIsShowingOnTopBar() {
+    @Then("^\"([^\"]*)\" User Name is showing on Top Bar$")
+    public void userNameIsShowingOnTopBar(String user) throws Throwable {
         topBar.toTopBar();
-        Assert.assertEquals(TestDataFileReader.getUserLogin(), topBar.getUserName());
+        Class clazz = Class.forName("dataProviders.TestDataFileReader");
+        Method getUserLogin = clazz.getDeclaredMethod("getUserLogin", String.class);
+        String login = (String) getUserLogin.invoke(clazz, user);
+
+        Assert.assertEquals(login, topBar.getUserName());
     }
 
     @When("^user change language$")
