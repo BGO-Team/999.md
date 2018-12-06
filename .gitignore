@@ -3,6 +3,7 @@
 target/
 src/main/java/Main.java
 src/main/java/Temp/
+Main.java
 *.iml
 *.log
 *.png
