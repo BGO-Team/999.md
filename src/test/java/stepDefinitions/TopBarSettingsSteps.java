@@ -1,8 +1,8 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import dataProviders.TestDataFileReader;
 import org.junit.Assert;
 import pageObjects.TopBarSettings;
 
@@ -17,21 +17,17 @@ public class TopBarSettingsSteps {
     }
 
     //TODO: TopBarSettingsSteps
-    @Then("^user verify firstname and lastname$")
+    @Then("^user verify \"([^\"]*)\" and \"([^\"]*)\" and \"([^\"]*)\"$")
     public void userVerifyIfFirstnameAndSecondnameAreTheSame() {
-        Assert.assertEquals("Corneliu",topBarSettings.firstnameVerify());
+        Assert.assertEquals(TestDataFileReader.getFirstName(), topBarSettings.firstnameVerify());
         System.out.println(topBarSettings.firstnameVerify());
-        Assert.assertEquals("Ciorici",topBarSettings.lastnameVerify());
+        Assert.assertEquals(TestDataFileReader.getLastName(), topBarSettings.lastnameVerify());
         System.out.println(topBarSettings.lastnameVerify());
-
-    }
-
-    @And("^user verify email adress$")
-    public void userVerifyEmailAdress(){
-
         topBarSettings.emailSettings();
-        Assert.assertEquals("cciorici@inbox.ru",topBarSettings.emailVerify());
+        Assert.assertEquals(TestDataFileReader.getEmailAdress(), topBarSettings.emailVerify());
         System.out.println(topBarSettings.emailVerify());
+
     }
+
 
 }

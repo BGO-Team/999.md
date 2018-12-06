@@ -4,45 +4,49 @@ import cucumber.TestContext;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import dataProviders.TestDataFileReader;
+import enums.Context;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjects.AddNewsPage;
+import pageObjects.MyNews;
 
 public class AddNewsPageSteps {
 
-        private TestContext testContext;
-        private AddNewsPage addNewsPage;
+    private TestContext testContext;
+    private AddNewsPage addNewsPage;
+    private MyNews myNews;
 
-        public AddNewsPageSteps(TestContext context) {
-            testContext = context;
-            addNewsPage = testContext.getPageObjectManager().getAddNewsPage();
-        }
 
-        //TODO: AddNewsPageSteps
+    public AddNewsPageSteps(TestContext context) {
+        testContext = context;
+        addNewsPage = testContext.getPageObjectManager().getAddNewsPage();
+    }
+
+    //TODO: AddNewsPageSteps
 
 
     @When("^user is on Add a new news page$")
-    public void userIsOnAddANewNewsPage(){
+    public void userIsOnAddANewNewsPage() {
         addNewsPage.toNewsPage();
     }
 
 
     @And("^user add a new news$")
     public void userAddANewNews() throws InterruptedException {
-         addNewsPage.clickCategoryTypeNewsMenu();
-         addNewsPage.choseCategoryTell();
-        Thread.sleep(3000);
-         addNewsPage.clickSubCategoryButton();
-         addNewsPage.choseAccesSubCategory();
-        Thread.sleep(3000);
-         addNewsPage.clickTypeSellBuyButton();
-         addNewsPage.choseSellType();
-        Thread.sleep(3000);
-         addNewsPage.clickRegionButton();
-         addNewsPage.choseChisinauRegion();
-        Thread.sleep(3000);
-         addNewsPage.clickNegotiablePriceCheckBox();
-         addNewsPage.titleNewsInput(TestDataFileReader.getTitleNewsInput());
-         addNewsPage.infoNewsInput(TestDataFileReader.getInfoNewsInput());
-         addNewsPage.clickAgreeRulesCheckBox();
-         addNewsPage.submitNewsButton();
+        addNewsPage.choseCategory("Телефоны и связь");
+        testContext.getScenarioContext().setContext(Context.CATEGORY, "Телефоны и связь");
+        testContext.getWait().waitFor().until(ExpectedConditions.urlContains("phone-and-communication"));
+        addNewsPage.choseSubCategory("Аксессуары");
+        testContext.getScenarioContext().setContext(Context.SUBCATEGORY, "Аксессуары");
+        testContext.getWait().waitFor().until(ExpectedConditions.urlContains("2Faccessories"));
+        addNewsPage.choseSellType("Random");
+        testContext.getScenarioContext().setContext(Context.SELLTYPE, "Random");
+        testContext.getWait().waitFor().until(ExpectedConditions.urlContains("77"));
+        addNewsPage.choseCountry("Random");
+        testContext.getScenarioContext().setContext(Context.COUNTRY, "Random");
+        addNewsPage.clickNegotiablePriceCheckBox();
+        addNewsPage.titleNewsInput(TestDataFileReader.getTitleNewsInput() + myNews.timeTitle());
+        addNewsPage.infoNewsInput(TestDataFileReader.getInfoNewsInput());
+        addNewsPage.clickAgreeRulesCheckBox();
+        addNewsPage.submitNewsButton();
     }
 }

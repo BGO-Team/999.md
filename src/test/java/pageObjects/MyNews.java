@@ -5,13 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.time.LocalDateTime;
+
 public class MyNews {
 
     private final WebDriver driver;
+    private static String dateTime;
 
 
-    @FindBy(linkText = "Sell iphone 999")
-    private WebElement newsAddedIphone999;
+    @FindBy(css = "#js-cabinet-items-list > tr:nth-child(1) > td.cabinet__user-ads__title > h3 > a")
+    private WebElement lastNewsAddedTitle;
 
 
     public MyNews(WebDriver driver) {
@@ -20,15 +23,23 @@ public class MyNews {
     }
 
 
-    public boolean newsAdded() {
-        newsAddedIphone999.isDisplayed();
-        return true;
+    public String newsAdded() {
+        return lastNewsAddedTitle.getText();
     }
 
     public void findMyNews() {
 
-        newsAddedIphone999.click();
+        lastNewsAddedTitle.click();
     }
 
+
+    public static String timeTitle(){
+        LocalDateTime localDateTime = LocalDateTime.now();
+        dateTime = "_" + localDateTime.getMonth() + "_" + localDateTime.getDayOfMonth() + "_"
+                + localDateTime.getHour() + "_" + localDateTime.getMinute();
+        System.out.println(dateTime);
+        return dateTime;
+
+    }
 
 }

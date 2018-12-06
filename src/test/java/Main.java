@@ -1,3 +1,5 @@
+import pageObjects.MyNews;
+
 public class Main {
     //bgoautomationtest@gmail.com
 
@@ -8,5 +10,6 @@ public class Main {
 //        PageObjectManager pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
 //        Page homePage = new HomePage(webDriverManager.getDriver());
 //        ((HomePage) homePage).toPage();
+        MyNews.timeTitle();
     }
 }
