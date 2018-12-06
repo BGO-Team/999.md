@@ -25,8 +25,8 @@ public class TopBarSteps {
         Class clazz = Class.forName("dataProviders.TestDataFileReader");
         Method getUserLogin = clazz.getDeclaredMethod("getUserLogin", String.class);
         String login = (String) getUserLogin.invoke(clazz, user);
-
         Assert.assertEquals(login, topBar.getUserName());
+        testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
     }
 
     @When("^user change language$")

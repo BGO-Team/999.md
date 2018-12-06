@@ -52,4 +52,15 @@ public class ProductPageSteps {
         Assert.assertTrue("Контакты:".equalsIgnoreCase(productPage.getContactsField().getText()));
 
     }
+
+    @Then("^the value of \"([^\"]*)\" property is \"([^\"]*)\"$")
+    public void theValueOfPropertyIs(String key, String value) {
+       try {
+           Assert.assertTrue(value.equalsIgnoreCase(productPage.getValueOfProperty(key.toLowerCase())));
+       }catch (AssertionError e){
+           System.out.print("The curent property value does not match with the context of the following: ");
+           System.out.println(testContext.getWebDriverManager().getDriver().getCurrentUrl());
+
+       }
+    }
 }

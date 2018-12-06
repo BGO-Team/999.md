@@ -1,26 +1,15 @@
 Feature:Andrew's features
 
-#  @Test @asecu
-#  Scenario: test scenario
-#    Given user is on "HomePage"
-#    When user click on "loginButton" button
-#    Then a new pop up window is displayed
-#    When user confirm Login and Password
-#    Then User Name is showing on Top Bar
-#
-#
-#  @Test @asecu
-#  Scenario: Access any product
-#    Given user is on "HomePage"
-#    When user click on "Random" category
-#    Then user is on a category page
-#    When user click on "Random" sub-category
-#    Then user is on a cateogry page
-#    When user click on "Random" product
-#    Then user is on this product
+  @Test @asecu @Login
+  Scenario: test scenario
+    Given user is on "HomePage"
+    When user clicks on "loginButton"
+    Then a new pop up window is displayed
+    And "First" user confirm Login and Password
+    Then "First" User Name is showing on Top Bar
 
 
-  @Test @asecu @asecu12
+  @Test @asecu @T11
   Scenario Outline: Add <FirstName> <LastName> valid details in the system
     Given user is on "HomePage"
     When user clicks on "loginButton"
@@ -40,7 +29,7 @@ Feature:Andrew's features
       | Andrei    | Secu     | male   | 1990 | 11 | 11 |
       | Elena     | Avram    | female | 2018 | 4  | 3  |
 
-  @Test @asecu @asecu12
+  @Test @asecu @T12
   Scenario Outline: Add invalid <Context> in the system
     Given user is on "HomePage"
     When user clicks on "loginButton"
@@ -65,7 +54,7 @@ Feature:Andrew's features
       | Birth Date | Nicu      | Elvoir   | female | 2018 | 12 | 7  |
       |            |           |          |        | 1990 | 2  | 30 |
 
-  @asecu1
+  @Test @asecu @T21
   Scenario Outline: Search for an existen <SearchText> item
     Given user is on "HomePage"
     And user navigate to header
@@ -79,3 +68,39 @@ Feature:Andrew's features
     Examples:
       | SearchText     |
       | telefon  mobil |
+      | Mercedes       |
+      | inel           |
+      | stare buna     |
+      | haine          |
+      | samsung        |
+      | apple          |
+
+
+  @Test @asecu @T31
+  Scenario Outline: Filter <context> by <filtredProperty>
+    Given user is on "HomePage"
+    When user clicks on "loginButton"
+    And "First" user confirm Login and Password
+    Then "First" User Name is showing on Top Bar
+    When user click on "<categoryName>" category
+    Then user is on selected category page
+    When user click on "<sub-categotyName>" sub-category
+    Then selected sub-category is displayed
+    When user select "<filtredProperty>" filter name
+    And click on "<propertyValue>" property value
+    Then The page is updated
+    When user click on "Random" product
+    Then the value of "<filtredProperty>" property is "<propertyValue>"
+    Examples:
+      | context | categoryName       | sub-categotyName    | filtredProperty      | propertyValue |
+      | Car     | Транспорт          | Легковые автомобили | количество мест      | 5             |
+      | Car     | Транспорт          | Легковые автомобили | состояние            | Без пробега   |
+      | Car     | Транспорт          | Легковые автомобили | цвет                 | Красный       |
+      | Car     | Транспорт          | Легковые автомобили | регистрация          | Молдова       |
+      | Phone   | Телефоны и связь   | Мобильные телефоны  | Состояние            | Б\У           |
+      | Phone   | Телефоны и связь   | Мобильные телефоны  | Операционная система | Android       |
+      | Phone   | Телефоны и связь   | Мобильные телефоны  | Встроенная память    | 64 Gb         |
+      | Animals | Питомцы и растения | Кошки               | Пол                  | Кот           |
+      | Animals | Питомцы и растения | Птицы               | Возраст              | Детеныш       |
+      | Animals | Питомцы и растения | Собаки              | Размер               | Средняя       |
+

@@ -4,6 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class ProductPage extends Page {
     @FindBy(css = ".favorite-toggle")
     private WebElement favoriteButton;
@@ -25,6 +29,12 @@ public class ProductPage extends Page {
 
     @FindBy(css = "div[itemprop=\"description\"]")
     private WebElement descriptionArea;
+
+    @FindBy(css = ".m-value > .adPage__content__features__key")
+    private List<WebElement> propertyKey;
+
+    @FindBy(css = ".m-value > .adPage__content__features__value")
+    private List<WebElement> propertyValue;
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -72,6 +82,15 @@ public class ProductPage extends Page {
 
     public String getProductName() {
         return productName.getText();
+    }
+
+    public String getValueOfProperty(String Key){
+        Map<String,String> propertyCouple = new HashMap<>();
+        for (int i = 0 ; i < propertyValue.size()-1; i++){
+            propertyCouple.put(propertyKey.get(i).getText().toLowerCase(),propertyValue.get(i).getText());
+        }
+
+        return propertyCouple.get(Key);
     }
 
 }
