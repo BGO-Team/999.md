@@ -5,8 +5,8 @@ Feature: NineNineNine's Features
   Scenario: Log in
     Given user is on "HomePage"
     When user click on "loginButton"
-    And user confirm Login and Password
-    Then User Name is showing on Top Bar
+    And "First" user confirm Login and Password
+    Then "First" User Name is showing on Top Bar
 
   @Vadim @Language
   Scenario: Change Language
@@ -37,8 +37,8 @@ Feature: NineNineNine's Features
   Scenario Outline: Add Product to favorite
     Given user is on "HomePage"
     When user click on "loginButton"
-    And user confirm Login and Password
-    When user click on "<category>" category
+    And "First" user confirm Login and Password
+    And user click on "<category>" category
     And user click on "<subCategory>" sub-category
     And user click on "Random" product
     And user add product to Favorite List
