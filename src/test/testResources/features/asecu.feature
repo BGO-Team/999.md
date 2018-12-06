@@ -1,6 +1,6 @@
 Feature:Andrew's features
 
-  @Test @asecu @Login
+  @Test @Login
   Scenario: Login scenario
     Given user is on "HomePage"
     When user clicks on "loginButton"
@@ -9,7 +9,7 @@ Feature:Andrew's features
     Then "First" User Name is showing on Top Bar
 
 
-  @Test @asecu @T11
+  @Test @asecuTested @T11
   Scenario Outline: Add <FirstName> <LastName> valid details in the system
     Given user is on "HomePage"
     When user clicks on "loginButton"
@@ -29,7 +29,7 @@ Feature:Andrew's features
       | Andrei    | Secu     | male   | 1990 | 11 | 11 |
       | Elena     | Avram    | female | 2018 | 4  | 3  |
 
-  @Test @asecu @T12
+  @Test @asecuTested @T12
   Scenario Outline: Add invalid <Context> in the system
     Given user is on "HomePage"
     When user clicks on "loginButton"
@@ -54,8 +54,8 @@ Feature:Andrew's features
       | Birth Date | Nicu      | Elvoir   | female | 2018 | 12 | 7  |
       |            |           |          |        | 1990 | 2  | 30 |
 
-  @Test @asecu @T21
-  Scenario Outline: Search for an existen <SearchText> item
+  @Test @asecuTested @T21
+  Scenario Outline: Search for an existent <SearchText> item
     Given user is on "HomePage"
     And user navigate to header
     When user clicks on "searchField"
@@ -76,7 +76,7 @@ Feature:Andrew's features
       | apple          |
 
 
-  @Test @asecu @T31
+  @Test @asecuTested @T31
   Scenario Outline: Filter <context> by <filtredProperty>
     Given user is on "HomePage"
     When user clicks on "loginButton"

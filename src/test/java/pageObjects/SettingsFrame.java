@@ -1,6 +1,7 @@
 package pageObjects;
 
 import managers.WaitManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -66,7 +67,7 @@ public class SettingsFrame {
 
     public void changeFrame() {
         driver.switchTo().defaultContent();
-        wait.waitFor().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-settings"));
+        wait.waitFor().until(ExpectedConditions.visibilityOf(driver.findElement(By.id("topbar-settings"))));
         driver.switchTo().frame("topbar-settings");
         wait.toBeVisible(firstNameField);
     }
