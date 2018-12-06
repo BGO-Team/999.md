@@ -58,6 +58,10 @@ public class TopBar {
         return userNameButton.getText();
     }
 
+    public void toSettings(){
+        settingsButton.click();
+    }
+
     public WebElement getSettingsButton(){
         return settingsButton;
     }

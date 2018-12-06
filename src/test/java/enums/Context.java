@@ -5,5 +5,9 @@ public enum Context {
     CATEGORY,
     SUBCATEGORY,
     PAGE,
-    CLASSOBJECT
+    SELLTYPE,
+    COUNTRY,
+    CLASSOBJECT,
+    TEXT,
+    SEARCHTEXT
 }

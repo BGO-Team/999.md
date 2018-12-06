@@ -1,19 +1,18 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
+import managers.WaitManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Year;
 import java.util.List;
 
 public class SettingsFrame {
     private final WebDriver driver;
-    private WebDriverWait wait;
+    private WaitManager wait;
 
     @FindBy(css = "input[name=\"first_name\"]")
     private WebElement firstNameField;
@@ -28,7 +27,7 @@ public class SettingsFrame {
     private WebElement dateOfBirthField;
 
     @FindBy(css = "select[name=\"birthdate_month\"] > option")
-    private List<WebElement> mounthsOfBirth;
+    private List<WebElement> monthsOfBirth;
 
     @FindBy(css = "select[name=\"birthdate_year\"] > option")
     private List<WebElement> yearsOfBirth;
@@ -36,6 +35,11 @@ public class SettingsFrame {
     @FindBy(css = "select[name=\"sex\"] > option")
     private List<WebElement> genderOptions;
 
+    @FindBy(css = "#pjax-container > aside > ul > li:nth-child(2) > a")
+    private WebElement emailSettings;
+
+    @FindBy(css = "#simpalsid-settings-tab > form > div:nth-child(4) > input")
+    private WebElement emailField;
 
     @FindBy(css = "button.simpalsid-modal-content-form-submit-btn")
     private WebElement saveButton;
@@ -46,8 +50,7 @@ public class SettingsFrame {
     public SettingsFrame(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 50);
-
+        wait = new WaitManager(driver);
     }
 
     public void setNameDetails(String firstName, String lastName) {
@@ -55,18 +58,17 @@ public class SettingsFrame {
         setLastNameField(lastName);
     }
 
-    public void setBirthDay(int day, int mounth, int year) {
+    public void setBirthDay(int day, int month, int year) {
         selectBirthDate(day);
-        selectBirthMounth(mounth);
+        selectBirthMonth(month);
         selectBirthYear(year);
-
     }
 
-    public void changeFrame() throws InterruptedException {
+    public void changeFrame() {
         driver.switchTo().defaultContent();
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("iframe[id=\"topbar-settings\"]"))));
+        wait.waitFor().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-settings"));
         driver.switchTo().frame("topbar-settings");
-        wait.until(ExpectedConditions.visibilityOf(firstNameField));
+        wait.toBeVisible(firstNameField);
     }
 
     public void selectGender(String gender) {
@@ -80,12 +82,11 @@ public class SettingsFrame {
             default:
                 genderOptions.get(0).click();
                 break;
-
         }
     }
 
     public String getSuccessMessage() {
-        wait.until(ExpectedConditions.visibilityOf(successMessage));
+        wait.toBeVisible(successMessage);
         return successMessage.getText();
     }
 
@@ -106,10 +107,10 @@ public class SettingsFrame {
         }
     }
 
-    private void selectBirthMounth(int mounth) {
-        if (mounth < 13 && mounth > 0) {
-            WebElement mounthOfBirth = mounthsOfBirth.get(mounth - 1);
-            mounthOfBirth.click();
+    private void selectBirthMonth(int month) {
+        if (month < 13 && month > 0) {
+            WebElement monthOfBirth = monthsOfBirth.get(month - 1);
+            monthOfBirth.click();
         }
     }
 
@@ -120,7 +121,23 @@ public class SettingsFrame {
         }
     }
 
-    public void save() {
-        saveButton.click();
+    public WebElement getSaveButton(){
+        return saveButton;
+    }
+
+    public String firstnameVerify() {
+        return firstNameField.getAttribute("value");
+
+    }
+    public String lastnameVerify() {
+        return lastNameField.getAttribute("value");
+    }
+
+    public String emailVerify() {
+        return emailField.getAttribute("value");
+    }
+
+    public void emailSettings() {
+        emailSettings.click();
     }
 }

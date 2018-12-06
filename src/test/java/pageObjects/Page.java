@@ -22,7 +22,12 @@ public abstract class Page {
     public TopBar topBar(){
         return new TopBar(driver);
     }
+
     public Header header(){
         return new Header(driver);
+    }
+
+    public SettingsFrame settings(){
+        return new SettingsFrame(driver);
     }
 }
