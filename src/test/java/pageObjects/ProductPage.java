@@ -4,6 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class ProductPage extends Page {
     @FindBy(css = ".favorite-toggle")
     private WebElement favoriteButton;
@@ -32,12 +36,14 @@ public class ProductPage extends Page {
     @FindBy(css = ".adPage__content__message__send")
     private WebElement sendMessage;
 
+    @FindBy(css = ".m-value > .adPage__content__features__key")
+    private List<WebElement> propertyKey;
+
+    @FindBy(css = ".m-value > .adPage__content__features__value")
+    private List<WebElement> propertyValue;
+
     public ProductPage(WebDriver driver) {
         super(driver);
-    }
-
-    public String getProductName() {
-        return productName.getText();
     }
 
     public ProductPage addToFavorite() {
@@ -61,29 +67,45 @@ public class ProductPage extends Page {
         return contactsField;
     }
 
-    public boolean descriptionContains(String text){
+    public boolean descriptionContains(String text) {
         String[] values = text.split(" ");
-        for (String value:values)
-            if(descriptionArea.getText().toLowerCase().contains(value.toLowerCase()))
+        for (String value : values)
+            if (descriptionArea.getText().toLowerCase().contains(value.toLowerCase()))
                 return true;
         return false;
     }
 
-    public boolean nameContains(String text){
+    public boolean nameContains(String text) {
         String[] values = text.split(" ");
-        for (String value:values)
-            if(productName.getText().toLowerCase().contains(value.toLowerCase()))
+        for (String value : values)
+            if (productName.getText().toLowerCase().contains(value.toLowerCase()))
                 return true;
         return false;
     }
+
 
     public void inputMessage(String message) {
         inputMessage.sendKeys(message);
     }
 
-    public ProductPage sendMessageButton(){
+    public ProductPage sendMessageButton() {
         sendMessage.click();
         return this;
     }
 
+    public String getProductName() {
+        return productName.getText();
+    }
+
+    public  WebElement getLastProperty(){
+        return propertyValue.get(propertyKey.size()-1);
+    }
+    public String getValueOfProperty(String Key){
+        Map<String,String> propertyCouple = new HashMap<>();
+        for (int i = 0 ; i < propertyValue.size()-1; i++){
+            propertyCouple.put(propertyKey.get(i).getText().toLowerCase(),propertyValue.get(i).getText());
+        }
+
+        return propertyCouple.get(Key);
+    }
 }

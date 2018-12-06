@@ -15,6 +15,9 @@ public class CategoryPage extends Page{
     @FindBy(className = ".ads-list-work-detail__item__title")
     private List<WebElement> subCategoriesWork;
 
+    @FindBy(css = "header.categoryPage__header > h1")
+    private WebElement categoryName;
+
     public CategoryPage(WebDriver driver) {
         super(driver);
     }
@@ -42,5 +45,9 @@ public class CategoryPage extends Page{
             if (existSubCategory)
                 throw new IllegalArgumentException("This sub-category does not exist");
         }
+    }
+
+    public WebElement getCategoryName(){
+        return categoryName;
     }
 }
