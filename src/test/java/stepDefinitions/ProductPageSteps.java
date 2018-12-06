@@ -11,10 +11,10 @@ public class ProductPageSteps {
     private TestContext testContext;
     private ProductPage productPage;
 
-    public ProductPageSteps(TestContext context){
+    public ProductPageSteps(TestContext context) {
         testContext = context;
         productPage = testContext.getPageObjectManager().getProductPage();
-        testContext.getScenarioContext().setContext(Context.PRODUCT, productPage.getProductName());
+//        testContext.getScenarioContext().setContext(Context.PRODUCT, productPage.getProductName());
     }
 
     @Then("^user is on this product$")
@@ -29,5 +29,27 @@ public class ProductPageSteps {
     @And("user add product to Favorite List")
     public void userAddProductToFavoriteList() {
         productPage.addToFavorite();
+    }
+
+    @Then("^Product Name or Product description contains \"([^\"]*)\"$")
+    public void productNameOrProductDescriptionContains(String searchedText) {
+
+        try {
+            testContext.getWait().toBeVisible(productPage.getDescriptionArea());
+            testContext.getWait().toBeVisible(productPage.getContactsField());
+            Assert.assertTrue(productPage.nameContains(searchedText)
+                    || productPage.descriptionContains(searchedText));
+        } catch (AssertionError e) {
+            System.out.println(testContext.getWebDriverManager().getDriver().getCurrentUrl());
+            throw e;
+        }
+    }
+
+    @Then("^a new product page window is displayed$")
+    public void aNewProductPageWindowIsDisplayed() {
+        testContext.getWait().toBeClickable(productPage.getFavoriteButton());
+        testContext.getWait().toBeVisible(productPage.getContactsField());
+        Assert.assertTrue("Контакты:".equalsIgnoreCase(productPage.getContactsField().getText()));
+
     }
 }

@@ -25,6 +25,7 @@ public class PageObjectManager {
     private SubCategoryPage subCategoryPage;
     private TopBar topBar;
     private SettingsFrame settingsFrame;
+    private ProductListPage productListPage;
 
     public PageObjectManager(WebDriver driver) {
         this.driver = driver;
@@ -91,5 +92,9 @@ public class PageObjectManager {
 
     public SettingsFrame getSettingsFramePage() {
         return (settingsFrame == null) ? settingsFrame = new SettingsFrame(driver) : settingsFrame;
+    }
+
+    public  ProductListPage getProductListPage(){
+        return (productListPage == null) ? productListPage = new ProductListPage(driver) : productListPage;
     }
 }

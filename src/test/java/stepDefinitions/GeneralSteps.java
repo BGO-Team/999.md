@@ -20,7 +20,7 @@ public class GeneralSteps {
         testContext.getScenarioContext().setContext(Context.CLASSOBJECT, testContext.getPageObjectManager().getHomePage());
     }
 
-    @When("^user click on \"([^\"]*)\"$")
+    @When("^user clicks on \"([^\"]*)\"$")
     public void userClickOn(String button) throws ClassNotFoundException {
         testContext.getPageObjectManager().clickElement(testContext.getScenarioContext().getContext(Context.PAGE),
                 button, testContext.getScenarioContext().getContext(Context.CLASSOBJECT));
