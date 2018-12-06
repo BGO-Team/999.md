@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverManager {
@@ -41,6 +42,7 @@ public class WebDriverManager {
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
+
         eventDriver = new EventFiringWebDriver(driver);
         loggerManager = new LoggerManager();
         eventDriver.register(loggerManager);

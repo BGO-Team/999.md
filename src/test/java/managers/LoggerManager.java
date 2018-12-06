@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.logging.FileHandler;
@@ -17,7 +18,9 @@ public class LoggerManager extends AbstractWebDriverEventListener {
 
     LoggerManager() {
         try {
-            fileHandler = new FileHandler("logs/testLog" + (++logCounter) +".log");
+            ++logCounter;
+            FileManager.createDirectory();
+            fileHandler = new FileHandler(FileManager.getLogPath());
             LOGGER.addHandler(fileHandler);
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler.setFormatter(formatter);
@@ -25,6 +28,10 @@ public class LoggerManager extends AbstractWebDriverEventListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int getLogCounter() {
+        return logCounter;
     }
 
     public void close(){
@@ -45,6 +52,11 @@ public class LoggerManager extends AbstractWebDriverEventListener {
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
         LOGGER.info("WebDriver click on element - "
                 + elementDescription(webElement));
+        try {
+            ScreenshotManager.takeScreenshot(webDriver);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

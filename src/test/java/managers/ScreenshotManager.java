@@ -16,6 +16,6 @@ public class ScreenshotManager {
         LocalDateTime localDateTime = LocalDateTime.now();
         String dateTime = localDateTime.getMonth() + "_" + localDateTime.getDayOfMonth() + "_"
                 + localDateTime.getHour() + "_" + localDateTime.getMinute() + "_" + localDateTime.getSecond();
-        copyFile(scrFile, new File("screenshots/" + dateTime + ".png"));
+        copyFile(scrFile, new File(FileManager.getPath() + File.separator + dateTime + ".png"));
     }
 }

@@ -1,5 +1,5 @@
 #noinspection NonAsciiCharacters
-Feature: NineNineNine's Features
+Feature: Vadim's Features
 
   @Vadim @Login
   Scenario: Log in
