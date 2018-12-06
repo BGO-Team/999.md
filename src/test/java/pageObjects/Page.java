@@ -25,4 +25,7 @@ public abstract class Page {
     public Header header(){
         return new Header(driver);
     }
+    public SettingsFrame toSettings(){
+        return new SettingsFrame(driver);
+    }
 }

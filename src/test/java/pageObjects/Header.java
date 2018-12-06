@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class Header {
-    @FindBy(id = "js-search-input")
-    private WebElement searchInput;
 
     @FindBy(className = "header__search__button")
     private WebElement searchButton;
@@ -18,12 +16,16 @@ public class Header {
     @FindBy(css = "#header > div.header_numbersTop")
     private WebElement headerPicture;
 
+    @FindBy(id = "js-search-input")
+    private WebElement searchField;
+
+
     public Header(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
     private Header typeSearch(String search) {
-        searchInput.sendKeys(search);
+        searchField.sendKeys(search);
         return this;
     }
 
@@ -48,4 +50,7 @@ public class Header {
         favoritesButton.click();
     }
 
+    public void searchFor(String searchFor){
+        searchField.sendKeys(searchFor);
+    }
 }

@@ -47,6 +47,12 @@ public class WebDriverManager {
         return eventDriver;
     }
 
+    public void switchWindow(){
+        for (String winHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(winHandle); // switch focus of WebDriver to the next found window handle
+        }
+    }
+
     public void closeDriver(){
         eventDriver.quit();
     }

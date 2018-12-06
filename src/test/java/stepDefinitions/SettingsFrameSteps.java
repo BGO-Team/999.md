@@ -5,6 +5,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import enums.Context;
 import org.junit.Assert;
 import pageObjects.SettingsFrame;
 
@@ -20,6 +21,10 @@ public class SettingsFrameSteps {
     @Then("^a settings frame is opened$")
     public void aSettingsFrameIsOpened() throws InterruptedException {
         settingsFrame.changeFrame();
+        testContext.getWait().toBeClickable(settingsFrame.getSaveButton());
+        Assert.assertTrue(settingsFrame.getSaveButton().getText().equalsIgnoreCase("сохранить"));
+        testContext.getScenarioContext().setContext(Context.PAGE,"SettingsFrame");
+        testContext.getScenarioContext().setContext(Context.CLASSOBJECT,settingsFrame);
     }
 
     @When("^user inserts \"(.+?)\" and \"(.+?)\"$")
@@ -32,10 +37,6 @@ public class SettingsFrameSteps {
         settingsFrame.setBirthDay(Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
     }
 
-    @And("^click on save button$")
-    public void clickOnSaveButton() {
-        settingsFrame.save();
-    }
 
     @Then("^The data is saved$")
     public void theDataIsSaved() {

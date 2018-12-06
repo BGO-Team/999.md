@@ -62,7 +62,7 @@ public class SettingsFrame {
 
     }
 
-    public void changeFrame() throws InterruptedException {
+    public void changeFrame() {
         driver.switchTo().defaultContent();
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("iframe[id=\"topbar-settings\"]"))));
         driver.switchTo().frame("topbar-settings");
@@ -122,5 +122,9 @@ public class SettingsFrame {
 
     public void save() {
         saveButton.click();
+    }
+
+    public WebElement getSaveButton(){
+        return saveButton;
     }
 }

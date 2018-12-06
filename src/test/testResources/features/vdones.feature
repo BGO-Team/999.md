@@ -4,7 +4,7 @@ Feature: NineNineNine's Features
   @Vadim @Login
   Scenario: Log in
     Given user is on "HomePage"
-    When user click on "loginButton"
+    When user clicks on "loginButton"
     And "First" user confirm Login and Password
     Then "First" User Name is showing on Top Bar
 
@@ -36,7 +36,7 @@ Feature: NineNineNine's Features
   @Vadim @AddToFavorite
   Scenario Outline: Add Product to favorite
     Given user is on "HomePage"
-    When user click on "loginButton"
+    When user clicks on "loginButton"
     And "First" user confirm Login and Password
     And user click on "<category>" category
     And user click on "<subCategory>" sub-category
