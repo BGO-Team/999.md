@@ -19,6 +19,8 @@ public class Header {
     @FindBy(id = "js-search-input")
     private WebElement searchField;
 
+    @FindBy(css = "#m__user_panel > ul > li:nth-child(1) > a")
+    private WebElement myNews;
 
     public Header(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -35,4 +37,8 @@ public class Header {
     public void searchFor(String searchFor){
         searchField.sendKeys(searchFor);
     }
+    public void myNews() {
+        myNews.click();
+    }
+
 }

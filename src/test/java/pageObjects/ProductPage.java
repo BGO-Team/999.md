@@ -26,8 +26,18 @@ public class ProductPage extends Page {
     @FindBy(css = "div[itemprop=\"description\"]")
     private WebElement descriptionArea;
 
+    @FindBy(css = "#js-ad-message-textarea")
+    private WebElement inputMessage;
+
+    @FindBy(css = ".adPage__content__message__send")
+    private WebElement sendMessage;
+
     public ProductPage(WebDriver driver) {
         super(driver);
+    }
+
+    public String getProductName() {
+        return productName.getText();
     }
 
     public ProductPage addToFavorite() {
@@ -52,7 +62,7 @@ public class ProductPage extends Page {
     }
 
     public boolean descriptionContains(String text){
-        String[] values = text.split("");
+        String[] values = text.split(" ");
         for (String value:values)
             if(descriptionArea.getText().toLowerCase().contains(value.toLowerCase()))
                 return true;
@@ -60,7 +70,7 @@ public class ProductPage extends Page {
     }
 
     public boolean nameContains(String text){
-        String[] values = text.split("");
+        String[] values = text.split(" ");
         for (String value:values)
             if(productName.getText().toLowerCase().contains(value.toLowerCase()))
                 return true;
@@ -70,4 +80,14 @@ public class ProductPage extends Page {
     public String getProductName() {
         return productName.getText();
     }
+
+    public void inputMessage(String message) {
+        inputMessage.sendKeys(message);
+    }
+
+    public ProductPage sendMessageButton(){
+        sendMessage.click();
+        return this;
+    }
+
 }

@@ -1,6 +1,8 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import enums.Context;
 import managers.PageObjectManager;
 import cucumber.api.java.en.Given;

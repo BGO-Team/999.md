@@ -24,6 +24,8 @@ public class PageObjectManager {
     private ProductPage productPage;
     private SubCategoryPage subCategoryPage;
     private TopBar topBar;
+    private AddNewsPage addNewsPage;
+    private MyNews myNews;
     private SettingsFrame settingsFrame;
     private ProductListPage productListPage;
 
@@ -43,21 +45,19 @@ public class PageObjectManager {
         Class referenceClass = Class.forName("pageObjects." + pageName.toString());
 
         Field[] fields = referenceClass.getDeclaredFields();
-        for (Field field : fields) {
+        for (Field field : fields)
             if (field.getType() == WebElement.class) {
                 field.setAccessible(true);
-                if (field.getName().equals(elementName)) {
+                if (field.getName().equals(elementName))
                     try {
                         webElement = ( WebElement ) field.get(value);
                         webElement.click();
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     }
-                }
             }
-        }
     }
-    
+
     public HomePage getHomePage() {
         return (homePage == null) ? homePage = new HomePage(driver) : homePage;
     }
@@ -96,5 +96,13 @@ public class PageObjectManager {
 
     public  ProductListPage getProductListPage(){
         return (productListPage == null) ? productListPage = new ProductListPage(driver) : productListPage;
+    }
+
+    public AddNewsPage getAddNewsPage() {
+        return (addNewsPage == null) ? addNewsPage = new AddNewsPage(driver) : addNewsPage;
+    }
+
+    public MyNews getMyNews() {
+        return (myNews == null) ? myNews = new MyNews(driver) : myNews;
     }
 }

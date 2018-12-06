@@ -1,10 +1,10 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.PendingException;
-import enums.Context;
-import pageObjects.Header;
 import cucumber.api.java.en.And;
+import cucumber.api.PendingException;
+import dataProviders.TestDataFileReader;
+import pageObjects.Header;
 
 public class HeaderSteps {
     private TestContext testContext;
@@ -18,6 +18,12 @@ public class HeaderSteps {
     @And("user go to FavoritesPage")
     public void userGoToFavoritesPage() {
         header.toFavorites();
+    }
+
+    @And("^user search the news \"([^\"]*)\"$")
+    public void userSearchTheNewsThatWasAlreadyCreated(String newsName) {
+        header.searchThis(newsName);
+        header.submitSearch();
     }
 
     @And("^inserts \"([^\"]*)\"$")

@@ -35,6 +35,12 @@ public class SettingsFrame {
     @FindBy(css = "select[name=\"sex\"] > option")
     private List<WebElement> genderOptions;
 
+    @FindBy(css = "#pjax-container > aside > ul > li:nth-child(2) > a")
+    private WebElement emailSettings;
+
+    @FindBy(css = "#simpalsid-settings-tab > form > div:nth-child(4) > input")
+    private WebElement emailField;
+
     @FindBy(css = "button.simpalsid-modal-content-form-submit-btn")
     private WebElement saveButton;
 
@@ -52,11 +58,10 @@ public class SettingsFrame {
         setLastNameField(lastName);
     }
 
-    public void setBirthDay(int day, int mounth, int year) {
+    public void setBirthDay(int day, int month, int year) {
         selectBirthDate(day);
-        selectBirthMonth(mounth);
+        selectBirthMonth(month);
         selectBirthYear(year);
-
     }
 
     public void changeFrame() {
@@ -116,11 +121,23 @@ public class SettingsFrame {
         }
     }
 
-    public void save() {
-        saveButton.click();
-    }
-
     public WebElement getSaveButton(){
         return saveButton;
+    }
+
+    public String firstnameVerify() {
+        return firstNameField.getAttribute("value");
+
+    }
+    public String lastnameVerify() {
+        return lastNameField.getAttribute("value");
+    }
+
+    public String emailVerify() {
+        return emailField.getAttribute("value");
+    }
+
+    public void emailSettings() {
+        emailSettings.click();
     }
 }

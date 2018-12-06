@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import dataProviders.TestDataFileReader;
 import enums.Context;
 import pageObjects.ProductPage;
 import cucumber.api.java.en.And;
@@ -50,5 +51,12 @@ public class ProductPageSteps {
         testContext.getWait().toBeClickable(productPage.getFavoriteButton());
         testContext.getWait().toBeVisible(productPage.getContactsField());
         Assert.assertTrue("Контакты:".equalsIgnoreCase(productPage.getContactsField().getText()));
+    }
+
+    @And("^user sent \"([^\"]*)\" to product's author$")
+    public void userSentMessageToProductAuthor(String message){
+        productPage.inputMessage(message);
+        productPage.sendMessageButton();
+
     }
 }
