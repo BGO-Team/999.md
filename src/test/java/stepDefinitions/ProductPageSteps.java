@@ -32,11 +32,9 @@ public class ProductPageSteps {
         productPage.addToFavorite();
     }
 
-    @And("^user sent message to product's author$")
-    public void userSentMessageToProductAuthor() throws InterruptedException {
-        Thread.sleep(5000);
-        productPage.inputMessage(TestDataFileReader.getInputMessage());
-
+    @And("^user sent \"([^\"]*)\" to product's author$")
+    public void userSentMessageToProductAuthor(String message){
+        productPage.inputMessage(message);
         productPage.sendMessageButton();
 
     }

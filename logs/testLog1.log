@@ -1,54 +1,22 @@
-Dec 06, 2018 3:07:36 AM managers.LoggerManager afterNavigateTo
+Dec 06, 2018 11:06:19 AM managers.LoggerManager afterNavigateTo
 INFO: WebDriver navigated to [https://999.md/]
-Dec 06, 2018 3:07:36 AM managers.LoggerManager beforeClickOn
+Dec 06, 2018 11:06:20 AM managers.LoggerManager beforeClickOn
 INFO: WebDriver click on element - [tag:a id:  ('вход')]
-Dec 06, 2018 3:07:36 AM managers.LoggerManager afterClickOn
+Dec 06, 2018 11:06:20 AM managers.LoggerManager afterClickOn
 INFO: Clicked successful
-Dec 06, 2018 3:07:39 AM managers.LoggerManager beforeChangeValueOf
-INFO: WebDriver will change value for element - [tag:input id:  ('')] on [[LemonTest]]
-Dec 06, 2018 3:07:40 AM managers.LoggerManager afterChangeValueOf
+Dec 06, 2018 11:06:23 AM managers.LoggerManager beforeChangeValueOf
+INFO: WebDriver will change value for element - [tag:input id:  ('')] on [[BGOTeam]]
+Dec 06, 2018 11:06:23 AM managers.LoggerManager afterChangeValueOf
 INFO: WebDriver changed value for element - [tag:input id:  ('')]
-Dec 06, 2018 3:07:40 AM managers.LoggerManager beforeChangeValueOf
-INFO: WebDriver will change value for element - [tag:input id:  ('')] on [[ProBook6570b]]
-Dec 06, 2018 3:07:40 AM managers.LoggerManager afterChangeValueOf
+Dec 06, 2018 11:06:24 AM managers.LoggerManager beforeChangeValueOf
+INFO: WebDriver will change value for element - [tag:input id:  ('')] on [[qwerty123]]
+Dec 06, 2018 11:06:24 AM managers.LoggerManager afterChangeValueOf
 INFO: WebDriver changed value for element - [tag:input id:  ('')]
-Dec 06, 2018 3:07:45 AM managers.LoggerManager beforeClickOn
-INFO: WebDriver click on element - [tag:a id:  ('подать объявление')]
-Dec 06, 2018 3:07:47 AM managers.LoggerManager afterClickOn
-INFO: Clicked successful
-Dec 06, 2018 3:07:47 AM managers.LoggerManager beforeClickOn
-INFO: WebDriver click on element - [tag:option id:  ('Телефоны и связь')]
-Dec 06, 2018 3:07:47 AM managers.LoggerManager afterClickOn
-INFO: Clicked successful
-Dec 06, 2018 3:07:48 AM managers.LoggerManager beforeClickOn
-INFO: WebDriver click on element - [tag:option id:  ('Аксессуары')]
-Dec 06, 2018 3:07:48 AM managers.LoggerManager afterClickOn
-INFO: Clicked successful
-Dec 06, 2018 3:07:48 AM managers.LoggerManager beforeClickOn
-INFO: WebDriver click on element - [tag:option id:  ('Куплю')]
-Dec 06, 2018 3:07:48 AM managers.LoggerManager afterClickOn
-INFO: Clicked successful
-Dec 06, 2018 3:07:49 AM managers.LoggerManager beforeClickOn
-INFO: WebDriver click on element - [tag:option id:  ('Окница')]
-Dec 06, 2018 3:07:49 AM managers.LoggerManager afterClickOn
-INFO: Clicked successful
-Dec 06, 2018 3:07:49 AM managers.LoggerManager beforeClickOn
-INFO: WebDriver click on element - [tag:input id: form--negotiable-checkbox ('')]
-Dec 06, 2018 3:07:50 AM managers.LoggerManager afterClickOn
-INFO: Clicked successful
-Dec 06, 2018 3:07:50 AM managers.LoggerManager beforeChangeValueOf
-INFO: WebDriver will change value for element - [tag:input id: control_12 ('')] on [[Sell iphone 999_DECEMBER_6_3_7]]
-Dec 06, 2018 3:07:50 AM managers.LoggerManager afterChangeValueOf
-INFO: WebDriver changed value for element - [tag:input id: control_12 ('')]
-Dec 06, 2018 3:07:51 AM managers.LoggerManager beforeChangeValueOf
-INFO: WebDriver will change value for element - [tag:textarea id: control_13 ('')] on [[New phone IPHONE 999 , last version]]
-Dec 06, 2018 3:07:51 AM managers.LoggerManager afterChangeValueOf
-INFO: WebDriver changed value for element - [tag:textarea id: control_13 ('')]
-Dec 06, 2018 3:07:51 AM managers.LoggerManager beforeClickOn
-INFO: WebDriver click on element - [tag:input id: agree ('')]
-Dec 06, 2018 3:07:52 AM managers.LoggerManager afterClickOn
-INFO: Clicked successful
-Dec 06, 2018 3:07:53 AM managers.LoggerManager beforeClickOn
-INFO: WebDriver click on element - [tag:a id:  ('мои объявления')]
-Dec 06, 2018 3:07:55 AM managers.LoggerManager afterClickOn
+Dec 06, 2018 11:06:30 AM managers.LoggerManager beforeChangeValueOf
+INFO: WebDriver will change value for element - [tag:input id: js-search-input ('')] on [[Sell iphone 999]]
+Dec 06, 2018 11:06:30 AM managers.LoggerManager afterChangeValueOf
+INFO: WebDriver changed value for element - [tag:input id: js-search-input ('')]
+Dec 06, 2018 11:06:34 AM managers.LoggerManager beforeClickOn
+INFO: WebDriver click on element - [tag:a id:  ('Sell iphone 999')]
+Dec 06, 2018 11:06:35 AM managers.LoggerManager afterClickOn
 INFO: Clicked successful

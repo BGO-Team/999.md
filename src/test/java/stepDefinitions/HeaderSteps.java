@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import dataProviders.TestDataFileReader;
 import pageObjects.Header;
@@ -21,10 +22,10 @@ public class HeaderSteps {
     }
 
 
-    @And("^user search the news that was already created$")
-    public void userSearchTheNewsThatWasAlreadyCreated() {
+    @And("^user search the news \"([^\"]*)\"$")
+    public void userSearchTheNewsThatWasAlreadyCreated(String newsName) {
 
-        header.searchThis(TestDataFileReader.getInputSearch());
+        header.searchThis(newsName);
         header.submitSearch();
 
     }

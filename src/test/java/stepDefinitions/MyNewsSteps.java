@@ -7,12 +7,14 @@ import dataProviders.TestDataFileReader;
 import org.junit.Assert;
 import pageObjects.Header;
 import pageObjects.MyNews;
+import pageObjects.SubCategoryPage;
 
 public class MyNewsSteps {
 
     private TestContext testContext;
     private MyNews myNews;
     private Header header;
+    private SubCategoryPage subCategoryPage;
 
     public MyNewsSteps(TestContext context) {
         testContext = context;
@@ -31,10 +33,11 @@ public class MyNewsSteps {
     }
 
 
-    @And("^user click on news that was already created$")
-    public void userClickOnNewsThatWasAlreadyCreated() {
+    @And("^user click on news \"([^\"]*)\"$")
+    public void userClickOnNewsThatWasAlreadyCreated(String newsName) {
 
-        myNews.findMyNews();
+//        myNews.findMyNews();
+        myNews.toProduct(newsName);
 
     }
 }

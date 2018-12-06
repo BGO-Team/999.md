@@ -19,10 +19,16 @@ Feature: Corneliu's Features
     Then user verify if his news is displayed in My News Page
 
   @Corneliu @Message @Sc3
-  Scenario: Write a new message on created news
+  Scenario Outline: Write a new message on created news
     Given user is on "HomePage"
     And user click on "loginButton"
     And user confirm Login and Password
-    And user search the news that was already created
-    And user click on news that was already created
-    And user sent message to product's author
+    And user search the news "<newsName>"
+    And user click on news "<newsName>"
+    And user sent "<message>" to product's author
+
+    Examples:
+      | newsName        | message                                     |
+      | Sell iphone 999 | Hello, how much it cost?                    |
+      | Sell iphone 99  | Hi, it is a real iphone?                    |
+      | Sell iphone 9   | Salut, dar tu stii ca nu exista asa iphone? |
