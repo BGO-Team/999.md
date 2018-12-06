@@ -7,5 +7,6 @@ public enum Context {
     PAGE,
     SELLTYPE,
     COUNTRY,
-    CLASSOBJECT
+    CLASSOBJECT,
+    TEXT
 }

@@ -44,7 +44,9 @@ public class AddNewsPageSteps {
         addNewsPage.choseCountry("Random");
         testContext.getScenarioContext().setContext(Context.COUNTRY, "Random");
         addNewsPage.clickNegotiablePriceCheckBox();
-        addNewsPage.titleNewsInput(TestDataFileReader.getTitleNewsInput() + myNews.timeTitle());
+        testContext.getScenarioContext().setContext(Context.TEXT,myNews.timeTitle());
+        addNewsPage.titleNewsInput(TestDataFileReader.getTitleNewsInput() +
+                testContext.getScenarioContext().getContext(Context.TEXT).toString());
         addNewsPage.infoNewsInput(TestDataFileReader.getInfoNewsInput());
         addNewsPage.clickAgreeRulesCheckBox();
         addNewsPage.submitNewsButton();

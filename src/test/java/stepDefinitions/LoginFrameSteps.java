@@ -45,15 +45,6 @@ public class LoginFrameSteps {
         testContext.getWait().toBeVisible(testContext.getPageObjectManager().getHeader().getHeaderPicture());
     }
 
-    @And("^user fill in Login and Password Input field as Corneliu and click Submit$")
-    public void userFillInLoginAndPasswordInputFieldAsCorneliu() {
-        loginFrame.loginAs(TestDataFileReader.getUser2Login(), TestDataFileReader.getUser2Password());
-        testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
-        testContext.getWait().waitFor().until(ExpectedConditions.not(ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-popup")));
-        testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
-        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getHeader().getHeaderPicture());
-    }
-
     @Then("^a new pop up window is displayed$")
     public void aNewPopUpWindowIsDisplayed(){
         testContext.getWait().waitFor().until(ExpectedConditions.visibilityOf(loginFrame.getFrameTitle()));

@@ -49,36 +49,36 @@ public class TestDataFileReader {
             throw new RuntimeException("Application login not specified in the data.properties file for the Key:login");
     }
 
-    public static String getInputMessage() {
-        String inputMessage = properties.getProperty("testUser2.inputMessage");
-        if (inputMessage != null) return inputMessage;
-        else
-            throw new RuntimeException("Application login not specified in the data.properties file for the Key:login");
-    }
-
-    public static String getInputSearch() {
-        String inputSearch = properties.getProperty("testNews1.titleNews");
-        if (inputSearch != null) return inputSearch;
-        else
-            throw new RuntimeException("Application login not specified in the data.properties file for the Key:login");
-    }
+//    public static String getInputMessage() {
+//        String inputMessage = properties.getProperty("testUser2.inputMessage");
+//        if (inputMessage != null) return inputMessage;
+//        else
+//            throw new RuntimeException("Application login not specified in the data.properties file for the Key:login");
+//    }
+//
+//    public static String getInputSearch() {
+//        String inputSearch = properties.getProperty("testNews1.titleNews");
+//        if (inputSearch != null) return inputSearch;
+//        else
+//            throw new RuntimeException("Application login not specified in the data.properties file for the Key:login");
+//    }
 
     public static String getFirstName() {
-        String firstname = properties.getProperty("testUser2.firstname");
+        String firstname = properties.getProperty("testUserSecond.firstname");
         if (firstname != null) return firstname;
         else
             throw new RuntimeException("Application login not specified in the data.properties file for the Key:login");
     }
 
     public static String getLastName() {
-        String lastname = properties.getProperty("testUser2.lastname");
-        if (lastname != null) return lastname;
+        String secondname = properties.getProperty("testUserSecond.secondname");
+        if (secondname != null) return secondname;
         else
             throw new RuntimeException("Application login not specified in the data.properties file for the Key:login");
     }
 
     public static String getEmailAdress() {
-        String email = properties.getProperty("testUser2.email");
+        String email = properties.getProperty("testUserSecond.email");
         if (email != null) return email;
         else
             throw new RuntimeException("Application login not specified in the data.properties file for the Key:login");

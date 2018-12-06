@@ -26,10 +26,6 @@ public class TopBar {
     @FindBy(css ="li > button[data-settings=\"toggle\"]" )
     private  WebElement settingsButton;
 
-
-    @FindBy(css = "#simpalsid-user > ul > li:nth-child(4) > button > span")
-    private WebElement userSettingsButton;
-
     public TopBar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -63,7 +59,7 @@ public class TopBar {
     }
 
     public void toSettings(){
-        userSettingsButton.click();
+        settingsButton.click();
     }
 
     public WebElement getSettingsButton(){

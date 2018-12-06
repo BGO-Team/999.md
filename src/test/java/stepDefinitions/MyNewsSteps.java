@@ -4,6 +4,7 @@ import cucumber.TestContext;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import dataProviders.TestDataFileReader;
+import enums.Context;
 import org.junit.Assert;
 import pageObjects.Header;
 import pageObjects.MyNews;
@@ -28,15 +29,16 @@ public class MyNewsSteps {
     @Then("^user verify if his news is displayed in My News Page$")
     public void userVerifyIfHisNewsIsDisplayedInMyNewsPage() {
         header.myNews();
-        Assert.assertEquals(myNews.newsAdded(),TestDataFileReader.getTitleNewsInput() + myNews.timeTitle());
-        System.out.println(" The news " + TestDataFileReader.getTitleNewsInput() + myNews.timeTitle() + " is displayed ");
+        Assert.assertTrue(myNews.newsAdded().equalsIgnoreCase(TestDataFileReader.getTitleNewsInput() +
+                testContext.getScenarioContext().getContext(Context.TEXT).toString()));
+        System.out.println(TestDataFileReader.getTitleNewsInput() +
+                testContext.getScenarioContext().getContext(Context.TEXT).toString());
     }
 
 
     @And("^user click on news \"([^\"]*)\"$")
     public void userClickOnNewsThatWasAlreadyCreated(String newsName) {
 
-//        myNews.findMyNews();
         myNews.toProduct(newsName);
 
     }

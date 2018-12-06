@@ -51,15 +51,6 @@ public class TopBarSteps {
         }
     }
 
-    @When("^user go to Settings Frame$")
-    public void userGoToSettings(){
-
-        topBar.toTopBar();
-        topBar.toSettings();
-
-
-    }
-
     @When("^user go to the TopBar$")
     public void userGoToTheTopBar() {
         testContext.getScenarioContext().setContext(Context.PAGE,"TopBar");

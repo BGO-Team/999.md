@@ -5,6 +5,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import dataProviders.TestDataFileReader;
 import org.junit.Assert;
 import pageObjects.SettingsFrame;
 
@@ -52,5 +53,16 @@ public class SettingsFrameSteps {
         Assert.assertFalse(settingsFrame.getSuccessMessage().equalsIgnoreCase("СОХРАНЕНО"));
     }
 
+    @Then("^user verify his detailes$")
+    public void userVerifyHisDetailes() {
+        Assert.assertEquals(TestDataFileReader.getFirstName(), settingsFrame.firstnameVerify());
+        System.out.println(settingsFrame.firstnameVerify());
+        Assert.assertEquals(TestDataFileReader.getLastName(), settingsFrame.lastnameVerify());
+        System.out.println(settingsFrame.lastnameVerify());
+        settingsFrame.emailSettings();
+        Assert.assertEquals(TestDataFileReader.getEmailAdress(), settingsFrame.emailVerify());
+        System.out.println(settingsFrame.emailVerify());
+
+    }
 
 }

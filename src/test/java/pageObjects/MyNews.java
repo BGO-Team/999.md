@@ -12,7 +12,6 @@ import java.util.Random;
 public class MyNews {
 
     private final WebDriver driver;
-    private static String dateTime;
 
 
     @FindBy(css = "#js-cabinet-items-list > tr:nth-child(1) > td.cabinet__user-ads__title > h3 > a")
@@ -40,10 +39,8 @@ public class MyNews {
 
     public static String timeTitle(){
         LocalDateTime localDateTime = LocalDateTime.now();
-        dateTime = "_" + localDateTime.getMonth() + "_" + localDateTime.getDayOfMonth() + "_"
-                + localDateTime.getHour() + "_" + localDateTime.getMinute();
-        System.out.println(dateTime);
-        return dateTime;
+        return "_" + localDateTime.getMonth() + "_" + localDateTime.getDayOfMonth() + "_"
+                + localDateTime.getHour() + "_" + localDateTime.getMinute() + "_" + localDateTime.getSecond();
 
     }
 

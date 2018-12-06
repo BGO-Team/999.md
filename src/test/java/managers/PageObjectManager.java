@@ -24,7 +24,6 @@ public class PageObjectManager {
     private ProductPage productPage;
     private SubCategoryPage subCategoryPage;
     private TopBar topBar;
-    private TopBarSettings topBarSettings;
     private AddNewsPage addNewsPage;
     private MyNews myNews;
     private SettingsFrame settingsFrame;
@@ -75,9 +74,6 @@ public class PageObjectManager {
     public TopBar getTopBar() {
         return (topBar == null) ? topBar = new TopBar(driver) : topBar;
     }
-
-    public TopBarSettings getTopBarSettings() { return (topBarSettings == null) ? topBarSettings = TopBarSettings.getInstance(driver) : topBarSettings;}
-
 
     public CategoryPage getCategoryPage() {
         return (categoryPage == null) ? categoryPage = new CategoryPage(driver) : categoryPage;
