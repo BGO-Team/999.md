@@ -14,7 +14,7 @@ public class ProductPageSteps {
     public ProductPageSteps(TestContext context) {
         testContext = context;
         productPage = testContext.getPageObjectManager().getProductPage();
-//        testContext.getScenarioContext().setContext(Context.PRODUCT, productPage.getProductName());
+        testContext.getScenarioContext().setContext(Context.PRODUCT, productPage.getProductName());
     }
 
     @Then("^user is on this product$")
@@ -33,8 +33,8 @@ public class ProductPageSteps {
 
     @Then("^Product Name or Product description contains \"([^\"]*)\"$")
     public void productNameOrProductDescriptionContains(String searchedText) {
-
-        try {
+        try
+        {
             testContext.getWait().toBeVisible(productPage.getDescriptionArea());
             testContext.getWait().toBeVisible(productPage.getContactsField());
             Assert.assertTrue(productPage.nameContains(searchedText)
@@ -50,6 +50,5 @@ public class ProductPageSteps {
         testContext.getWait().toBeClickable(productPage.getFavoriteButton());
         testContext.getWait().toBeVisible(productPage.getContactsField());
         Assert.assertTrue("Контакты:".equalsIgnoreCase(productPage.getContactsField().getText()));
-
     }
 }

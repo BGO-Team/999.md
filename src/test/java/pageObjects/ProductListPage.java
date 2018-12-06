@@ -12,7 +12,6 @@ public class ProductListPage extends Page {
     @FindBy(css = "#js-ads-container > ul > li > div > a > img")
     private List<WebElement> allElements;
 
-
     public ProductListPage(WebDriver driver) {
         super(driver);
     }
@@ -40,7 +39,6 @@ public class ProductListPage extends Page {
                 throw new IllegalArgumentException("This product does not exist");
         }
     }
-
 
     public WebElement getLastElement() {
         return allElements.get(allElements.size() - 1);

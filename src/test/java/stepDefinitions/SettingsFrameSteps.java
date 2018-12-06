@@ -1,7 +1,6 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -19,7 +18,7 @@ public class SettingsFrameSteps {
     }
 
     @Then("^a settings frame is opened$")
-    public void aSettingsFrameIsOpened() throws InterruptedException {
+    public void aSettingsFrameIsOpened() {
         settingsFrame.changeFrame();
         testContext.getWait().toBeClickable(settingsFrame.getSaveButton());
         Assert.assertTrue(settingsFrame.getSaveButton().getText().equalsIgnoreCase("сохранить"));
@@ -37,7 +36,6 @@ public class SettingsFrameSteps {
         settingsFrame.setBirthDay(Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
     }
 
-
     @Then("^The data is saved$")
     public void theDataIsSaved() {
         Assert.assertTrue(settingsFrame.getSuccessMessage().equalsIgnoreCase("СОХРАНЕНО"));
@@ -52,6 +50,4 @@ public class SettingsFrameSteps {
     public void newDetailsAreNotSaved() {
         Assert.assertFalse(settingsFrame.getSuccessMessage().equalsIgnoreCase("СОХРАНЕНО"));
     }
-
-
 }

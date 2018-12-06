@@ -24,26 +24,8 @@ public class Header {
         PageFactory.initElements(driver, this);
     }
 
-    private Header typeSearch(String search) {
-        searchField.sendKeys(search);
-        return this;
-    }
-
     public WebElement getHeaderPicture() {
         return headerPicture;
-    }
-
-    public WebElement getSearchButton() {
-        return searchButton;
-    }
-
-    private void submitSearch() {
-        searchButton.submit();
-    }
-
-    public void searchThis(String search) {
-        typeSearch(search);
-        submitSearch();
     }
 
     public void toFavorites(){

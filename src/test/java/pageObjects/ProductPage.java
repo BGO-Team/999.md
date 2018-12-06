@@ -51,27 +51,23 @@ public class ProductPage extends Page {
         return contactsField;
     }
 
-
     public boolean descriptionContains(String text){
         String[] values = text.split("");
-        for (String value:values){
+        for (String value:values)
             if(descriptionArea.getText().toLowerCase().contains(value.toLowerCase()))
                 return true;
-        }
         return false;
     }
 
     public boolean nameContains(String text){
         String[] values = text.split("");
-        for (String value:values){
+        for (String value:values)
             if(productName.getText().toLowerCase().contains(value.toLowerCase()))
                 return true;
-        }
         return false;
     }
 
     public String getProductName() {
         return productName.getText();
     }
-
 }

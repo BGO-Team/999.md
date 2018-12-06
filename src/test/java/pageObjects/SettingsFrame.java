@@ -1,19 +1,18 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
+import managers.WaitManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Year;
 import java.util.List;
 
 public class SettingsFrame {
     private final WebDriver driver;
-    private WebDriverWait wait;
+    private WaitManager wait;
 
     @FindBy(css = "input[name=\"first_name\"]")
     private WebElement firstNameField;
@@ -28,14 +27,13 @@ public class SettingsFrame {
     private WebElement dateOfBirthField;
 
     @FindBy(css = "select[name=\"birthdate_month\"] > option")
-    private List<WebElement> mounthsOfBirth;
+    private List<WebElement> monthsOfBirth;
 
     @FindBy(css = "select[name=\"birthdate_year\"] > option")
     private List<WebElement> yearsOfBirth;
 
     @FindBy(css = "select[name=\"sex\"] > option")
     private List<WebElement> genderOptions;
-
 
     @FindBy(css = "button.simpalsid-modal-content-form-submit-btn")
     private WebElement saveButton;
@@ -46,8 +44,7 @@ public class SettingsFrame {
     public SettingsFrame(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 50);
-
+        wait = new WaitManager(driver);
     }
 
     public void setNameDetails(String firstName, String lastName) {
@@ -57,16 +54,16 @@ public class SettingsFrame {
 
     public void setBirthDay(int day, int mounth, int year) {
         selectBirthDate(day);
-        selectBirthMounth(mounth);
+        selectBirthMonth(mounth);
         selectBirthYear(year);
 
     }
 
     public void changeFrame() {
         driver.switchTo().defaultContent();
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("iframe[id=\"topbar-settings\"]"))));
+        wait.waitFor().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-settings"));
         driver.switchTo().frame("topbar-settings");
-        wait.until(ExpectedConditions.visibilityOf(firstNameField));
+        wait.toBeVisible(firstNameField);
     }
 
     public void selectGender(String gender) {
@@ -80,12 +77,11 @@ public class SettingsFrame {
             default:
                 genderOptions.get(0).click();
                 break;
-
         }
     }
 
     public String getSuccessMessage() {
-        wait.until(ExpectedConditions.visibilityOf(successMessage));
+        wait.toBeVisible(successMessage);
         return successMessage.getText();
     }
 
@@ -106,10 +102,10 @@ public class SettingsFrame {
         }
     }
 
-    private void selectBirthMounth(int mounth) {
-        if (mounth < 13 && mounth > 0) {
-            WebElement mounthOfBirth = mounthsOfBirth.get(mounth - 1);
-            mounthOfBirth.click();
+    private void selectBirthMonth(int month) {
+        if (month < 13 && month > 0) {
+            WebElement monthOfBirth = monthsOfBirth.get(month - 1);
+            monthOfBirth.click();
         }
     }
 

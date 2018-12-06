@@ -18,9 +18,7 @@ public class ProductListPageSteps {
     public ProductListPageSteps(TestContext context){
         this.testContext = context;
         productListPage = testContext.getPageObjectManager().getProductListPage();
-
     }
-
 
     @Then("^a new ProductList page is displayed$")
     public void aNewProductListPageIsDisplayed() {
@@ -32,7 +30,5 @@ public class ProductListPageSteps {
     public void userNavigateToAProduct(String productName){
         productListPage.toProduct(productName);
         testContext.getWebDriverManager().switchWindow();
-
-
     }
 }
