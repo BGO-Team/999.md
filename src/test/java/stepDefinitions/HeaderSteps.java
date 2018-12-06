@@ -4,6 +4,7 @@ import cucumber.TestContext;
 import cucumber.api.java.en.And;
 import cucumber.api.PendingException;
 import dataProviders.TestDataFileReader;
+import enums.Context;
 import pageObjects.Header;
 
 public class HeaderSteps {
@@ -22,8 +23,7 @@ public class HeaderSteps {
 
     @And("^user search the news \"([^\"]*)\"$")
     public void userSearchTheNewsThatWasAlreadyCreated(String newsName) {
-        header.searchThis(newsName);
-        header.submitSearch();
+        header.searchFor(newsName);
     }
 
     @And("^inserts \"([^\"]*)\"$")

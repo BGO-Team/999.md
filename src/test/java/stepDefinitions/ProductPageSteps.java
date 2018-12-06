@@ -57,6 +57,5 @@ public class ProductPageSteps {
     public void userSentMessageToProductAuthor(String message){
         productPage.inputMessage(message);
         productPage.sendMessageButton();
-
     }
 }

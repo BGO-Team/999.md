@@ -77,10 +77,6 @@ public class ProductPage extends Page {
         return false;
     }
 
-    public String getProductName() {
-        return productName.getText();
-    }
-
     public void inputMessage(String message) {
         inputMessage.sendKeys(message);
     }
