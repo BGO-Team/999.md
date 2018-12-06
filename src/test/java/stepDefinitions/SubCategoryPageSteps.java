@@ -19,7 +19,8 @@ public class SubCategoryPageSteps {
     }
 
     @And("^user click on \"([^\"]*)\" product$")
-    public void userClickOnProduct(String product){
+    public void userClickOnProduct(String product) throws InterruptedException {
+        testContext.getWait().toBeClickable(subCategoryPage.getLastListedFilter());
         subCategoryPage.toProduct(product);
     }
 

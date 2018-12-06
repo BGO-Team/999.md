@@ -77,6 +77,10 @@ public class SubCategoryPage extends Page{
         }
     }
 
+    public WebElement getLastProductFromTHeList(){
+        return products.get(products.size()-1);
+    }
+
     public WebElement getSubCategoryName(){
         return subCategoryName;
     }

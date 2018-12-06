@@ -1,7 +1,7 @@
 Feature:Andrew's features
 
   @Test @asecu @Login
-  Scenario: test scenario
+  Scenario: Login scenario
     Given user is on "HomePage"
     When user clicks on "loginButton"
     Then a new pop up window is displayed

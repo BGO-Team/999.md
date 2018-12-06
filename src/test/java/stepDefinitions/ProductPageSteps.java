@@ -56,6 +56,7 @@ public class ProductPageSteps {
     @Then("^the value of \"([^\"]*)\" property is \"([^\"]*)\"$")
     public void theValueOfPropertyIs(String key, String value) {
        try {
+           testContext.getWait().toBeVisible(productPage.getLastProperty());
            Assert.assertTrue(value.equalsIgnoreCase(productPage.getValueOfProperty(key.toLowerCase())));
        }catch (AssertionError e){
            System.out.print("The curent property value does not match with the context of the following: ");

@@ -83,7 +83,9 @@ public class ProductPage extends Page {
     public String getProductName() {
         return productName.getText();
     }
-
+    public  WebElement getLastProperty(){
+        return propertyValue.get(propertyKey.size()-1);
+    }
     public String getValueOfProperty(String Key){
         Map<String,String> propertyCouple = new HashMap<>();
         for (int i = 0 ; i < propertyValue.size()-1; i++){
