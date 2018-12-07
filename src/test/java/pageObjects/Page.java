@@ -17,6 +17,24 @@ public abstract class Page {
         PageFactory.initElements(driver, this);
     }
 
+    public static void clickElement(Object pageName, String elementName, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException {
+        WebElement webElement = null;
+
+        Class clazz = Class.forName("pageObjects." + pageName.toString());
+        Field[] fields = clazz.getDeclaredFields();
+        for (Field field : fields)
+            if (field.getType() == WebElement.class) {
+                field.setAccessible(true);
+                if (field.getName().equals(elementName))
+                    try {
+                        webElement = ( WebElement ) field.get(clazz.getConstructor(WebDriver.class).newInstance(driver));
+                        webElement.click();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+            }
+    }
+
     public String getUrl(){
         return driver.getCurrentUrl();
     }

@@ -55,7 +55,6 @@ public class TopBarSteps {
     @When("^user go to the TopBar$")
     public void userGoToTheTopBar() {
         testContext.getScenarioContext().setContext(Context.PAGE,"TopBar");
-        testContext.getScenarioContext().setContext(Context.CLASSOBJECT, testContext.getPageObjectManager().getTopBar());
         testContext.getPageObjectManager().getTopBar().toTopBar();
         testContext.getWait().toBeVisible(testContext.getPageObjectManager().getTopBar().getLanguageButton());
     }

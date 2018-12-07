@@ -1,12 +1,10 @@
 package utils;
 
-import org.openqa.selenium.WebElement;
 import pageObjects.*;
 import org.openqa.selenium.WebDriver;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import pageObjects.ChatFrame;
+import pageObjects.SettingsFrame;
 
 public class PageObjectManager {
     private WebDriver driver;

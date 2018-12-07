@@ -1,6 +1,15 @@
 Feature:Andrew's features
 
-  @Test @asecu @T11
+  @Test @Login12
+  Scenario: Login scenario
+    Given user is on "HomePage"
+    When user clicks on "loginButton"
+    Then a new pop up window is displayed
+    And "First" user confirm Login and Password
+    Then "First" User Name is showing on Top Bar
+
+
+  @Test @asecu @T11Test @Login1
   Scenario Outline: Add <FirstName> <LastName> valid details in the system
     Given user is on "HomePage"
     When user clicks on "loginButton"
@@ -27,6 +36,7 @@ Feature:Andrew's features
     Then a new pop up window is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is showing on Top Bar
+    When user go to the TopBar
     And  user clicks on "settingsButton"
     Then a settings frame is opened
     When user inserts "<FirstName>" and "<LastName>"
