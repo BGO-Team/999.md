@@ -49,7 +49,6 @@ Feature: Corneliu's Features
 
 #
     Examples:
-      | newsName        | message                                     |
-      | Sell iphone 999 | Hello, how much it cost?                    |
-      | Sell iphone 99  | Hi, it is a real iphone?                    |
-      | Sell iphone 9   | Salut, dar tu stii ca nu exista asa iphone? |
+      | newsName                            | message                                |
+      | Iphone 5s 16Gb 500lei.Icloud curat. | Hello, it is original?                 |
+      | Bmw e 60 ideal 35 euro              | Salut, dar cit costa chiria pe o luna? |
