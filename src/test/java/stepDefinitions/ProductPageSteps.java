@@ -1,7 +1,6 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import dataProviders.TestDataFileReader;
 import enums.Context;
 import pageObjects.ProductPage;
 import cucumber.api.java.en.And;
@@ -59,6 +58,11 @@ public class ProductPageSteps {
         productPage.sendMessageButton();
     }
 
+    @Then("^the notification that message was sent appeared$")
+    public void theNotificationThatMessageWasSentAppeared(){
+        Assert.assertTrue(productPage.getNotificationMessage());
+    }
+
     @Then("^the value of \"([^\"]*)\" property is \"([^\"]*)\"$")
     public void theValueOfPropertyIs(String key, String value) {
        try {
@@ -67,7 +71,6 @@ public class ProductPageSteps {
        }catch (AssertionError e){
            System.out.print("The curent property value does not match with the context of the following: ");
            System.out.println(testContext.getWebDriverManager().getDriver().getCurrentUrl());
-
        }
     }
 }

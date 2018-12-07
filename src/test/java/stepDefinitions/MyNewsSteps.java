@@ -36,10 +36,9 @@ public class MyNewsSteps {
     }
 
 
-    @And("^user click on news \"([^\"]*)\"$")
-    public void userClickOnNewsThatWasAlreadyCreated(String newsName) {
-
+    @And("^user click on news with name \"([^\"]*)\"$")
+    public void userClickOnNEwsWithName(String newsName) {
         myNews.toProduct(newsName);
-
+        testContext.getWebDriverManager().switchWindow();
     }
 }
