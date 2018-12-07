@@ -8,13 +8,11 @@ public class TestContext {
     private WebDriverManager webDriverManager;
     private PageObjectManager pageObjectManager;
     private ScenarioContext scenarioContext;
-    private WaitUtil wait;
 
     public TestContext(){
         webDriverManager = new WebDriverManager();
         pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
         scenarioContext = ScenarioContext.getInstance();
-        wait = new WaitUtil(webDriverManager.getDriver());
     }
 
     public WebDriverManager getWebDriverManager(){
@@ -27,10 +25,6 @@ public class TestContext {
 
     public ScenarioContext getScenarioContext(){
         return scenarioContext;
-    }
-
-    public WaitUtil getWait() {
-        return wait;
     }
 }
  

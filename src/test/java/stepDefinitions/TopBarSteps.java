@@ -56,6 +56,6 @@ public class TopBarSteps {
         testContext.getScenarioContext().setContext(Context.PAGE,"TopBar");
         testContext.getScenarioContext().setContext(Context.CLASSOBJECT, testContext.getPageObjectManager().getTopBar());
         testContext.getPageObjectManager().getTopBar().toTopBar();
-        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getTopBar().getSettingsButton());
+        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getTopBar().getLanguageButton());
     }
 }

@@ -38,14 +38,18 @@ public class TopBar {
         wait = new WaitUtil(driver);
     }
 
-    public String getTopBarName() {
-        return topBarName;
-    }
-
     public TopBar toTopBar(){
         driver.switchTo().defaultContent();
         driver.switchTo().frame(topBarName);
         return this;
+    }
+
+    public WebElement getLanguageButton() {
+        return languageButton;
+    }
+
+    public String getTopBarName() {
+        return topBarName;
     }
 
     public void toLoginFrame(){

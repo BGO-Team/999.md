@@ -4,7 +4,8 @@ Feature: Vadim's Features
   @Login
   Scenario: Log in
     Given user is on "HomePage"
-    When user clicks on "loginButton"
+    When user go to the TopBar
+    And user clicks on "loginButton"
     And a new pop up window is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is showing on Top Bar

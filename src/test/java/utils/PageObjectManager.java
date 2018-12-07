@@ -1,18 +1,12 @@
 package utils;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import pageObjects.*;
 import org.openqa.selenium.WebDriver;
 
-import java.io.File;
-import java.io.FilenameFilter;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PageObjectManager {
     private WebDriver driver;
@@ -34,11 +28,12 @@ public class PageObjectManager {
         this.driver = driver;
     }
 
-    public static void getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
+    public static Class getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
             IllegalAccessException, InvocationTargetException, InstantiationException {
         Class clazz = Class.forName("pageObjects." + page);
         Method method = clazz.getMethod("toPage");
         method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
+        return clazz;
     }
 
     public void clickElement(Object pageName, String elementName, Object value) throws ClassNotFoundException{

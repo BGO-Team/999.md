@@ -13,9 +13,6 @@ public class HomePage extends Page{
     @FindBy(css = ".main-CatalogNavigation > ul > li > a")
     private List<WebElement> category;
 
-    @FindBy(css ="li > a[data-popup=\"login\"]" )
-    public WebElement loginButton;
-
     public HomePage(WebDriver driver) {
         super(driver);
     }

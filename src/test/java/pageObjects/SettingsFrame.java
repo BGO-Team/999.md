@@ -57,7 +57,7 @@ public class SettingsFrame {
     public SettingsFrame(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WaitUtil(driver);
+        wait = WaitUtil.getInstance(driver);
     }
 
     public void setNameDetails(String firstName, String lastName) {

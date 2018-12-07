@@ -27,7 +27,6 @@ Feature:Andrew's features
     Then a new pop up window is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is showing on Top Bar
-    When user go to the TopBar
     And  user clicks on "settingsButton"
     Then a settings frame is opened
     When user inserts "<FirstName>" and "<LastName>"
