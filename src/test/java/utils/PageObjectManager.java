@@ -28,12 +28,15 @@ public class PageObjectManager {
         this.driver = driver;
     }
 
-    public static Class getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
+    public static void getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
             IllegalAccessException, InvocationTargetException, InstantiationException {
-        Class clazz = Class.forName("pageObjects." + page);
-        Method method = clazz.getMethod("toPage");
-        method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
-        return clazz;
+        Method method = Class.forName("pageObjects." + page).getMethod("toPage");
+        method.invoke(Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver));
+    }
+
+    public static Page getClass(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException, InstantiationException {
+        return (Page) Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver);
     }
 
     public void clickElement(Object pageName, String elementName, Object value) throws ClassNotFoundException{

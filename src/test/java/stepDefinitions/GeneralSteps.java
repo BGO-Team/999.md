@@ -7,15 +7,10 @@ import utils.PageObjectManager;
 import cucumber.api.java.en.When;
 
 public class GeneralSteps {
-    private TestContext testContext;
-
-    public GeneralSteps(TestContext context){
-        testContext = context;
-    }
 
     @Given("^user is on \"([^\"]*)\"$")
     public void userIsOn(String page) throws Throwable{
-        PageObjectManager.getPage(page, testContext.getWebDriverManager().getDriver());
+        PageObjectManager.getPage(page, webDriverManager.getDriver());
         testContext.getScenarioContext().setContext(Context.PAGE,page);
         testContext.getScenarioContext().setContext(Context.CLASSOBJECT, testContext.getPageObjectManager().getHomePage());
     }

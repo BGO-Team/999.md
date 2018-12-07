@@ -7,6 +7,7 @@ import pageObjects.TopBar;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
+import utils.WaitUtil;
 
 import java.lang.reflect.Method;
 
@@ -56,6 +57,6 @@ public class TopBarSteps {
         testContext.getScenarioContext().setContext(Context.PAGE,"TopBar");
         testContext.getScenarioContext().setContext(Context.CLASSOBJECT, testContext.getPageObjectManager().getTopBar());
         testContext.getPageObjectManager().getTopBar().toTopBar();
-        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getTopBar().getLanguageButton());
+        WaitUtil.getInstance().toBeVisible(testContext.getPageObjectManager().getTopBar().getLanguageButton());
     }
 }
