@@ -23,7 +23,7 @@ public class GeneralSteps {
     }
 
     @When("^user clicks on \"([^\"]*)\"$")
-    public void userClickOn(String button) throws ClassNotFoundException {
+    public void userClickOn(String button) throws ClassNotFoundException{
         testContext.getPageObjectManager().clickElement(testContext.getScenarioContext().getContext(Context.PAGE),
                 button, testContext.getScenarioContext().getContext(Context.CLASSOBJECT));
     }

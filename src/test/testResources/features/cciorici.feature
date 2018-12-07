@@ -3,12 +3,12 @@ Feature: Corneliu's Features
   @Corneliu @User @Sc1
   Scenario: Verify user-detailes information
     Given user is on "HomePage"
-    When user clicks on "loginButton"
+    And user clicks on "loginButton"
     And "Second" user confirm Login and Password
     When user go to the TopBar
     And  user clicks on "settingsButton"
-    Then a settings frame is opened
-    Then user verify his detailes
+    And a settings frame is opened
+    Then user verify his details
 
 
   @Corneliu @AddNews @Sc2
@@ -20,18 +20,34 @@ Feature: Corneliu's Features
     And user add a new news
     Then user verify if his news is displayed in My News Page
 
-  @Corneliu @Message @Sc3
-  Scenario Outline: Write a new message on created news
-    Given user is on "HomePage"
-    And user clicks on "loginButton"
-    And "First" user confirm Login and Password
-    And user navigate to header
-    When user clicks on "searchField"
-    And user search the news "<newsName>"
-    And user clicks on "searchButton"
-    And user click on news "<newsName>"
-    And user sent "<message>" to product's author
 
+  @Corneliu @Message @Sc3
+  Scenario Outline: Write a new message about product
+    Given user is on "HomePage"
+    When user clicks on "loginButton"
+    And "First" user confirm Login and Password
+    Then "First" User Name is showing on Top Bar
+    When user navigate to header
+    And user clicks on "searchField"
+    And inserts "<newsName>"
+    And user clicks on "searchButton"
+    And user click on news with name "<newsName>"
+    And user sent "<message>" to product's author
+    Then the notification that message was sent appeared
+    When user go to the TopBar
+#    And user clicks on "userNameButton"
+#    And user clicks on "logoutButton"
+#    And user is on "HomePage"
+#    And user clicks on "loginButton"
+#    And "Second" user confirm Login and Password
+#    Then "Second" User Name is showing on Top Bar
+    When user clicks on "messagesButton"
+    And user go to the ChatFrame
+    And user clicks on "sentMessage"
+#    Then user verify the incoming "<message>"
+    Then user verify the sent "<message>"
+
+#
     Examples:
       | newsName        | message                                     |
       | Sell iphone 999 | Hello, how much it cost?                    |

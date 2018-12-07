@@ -1,8 +1,10 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.PendingException;
 import dataProviders.TestDataFileReader;
 import enums.Context;
+import managers.WebDriverManager;
 import pageObjects.ProductPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -57,5 +59,10 @@ public class ProductPageSteps {
     public void userSentMessageToProductAuthor(String message){
         productPage.inputMessage(message);
         productPage.sendMessageButton();
+    }
+
+    @Then("^the notification that message was sent appeared$")
+    public void theNotificationThatMessageWasSentAppeared(){
+        Assert.assertTrue(productPage.getNotificationMessage());
     }
 }

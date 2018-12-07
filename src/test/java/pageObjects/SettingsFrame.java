@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Year;
 import java.util.List;
@@ -47,6 +46,12 @@ public class SettingsFrame {
     @FindBy(id = "simpalsid-settings-tab-success")
     private WebElement successMessage;
 
+    @FindBy(css = ".simpalsid-chat-content-box-message:nth-child(1) >div:nth-child(3)")
+    private WebElement incomingMessage;
+
+    @FindBy(css = ".simpalsid-chat-content-box-message:nth-child(1) >div:nth-child(3)")
+    private WebElement sentMessage;
+
     public SettingsFrame(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -66,8 +71,8 @@ public class SettingsFrame {
 
     public void changeFrame() {
         driver.switchTo().defaultContent();
-        wait.waitFor().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-settings"));
         driver.switchTo().frame("topbar-settings");
+//        wait.waitFor().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-settings"));
         wait.toBeVisible(firstNameField);
     }
 
@@ -139,5 +144,13 @@ public class SettingsFrame {
 
     public void emailSettings() {
         emailSettings.click();
+    }
+
+    public String getIncomingMessage() {
+        return incomingMessage.getText();
+    }
+
+    public String getSentMessage() {
+        return sentMessage.getText();
     }
 }

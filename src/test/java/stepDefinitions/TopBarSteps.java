@@ -25,8 +25,8 @@ public class TopBarSteps {
         Class clazz = Class.forName("dataProviders.TestDataFileReader");
         Method getUserLogin = clazz.getDeclaredMethod("getUserLogin", String.class);
         String login = (String) getUserLogin.invoke(clazz, user);
-
         Assert.assertEquals(login, topBar.getUserName());
+        testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
     }
 
     @When("^user change language$")
@@ -56,8 +56,6 @@ public class TopBarSteps {
         testContext.getScenarioContext().setContext(Context.PAGE,"TopBar");
         testContext.getScenarioContext().setContext(Context.CLASSOBJECT, testContext.getPageObjectManager().getTopBar());
         testContext.getPageObjectManager().getTopBar().toTopBar();
-        testContext.getWait().toBeClickable(testContext.getPageObjectManager().getTopBar().getSettingsButton());
-
-
+        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getTopBar().getSettingsButton());
     }
 }
