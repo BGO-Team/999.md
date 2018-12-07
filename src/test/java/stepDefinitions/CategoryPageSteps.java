@@ -1,20 +1,22 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import enums.Context;
 import org.junit.Assert;
 import pageObjects.CategoryPage;
 import cucumber.api.java.en.And;
+import pageObjects.Page;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class CategoryPageSteps {
     private TestContext testContext;
     private CategoryPage categoryPage;
 
-    public CategoryPageSteps(TestContext context){
+    public CategoryPageSteps(TestContext context) {
         testContext = context;
-        categoryPage = testContext.getPageObjectManager().getCategoryPage();
+        categoryPage = (CategoryPage) Page.getPageObject("CategoryPage", testContext.getWebDriverManager().getDriver());
     }
 
     @And("^user click on \"([^\"]*)\" sub-category$")

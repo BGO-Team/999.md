@@ -4,6 +4,7 @@ import cucumber.TestContext;
 import cucumber.api.java.en.When;
 import enums.Context;
 import pageObjects.ChatFrame;
+import pageObjects.Page;
 
 public class ChatFrameSteps {
     private TestContext testContext;
@@ -11,7 +12,7 @@ public class ChatFrameSteps {
 
     public ChatFrameSteps(TestContext context) {
         testContext = context;
-        chatFrame = testContext.getPageObjectManager().getChatFrame();
+        chatFrame = (ChatFrame) Page.getPageObject("ChatFrame", testContext.getWebDriverManager().getDriver());
     }
 
     @When("^user go to the ChatFrame$")

@@ -6,8 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ChatFrame {
-    private final WebDriver driver;
+public class ChatFrame extends Page{
     private WaitUtil wait;
     private String chatFrameName = "topbar-chat";
 
@@ -16,8 +15,7 @@ public class ChatFrame {
     private WebElement sentMessage;
 
     public ChatFrame(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
         wait = WaitUtil.getInstance(driver);
     }
 

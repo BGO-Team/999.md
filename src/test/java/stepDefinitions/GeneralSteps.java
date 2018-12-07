@@ -16,13 +16,13 @@ public class GeneralSteps {
     }
 
     @Given("^user is on \"([^\"]*)\"$")
-    public void userIsOn(String page) throws Throwable{
-        Page.getPage(page, testContext.getWebDriverManager().getDriver());
+    public void userIsOn(String page) {
+        Page.toPage(page, testContext.getWebDriverManager().getDriver());
         testContext.getScenarioContext().setContext(Context.PAGE,page);
     }
 
     @When("^user clicks on \"([^\"]*)\"$")
-    public void userClickOn(String button) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, InvocationTargetException {
+    public void userClickOn(String button) {
         Page.clickElement(testContext.getScenarioContext().getContext(Context.PAGE),
                 button, testContext.getWebDriverManager().getDriver());
     }

@@ -15,6 +15,7 @@ public class HeaderSteps {
         testContext = context;
         header = testContext.getPageObjectManager().getHeader();
     }
+    //TODO: Header and TopBar getPage
 
     @And("user go to FavoritesPage")
     public void userGoToFavoritesPage() {

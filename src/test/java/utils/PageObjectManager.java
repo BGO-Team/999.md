@@ -8,15 +8,9 @@ import pageObjects.SettingsFrame;
 
 public class PageObjectManager {
     private WebDriver driver;
-    private CategoryPage categoryPage;
-    private FavoritesPage favoritesPage;
     private Header header;
-    private HomePage homePage;
-    private LoginFrame loginFrame;
-    private ProductPage productPage;
     private SubCategoryPage subCategoryPage;
     private TopBar topBar;
-    private AddNewsPage addNewsPage;
     private MyNews myNews;
     private SettingsFrame settingsFrame;
     private ProductListPage productListPage;
@@ -24,14 +18,6 @@ public class PageObjectManager {
 
     public PageObjectManager(WebDriver driver) {
         this.driver = driver;
-    }
-
-    public HomePage getHomePage() {
-        return (homePage == null) ? homePage = new HomePage(driver) : homePage;
-    }
-
-    public LoginFrame getLoginFrame() {
-        return (loginFrame == null) ? loginFrame = new LoginFrame(driver) : loginFrame;
     }
 
     public Header getHeader() {
@@ -42,20 +28,9 @@ public class PageObjectManager {
         return (topBar == null) ? topBar = new TopBar(driver) : topBar;
     }
 
-    public CategoryPage getCategoryPage() {
-        return (categoryPage == null) ? categoryPage = new CategoryPage(driver) : categoryPage;
-    }
 
     public SubCategoryPage getSubCategoryPage() {
         return (subCategoryPage == null) ? subCategoryPage = new SubCategoryPage(driver) : subCategoryPage;
-    }
-
-    public ProductPage getProductPage() {
-        return (productPage == null) ? productPage = new ProductPage(driver) : productPage;
-    }
-
-    public FavoritesPage getFavoritesPage() {
-        return (favoritesPage == null) ? favoritesPage = new FavoritesPage(driver) : favoritesPage;
     }
 
     public SettingsFrame getSettingsFramePage() {
@@ -64,10 +39,6 @@ public class PageObjectManager {
 
     public  ProductListPage getProductListPage(){
         return (productListPage == null) ? productListPage = new ProductListPage(driver) : productListPage;
-    }
-
-    public AddNewsPage getAddNewsPage() {
-        return (addNewsPage == null) ? addNewsPage = new AddNewsPage(driver) : addNewsPage;
     }
 
     public MyNews getMyNews() {

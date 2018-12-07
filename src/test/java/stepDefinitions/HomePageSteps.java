@@ -5,7 +5,6 @@ import enums.Context;
 import pageObjects.HomePage;
 import cucumber.api.java.en.When;
 import pageObjects.Page;
-import utils.PageObjectManager;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -13,11 +12,9 @@ public class HomePageSteps{
     private TestContext testContext;
     private HomePage homePage;
 
-    public HomePageSteps(TestContext context) throws ClassNotFoundException, NoSuchMethodException,
-            InvocationTargetException, InstantiationException, IllegalAccessException {
+    public HomePageSteps(TestContext context) {
         testContext = context;
-        homePage = (HomePage) Page.getClass(String.valueOf(HomePage.class),
-                testContext.getWebDriverManager().getDriver());
+        homePage = (HomePage) Page.getPageObject("HomePage", testContext.getWebDriverManager().getDriver());
     }
 
     @When("^user click on \"([^\"]*)\" category$")

@@ -17,10 +17,36 @@ public abstract class Page {
         PageFactory.initElements(driver, this);
     }
 
-    public static void clickElement(Object pageName, String elementName, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException {
+    public static void toPage(String page, WebDriver driver) {
+        Method method = null;
+        try {
+            method = Class.forName("pageObjects." + page).getMethod("toPage");
+            method.invoke(Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver));
+        } catch (NoSuchMethodException | ClassNotFoundException | IllegalAccessException |
+                InstantiationException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Page getPageObject(String page, WebDriver driver) {
+        try {
+            return (Page) Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                NoSuchMethodException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void clickElement(Object pageName, String elementName, WebDriver driver) {
         WebElement webElement = null;
 
-        Class clazz = Class.forName("pageObjects." + pageName.toString());
+        Class clazz = null;
+        try {
+            clazz = Class.forName("pageObjects." + pageName.toString());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields)
             if (field.getType() == WebElement.class) {
@@ -29,7 +55,8 @@ public abstract class Page {
                     try {
                         webElement = ( WebElement ) field.get(clazz.getConstructor(WebDriver.class).newInstance(driver));
                         webElement.click();
-                    } catch (IllegalAccessException e) {
+                    } catch (IllegalAccessException | NoSuchMethodException | InstantiationException |
+                            InvocationTargetException e) {
                         e.printStackTrace();
                     }
             }
@@ -45,38 +72,5 @@ public abstract class Page {
 
     public Header header(){
         return new Header(driver);
-    }
-
-//    public SettingsFrame settings(){
-//        return new SettingsFrame(driver);
-//    }
-
-    public static void getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
-            IllegalAccessException, InvocationTargetException, InstantiationException {
-        Method method = Class.forName("pageObjects." + page).getMethod("toPage");
-        method.invoke(Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver));
-    }
-
-    public static Page getClass(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
-            IllegalAccessException, InvocationTargetException, InstantiationException {
-        return (Page) Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver);
-    }
-
-    public static void clickElement(Object pageName, String elementName, Object value) throws ClassNotFoundException{
-        WebElement webElement = null;
-        Class referenceClass = Class.forName("pageObjects." + pageName.toString());
-
-        Field[] fields = referenceClass.getDeclaredFields();
-        for (Field field : fields)
-            if (field.getType() == WebElement.class) {
-                field.setAccessible(true);
-                if (field.getName().equals(elementName))
-                    try {
-                        webElement = ( WebElement ) field.get(value);
-                        webElement.click();
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-            }
     }
 }

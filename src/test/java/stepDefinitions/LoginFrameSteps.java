@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import pageObjects.LoginFrame;
 import cucumber.api.java.en.And;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import pageObjects.Page;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -19,7 +20,7 @@ public class LoginFrameSteps {
 
     public LoginFrameSteps(TestContext context){
         testContext = context;
-        loginFrame = testContext.getPageObjectManager().getLoginFrame();
+        loginFrame = (LoginFrame) Page.getPageObject("LoginFrame", testContext.getWebDriverManager().getDriver());
     }
 
 
