@@ -48,6 +48,12 @@ public class SettingsFrame {
     @FindBy(id = "simpalsid-settings-tab-success")
     private WebElement successMessage;
 
+    @FindBy(css = ".simpalsid-chat-content-box-message:nth-child(1) >div:nth-child(3)")
+    private WebElement incomingMessage;
+
+    @FindBy(css = ".simpalsid-chat-content-box-message:nth-child(1) >div:nth-child(3)")
+    private WebElement sentMessage;
+
     public SettingsFrame(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -140,5 +146,13 @@ public class SettingsFrame {
 
     public void emailSettings() {
         emailSettings.click();
+    }
+
+    public String getIncomingMessage() {
+        return incomingMessage.getText();
+    }
+
+    public String getSentMessage() {
+        return sentMessage.getText();
     }
 }

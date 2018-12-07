@@ -33,7 +33,7 @@ public class ProductPage extends Page {
     @FindBy(css = "#js-ad-message-textarea")
     private WebElement inputMessage;
 
-    @FindBy(css = ".adPage__content__message__send")
+    @FindBy(css = ".button")
     private WebElement sendMessage;
 
     @FindBy(css = ".m-value > .adPage__content__features__key")
@@ -41,6 +41,9 @@ public class ProductPage extends Page {
 
     @FindBy(css = ".m-value > .adPage__content__features__value")
     private List<WebElement> propertyValue;
+
+    @FindBy(css = ".button")
+    private WebElement messageSentNotification;
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -83,15 +86,18 @@ public class ProductPage extends Page {
         return false;
     }
 
-
     public void inputMessage(String message) {
         inputMessage.sendKeys(message);
     }
 
-    public ProductPage sendMessageButton() {
+    public void sendMessageButton(){
         sendMessage.click();
-        return this;
     }
+
+    public boolean getNotificationMessage(){
+        return messageSentNotification.isDisplayed();
+    }
+
 
     public String getProductName() {
         return productName.getText();

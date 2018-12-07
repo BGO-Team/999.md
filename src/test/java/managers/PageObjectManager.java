@@ -28,6 +28,7 @@ public class PageObjectManager {
     private MyNews myNews;
     private SettingsFrame settingsFrame;
     private ProductListPage productListPage;
+    private ChatFrame chatFrame;
 
     public PageObjectManager(WebDriver driver) {
         this.driver = driver;
@@ -104,5 +105,9 @@ public class PageObjectManager {
 
     public MyNews getMyNews() {
         return (myNews == null) ? myNews = new MyNews(driver) : myNews;
+    }
+
+    public ChatFrame getChatFrame() {
+        return (chatFrame == null) ? chatFrame = new ChatFrame(driver) : chatFrame;
     }
 }

@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -52,8 +53,8 @@ public class SettingsFrameSteps {
         Assert.assertFalse(settingsFrame.getSuccessMessage().equalsIgnoreCase("СОХРАНЕНО"));
     }
 
-    @Then("^user verify his detailes$")
-    public void userVerifyHisDetailes() {
+    @Then("^user verify his details$")
+    public void userVerifyHisDetails() {
         Assert.assertEquals(TestDataFileReader.getFirstName(), settingsFrame.firstnameVerify());
         System.out.println(settingsFrame.firstnameVerify());
         Assert.assertEquals(TestDataFileReader.getLastName(), settingsFrame.lastnameVerify());
@@ -61,5 +62,15 @@ public class SettingsFrameSteps {
         settingsFrame.emailSettings();
         Assert.assertEquals(TestDataFileReader.getEmailAdress(), settingsFrame.emailVerify());
         System.out.println(settingsFrame.emailVerify());
+    }
+
+    @Then("^user verify the incoming \"([^\"]*)\"$")
+    public void userVerifyTheIncoming(String message){
+        Assert.assertEquals(message, settingsFrame.getIncomingMessage());
+    }
+
+    @Then("^user verify the sent \"([^\"]*)\"$")
+    public void userVerifyTheSentMessage(String message){
+        Assert.assertEquals(message, settingsFrame.getSentMessage());
     }
 }
