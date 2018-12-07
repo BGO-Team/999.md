@@ -1,6 +1,6 @@
 Feature:Andrew's features
 
-  @Test @Login
+  @Test @Login12
   Scenario: Login scenario
     Given user is on "HomePage"
     When user clicks on "loginButton"
@@ -9,7 +9,7 @@ Feature:Andrew's features
     Then "First" User Name is showing on Top Bar
 
 
-  @Test @asecu @T11
+  @Test @asecu @T11Test @Login1
   Scenario Outline: Add <FirstName> <LastName> valid details in the system
     Given user is on "HomePage"
     When user clicks on "loginButton"

@@ -1,18 +1,9 @@
 package managers;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import pageObjects.*;
 import org.openqa.selenium.WebDriver;
-
-import java.io.File;
-import java.io.FilenameFilter;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import pageObjects.ChatFrame;
+import pageObjects.SettingsFrame;
 
 public class PageObjectManager {
     private WebDriver driver;
@@ -32,31 +23,6 @@ public class PageObjectManager {
 
     public PageObjectManager(WebDriver driver) {
         this.driver = driver;
-    }
-
-    public static void getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
-            IllegalAccessException, InvocationTargetException, InstantiationException {
-        Class clazz = Class.forName("pageObjects." + page);
-        Method method = clazz.getMethod("toPage");
-        method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
-    }
-
-    public void clickElement(Object pageName, String elementName, Object value) throws ClassNotFoundException{
-        WebElement webElement = null;
-        Class referenceClass = Class.forName("pageObjects." + pageName.toString());
-
-        Field[] fields = referenceClass.getDeclaredFields();
-        for (Field field : fields)
-            if (field.getType() == WebElement.class) {
-                field.setAccessible(true);
-                if (field.getName().equals(elementName))
-                    try {
-                        webElement = ( WebElement ) field.get(value);
-                        webElement.click();
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-            }
     }
 
     public HomePage getHomePage() {

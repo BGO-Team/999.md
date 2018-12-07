@@ -1,7 +1,6 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -25,7 +24,6 @@ public class SettingsFrameSteps {
         testContext.getWait().toBeClickable(settingsFrame.getSaveButton());
         Assert.assertTrue(settingsFrame.getSaveButton().getText().equalsIgnoreCase("сохранить"));
         testContext.getScenarioContext().setContext(Context.PAGE,"SettingsFrame");
-        testContext.getScenarioContext().setContext(Context.CLASSOBJECT,settingsFrame);
     }
 
     @When("^user inserts \"(.+?)\" and \"(.+?)\"$")
