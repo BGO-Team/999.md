@@ -35,6 +35,5 @@ public class HeaderSteps {
     @And("^user navigate to header$")
     public void userGoToHeader(){
        testContext.getScenarioContext().setContext(Context.PAGE,"Header");
-       testContext.getScenarioContext().setContext(Context.CLASSOBJECT,header);
     }
 }

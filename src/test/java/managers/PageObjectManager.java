@@ -1,18 +1,9 @@
 package managers;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import pageObjects.*;
 import org.openqa.selenium.WebDriver;
-
-import java.io.File;
-import java.io.FilenameFilter;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import pageObjects.ChatFrame;
+import pageObjects.SettingsFrame;
 
 public class PageObjectManager {
     private WebDriver driver;
