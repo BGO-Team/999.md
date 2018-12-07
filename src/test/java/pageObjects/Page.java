@@ -5,10 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public abstract class Page {
     public final WebDriver driver;
-
-
 
     public Page(WebDriver driver) {
         this.driver = driver;
@@ -27,7 +29,36 @@ public abstract class Page {
         return new Header(driver);
     }
 
-    public SettingsFrame settings(){
-        return new SettingsFrame(driver);
+//    public SettingsFrame settings(){
+//        return new SettingsFrame(driver);
+//    }
+
+    public static void getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException, InstantiationException {
+        Method method = Class.forName("pageObjects." + page).getMethod("toPage");
+        method.invoke(Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver));
+    }
+
+    public static Page getClass(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
+            IllegalAccessException, InvocationTargetException, InstantiationException {
+        return (Page) Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver);
+    }
+
+    public static void clickElement(Object pageName, String elementName, Object value) throws ClassNotFoundException{
+        WebElement webElement = null;
+        Class referenceClass = Class.forName("pageObjects." + pageName.toString());
+
+        Field[] fields = referenceClass.getDeclaredFields();
+        for (Field field : fields)
+            if (field.getType() == WebElement.class) {
+                field.setAccessible(true);
+                if (field.getName().equals(elementName))
+                    try {
+                        webElement = ( WebElement ) field.get(value);
+                        webElement.click();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+            }
     }
 }

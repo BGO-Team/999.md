@@ -23,9 +23,6 @@ public class MyNewsSteps {
         header = testContext.getPageObjectManager().getHeader();
     }
 
-    //TODO: HeaderSteps
-
-
     @Then("^user verify if his news is displayed in My News Page$")
     public void userVerifyIfHisNewsIsDisplayedInMyNewsPage() {
         header.myNews();

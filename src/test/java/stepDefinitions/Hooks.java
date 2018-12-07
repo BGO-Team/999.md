@@ -9,22 +9,27 @@ import utils.WaitUtil;
 import utils.WebDriverManager;
 
 public class Hooks {
-    private WebDriverManager webDriverManager;
-    private PageObjectManager pageObjectManager;
-    private ScenarioContext scenarioContext;
-    private WaitUtil waitUtil;
+//    private WebDriverManager webDriverManager;
+//    private PageObjectManager pageObjectManager;
+//    private ScenarioContext scenarioContext;
+//    private WaitUtil waitUtil;
+    private TestContext testContext;
+
+    public Hooks(TestContext context) {
+        testContext = context;
+    }
 
     @Before
     public void setUp(){
-        webDriverManager = new WebDriverManager();
-        pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
-        scenarioContext = ScenarioContext.getInstance();
-        waitUtil = WaitUtil.getInstance(webDriverManager.getDriver());
+//        webDriverManager = new WebDriverManager();
+//        pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
+//        scenarioContext = ScenarioContext.getInstance();
+//        waitUtil = WaitUtil.getInstance(webDriverManager.getDriver());
     }
 
     @After
     public void tearDown(){
-        webDriverManager.getLoggerUtil().close();
-        webDriverManager.closeDriver();
+        testContext.getWebDriverManager().getLoggerUtil().close();
+        testContext.getWebDriverManager().closeDriver();
     }
 }

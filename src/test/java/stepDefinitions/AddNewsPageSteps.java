@@ -21,9 +21,6 @@ public class AddNewsPageSteps {
         addNewsPage = testContext.getPageObjectManager().getAddNewsPage();
     }
 
-    //TODO: AddNewsPageSteps
-
-
     @When("^user is on Add a new news page$")
     public void userIsOnAddANewNewsPage() {
         addNewsPage.toNewsPage();

@@ -24,25 +24,23 @@ public class LoginFrameSteps {
 
 
     @And("^\"([^\"]*)\" user confirm Login and Password$")
-    public void userConfirmLoginAndPassword(String user) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void userConfirmLoginAndPassword(String user) throws ClassNotFoundException, NoSuchMethodException,
+            InvocationTargetException, IllegalAccessException {
         Assert.assertNotNull(loginFrame.getUsernameInput());
         Assert.assertNotNull(loginFrame.getPasswordInput());
         Assert.assertNotNull(loginFrame.getSubmitLoginButton());
         Assert.assertNotNull(loginFrame.getCloseLoginButton());
 
-        Class clazz = Class.forName("dataProviders.TestDataFileReader");
-        Method getUserLogin = clazz.getDeclaredMethod("getUserLogin", String.class);
-        String login = (String) getUserLogin.invoke(clazz, user);
-
-        Method getUserPassword = clazz.getDeclaredMethod("getUserPassword", String.class);
-        String password = (String) getUserPassword.invoke(clazz, user);
+        String login = loginFrame.getUserLogin(user);
+        String password = loginFrame.getUserPassword(user);
 
         loginFrame.loginAs(login, password);
 
         testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
-        testContext.getWait().waitFor().until(ExpectedConditions.not(ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-popup")));
+        testContext.getWait().waitFor().until(ExpectedConditions.not(
+                ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-popup")));
         testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
-        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getHeader().getHeaderPicture());
+//        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getHeader().getHeaderPicture());
     }
 
     @Then("^a new pop up window is displayed$")

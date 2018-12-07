@@ -3,12 +3,14 @@ package utils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.io.FileHandler;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
-
-import static com.sun.deploy.cache.Cache.copyFile;
 
 public class ScreenshotUtil {
     public static void takeScreenshot(WebDriver driver) throws IOException {
@@ -16,6 +18,6 @@ public class ScreenshotUtil {
         LocalDateTime localDateTime = LocalDateTime.now();
         String dateTime = localDateTime.getMonth() + "_" + localDateTime.getDayOfMonth() + "_"
                 + localDateTime.getHour() + "_" + localDateTime.getMinute() + "_" + localDateTime.getSecond();
-        copyFile(scrFile, new File(FileManager.getPath() + File.separator + dateTime + ".png"));
+        FileHandler.copy(scrFile, new File(FileManager.getPath() + File.separator + dateTime + ".png"));
     }
 }

@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.support.ui.Wait;
 import utils.WaitUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,7 +36,7 @@ public class TopBar {
     public TopBar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WaitUtil(driver);
+        wait = WaitUtil.getInstance(driver);
     }
 
     public TopBar toTopBar(){

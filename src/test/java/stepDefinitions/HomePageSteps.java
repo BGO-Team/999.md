@@ -4,6 +4,7 @@ import cucumber.TestContext;
 import enums.Context;
 import pageObjects.HomePage;
 import cucumber.api.java.en.When;
+import pageObjects.Page;
 import utils.PageObjectManager;
 
 import java.lang.reflect.InvocationTargetException;
@@ -15,7 +16,7 @@ public class HomePageSteps{
     public HomePageSteps(TestContext context) throws ClassNotFoundException, NoSuchMethodException,
             InvocationTargetException, InstantiationException, IllegalAccessException {
         testContext = context;
-        homePage = (HomePage) PageObjectManager.getClass(String.valueOf(HomePage.class),
+        homePage = (HomePage) Page.getClass(String.valueOf(HomePage.class),
                 testContext.getWebDriverManager().getDriver());
     }
 

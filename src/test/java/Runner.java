@@ -14,5 +14,5 @@ import org.junit.runner.RunWith;
 public class Runner {
 }
 
-//TODO: wait page object
+//TODO: page object
 //TODO: moduls

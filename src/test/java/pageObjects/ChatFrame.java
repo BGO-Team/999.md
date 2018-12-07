@@ -18,7 +18,7 @@ public class ChatFrame {
     public ChatFrame(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WaitUtil(driver);
+        wait = WaitUtil.getInstance(driver);
     }
 
     public ChatFrame toChatFrame(){
