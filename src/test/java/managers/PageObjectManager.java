@@ -34,31 +34,6 @@ public class PageObjectManager {
         this.driver = driver;
     }
 
-    public static void getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
-            IllegalAccessException, InvocationTargetException, InstantiationException {
-        Class clazz = Class.forName("pageObjects." + page);
-        Method method = clazz.getMethod("toPage");
-        method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
-    }
-
-    public void clickElement(Object pageName, String elementName, Object value) throws ClassNotFoundException{
-        WebElement webElement = null;
-        Class referenceClass = Class.forName("pageObjects." + pageName.toString());
-
-        Field[] fields = referenceClass.getDeclaredFields();
-        for (Field field : fields)
-            if (field.getType() == WebElement.class) {
-                field.setAccessible(true);
-                if (field.getName().equals(elementName))
-                    try {
-                        webElement = ( WebElement ) field.get(value);
-                        webElement.click();
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-            }
-    }
-
     public HomePage getHomePage() {
         return (homePage == null) ? homePage = new HomePage(driver) : homePage;
     }

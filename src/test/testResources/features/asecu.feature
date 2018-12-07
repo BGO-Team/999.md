@@ -1,6 +1,6 @@
 Feature:Andrew's features
 
-  @Test @Login
+  @Test @Login1
   Scenario: Login scenario
     Given user is on "HomePage"
     When user clicks on "loginButton"
