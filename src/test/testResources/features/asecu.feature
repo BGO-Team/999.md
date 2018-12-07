@@ -9,7 +9,7 @@ Feature:Andrew's features
     Then "First" User Name is showing on Top Bar
 
 
-  @Test @asecuTested @T11
+  @Test @asecu @T11
   Scenario Outline: Add <FirstName> <LastName> valid details in the system
     Given user is on "HomePage"
     When user clicks on "loginButton"
@@ -29,7 +29,7 @@ Feature:Andrew's features
       | Andrei    | Secu     | male   | 1990 | 11 | 11 |
       | Elena     | Avram    | female | 2018 | 4  | 3  |
 
-  @Test @asecuTested @T12
+  @Test @asecu @T12
   Scenario Outline: Add invalid <Context> in the system
     Given user is on "HomePage"
     When user clicks on "loginButton"
@@ -54,11 +54,14 @@ Feature:Andrew's features
       | Birth Date | Nicu      | Elvoir   | female | 2018 | 12 | 7  |
       |            |           |          |        | 1990 | 2  | 30 |
 
-  @Test @asecuTested @T21
+  @Test @asecu @T21
   Scenario Outline: Search for an existent <SearchText> item
     Given user is on "HomePage"
-    And user navigate to header
-    When user clicks on "searchField"
+    When user clicks on "loginButton"
+    And "First" user confirm Login and Password
+    Then "First" User Name is showing on Top Bar
+    When user navigate to header
+    And user clicks on "searchField"
     And inserts "<SearchText>"
     And user clicks on "searchButton"
     Then a new ProductList page is displayed
@@ -76,8 +79,8 @@ Feature:Andrew's features
       | apple          |
 
 
-  @Test @asecuTested @T31
-  Scenario Outline: Filter <context> by <filtredProperty>
+  @Test @asecu @T31
+  Scenario Outline: Login and Filter <context> by <filtredProperty>
     Given user is on "HomePage"
     When user clicks on "loginButton"
     And "First" user confirm Login and Password
