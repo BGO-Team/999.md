@@ -1,14 +1,5 @@
 Feature:Andrew's features
 
-  @Test @Login
-  Scenario: Login scenario
-    Given user is on "HomePage"
-    When user clicks on "loginButton"
-    Then a new pop up window is displayed
-    And "First" user confirm Login and Password
-    Then "First" User Name is showing on Top Bar
-
-
   @Test @asecu @T11
   Scenario Outline: Add <FirstName> <LastName> valid details in the system
     Given user is on "HomePage"

@@ -1,4 +1,4 @@
-package managers;
+package utils;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 import static com.sun.deploy.cache.Cache.copyFile;
 
-public class ScreenshotManager {
+public class ScreenshotUtil {
     public static void takeScreenshot(WebDriver driver) throws IOException {
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         LocalDateTime localDateTime = LocalDateTime.now();

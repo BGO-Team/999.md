@@ -1,23 +1,20 @@
 package cucumber;
 
-import dataProviders.TestDataFileReader;
-import managers.PageObjectManager;
-import managers.WebDriverManager;
-import managers.WaitManager;
+import utils.PageObjectManager;
+import utils.WebDriverManager;
+import utils.WaitUtil;
 
 public class TestContext {
     private WebDriverManager webDriverManager;
     private PageObjectManager pageObjectManager;
     private ScenarioContext scenarioContext;
-    private TestDataFileReader testDataFileReader;
-    private WaitManager wait;
+    private WaitUtil wait;
 
     public TestContext(){
         webDriverManager = new WebDriverManager();
         pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
         scenarioContext = ScenarioContext.getInstance();
-        testDataFileReader = new TestDataFileReader();
-        wait = new WaitManager(webDriverManager.getDriver());
+        wait = new WaitUtil(webDriverManager.getDriver());
     }
 
     public WebDriverManager getWebDriverManager(){
@@ -32,11 +29,7 @@ public class TestContext {
         return scenarioContext;
     }
 
-    public TestDataFileReader getTestDataFileReader(){
-        return testDataFileReader;
-    }
-
-    public WaitManager getWait() {
+    public WaitUtil getWait() {
         return wait;
     }
 }

@@ -1,7 +1,6 @@
 package pageObjects;
 
-import dataProviders.ConfigFileReader;
-import managers.WaitManager;
+import dataProviders.TestDataFileReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,7 +21,7 @@ public class HomePage extends Page{
     }
 
     public HomePage toPage(){
-        driver.get(ConfigFileReader.getApplicationUrl());
+        driver.get(TestDataFileReader.getApplicationUrl());
         return this;
     }
 

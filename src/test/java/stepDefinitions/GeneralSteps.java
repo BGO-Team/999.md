@@ -1,11 +1,9 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import enums.Context;
-import managers.PageObjectManager;
-import cucumber.api.java.en.Given;
+import utils.PageObjectManager;
 import cucumber.api.java.en.When;
 
 public class GeneralSteps {

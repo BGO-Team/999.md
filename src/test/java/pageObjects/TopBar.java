@@ -1,6 +1,6 @@
 package pageObjects;
 
-import managers.WaitManager;
+import utils.WaitUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TopBar {
     private final WebDriver driver;
-    private WaitManager wait;
+    private WaitUtil wait;
     private String topBarName = "topbar-panel";
 
     @FindBy(id = "user-login-btn")
@@ -35,7 +35,7 @@ public class TopBar {
     public TopBar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WaitManager(driver);
+        wait = new WaitUtil(driver);
     }
 
     public String getTopBarName() {

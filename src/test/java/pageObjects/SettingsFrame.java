@@ -1,6 +1,6 @@
 package pageObjects;
 
-import managers.WaitManager;
+import utils.WaitUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class SettingsFrame {
     private final WebDriver driver;
-    private WaitManager wait;
+    private WaitUtil wait;
 
     @FindBy(css = "input[name=\"first_name\"]")
     private WebElement firstNameField;
@@ -57,7 +57,7 @@ public class SettingsFrame {
     public SettingsFrame(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WaitManager(driver);
+        wait = new WaitUtil(driver);
     }
 
     public void setNameDetails(String firstName, String lastName) {
