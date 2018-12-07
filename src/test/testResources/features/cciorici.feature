@@ -35,19 +35,11 @@ Feature: Corneliu's Features
     And user sent "<message>" to product's author
     Then the notification that message was sent appeared
     When user go to the TopBar
-#    And user clicks on "userNameButton"
-#    And user clicks on "logoutButton"
-#    And user is on "HomePage"
-#    And user clicks on "loginButton"
-#    And "Second" user confirm Login and Password
-#    Then "Second" User Name is showing on Top Bar
     When user clicks on "messagesButton"
     And user go to the ChatFrame
     And user clicks on "sentMessage"
-#    Then user verify the incoming "<message>"
     Then user verify the sent "<message>"
 
-#
     Examples:
       | newsName                            | message                                |
       | Iphone 5s 16Gb 500lei.Icloud curat. | Hello, it is original?                 |
