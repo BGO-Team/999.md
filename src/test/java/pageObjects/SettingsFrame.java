@@ -15,6 +15,9 @@ public class SettingsFrame {
     private final WebDriver driver;
     private WaitUtil wait;
 
+    @FindBy(id = "simpalsid-settings-tab")
+    public WebElement settingsTab;
+
     @FindBy(css = "input[name=\"first_name\"]")
     private WebElement firstNameField;
 
@@ -128,14 +131,19 @@ public class SettingsFrame {
         }
     }
 
-    public WebElement getSaveButton(){
+    public WebElement getSaveButton() {
         return saveButton;
+    }
+
+    public WebElement getDateOfBirthField() {
+        return dateOfBirthField;
     }
 
     public String firstnameVerify() {
         return firstNameField.getAttribute("value");
 
     }
+
     public String lastnameVerify() {
         return lastNameField.getAttribute("value");
     }

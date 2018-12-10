@@ -44,9 +44,10 @@ public class LoginFrameSteps {
 //        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getHeader().getHeaderPicture());
     }
 
-    @Then("^a new pop up window is displayed$")
+    @Then("^a login frame is displayed$")
     public void aNewPopUpWindowIsDisplayed(){
-        testContext.getWait().waitFor().until(ExpectedConditions.visibilityOf(loginFrame.getFrameTitle()));
+
+//        testContext.getWait().waitFor().until(ExpectedConditions.visibilityOf(loginFrame.getFrameTitle()));
         Assert.assertEquals("popup-login-header-title",loginFrame.getFrameTitle().getAttribute("class"));
     }
 }

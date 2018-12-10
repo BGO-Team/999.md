@@ -41,4 +41,10 @@ public class Header {
         myNews.click();
     }
 
+    public WebElement getSearchField() {
+        return searchField;
+    }
+    public WebElement getSearchButton(){
+        return searchButton;
+    }
 }

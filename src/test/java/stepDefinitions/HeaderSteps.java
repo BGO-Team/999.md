@@ -5,6 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.PendingException;
 import dataProviders.TestDataFileReader;
 import enums.Context;
+import org.junit.Assert;
 import pageObjects.Header;
 import pageObjects.Page;
 
@@ -12,7 +13,7 @@ public class HeaderSteps {
     private TestContext testContext;
     private Header header;
 
-    public HeaderSteps(TestContext context){
+    public HeaderSteps(TestContext context) {
         testContext = context;
         header = (Header) Page.getPageObject("Header", testContext.getWebDriverManager().getDriver());
     }
@@ -29,12 +30,15 @@ public class HeaderSteps {
 
     @And("^inserts \"([^\"]*)\"$")
     public void inserts(String text) {
-      header.searchFor(text);
-      testContext.getScenarioContext().setContext(Context.SEARCHTEXT,text);
+        Assert.assertNotNull(header.getSearchButton());
+        Assert.assertNotNull(header.getSearchField());
+        header.searchFor(text);
+        testContext.getScenarioContext().setContext(Context.SEARCHTEXT, text);
     }
 
     @And("^user navigate to header$")
-    public void userGoToHeader(){
-       testContext.getScenarioContext().setContext(Context.PAGE,"Header");
+    public void userGoToHeader() {
+        Assert.assertNotNull(header.getHeaderPicture());
+        testContext.getScenarioContext().setContext(Context.PAGE, "Header");
     }
 }

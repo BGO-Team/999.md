@@ -19,6 +19,7 @@ public class CategoryPageSteps {
 
     @And("^user click on \"([^\"]*)\" sub-category$")
     public void userClickOnSubCategory(String subCategory) {
+        Assert.assertNotNull(categoryPage.getLastSubCategory());
         categoryPage.toSubCategory(subCategory);
         testContext.getScenarioContext().setContext(Context.SUBCATEGORY, subCategory);
 

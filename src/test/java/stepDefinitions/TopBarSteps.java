@@ -2,14 +2,12 @@ package stepDefinitions;
 
 import cucumber.TestContext;
 import enums.Context;
-import gherkin.lexer.Pa;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjects.Page;
 import pageObjects.TopBar;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
-import utils.WaitUtil;
 
 import java.lang.reflect.Method;
 
@@ -19,14 +17,15 @@ public class TopBarSteps {
 
     public TopBarSteps(TestContext context){
         testContext = context;
-        topBar = (TopBar) Page.getPageObject("TopBar", testContext.getWebDriverManager().getDriver());
+        topBar = (TopBar) Page.getPageObject("TopBar",testContext.getWebDriverManager().getDriver());
     }
 
     @Then("^\"([^\"]*)\" User Name is showing on Top Bar$")
     public void userNameIsShowingOnTopBar(String user) throws Throwable {
         topBar.toTopBar();
-        Method getUserLogin = Class.forName("dataProviders.TestDataFileReader").getDeclaredMethod("getUserLogin", String.class);
-        String login = (String) getUserLogin.invoke(Class.forName("dataProviders.TestDataFileReader"), user);
+        Class clazz = Class.forName("dataProviders.TestDataFileReader");
+        Method getUserLogin = clazz.getDeclaredMethod("getUserLogin", String.class);
+        String login = (String) getUserLogin.invoke(clazz, user);
         Assert.assertEquals(login, topBar.getUserName());
         testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
     }
@@ -53,10 +52,4 @@ public class TopBarSteps {
         }
     }
 
-    @When("^user go to the TopBar$")
-    public void userGoToTheTopBar() {
-        testContext.getScenarioContext().setContext(Context.PAGE,"TopBar");
-        topBar.toTopBar();
-        testContext.getWait().toBeVisible(topBar.getLanguageButton());
-    }
 }

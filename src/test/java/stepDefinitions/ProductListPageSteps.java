@@ -30,6 +30,7 @@ public class ProductListPageSteps {
 
     @When("^user navigate to a \"([^\"]*)\" product$")
     public void userNavigateToAProduct(String productName){
+        Assert.assertNotNull(productListPage.getLastElement());
         productListPage.toProduct(productName);
         testContext.getWebDriverManager().switchWindow();
     }
