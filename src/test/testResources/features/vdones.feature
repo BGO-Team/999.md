@@ -15,15 +15,15 @@ Feature: Vadim's Features
   @Vadim @Language
   Scenario: Change Language
     When user navigates to "TopBar"
-    And user change language
+    And user changes language
     Then language was changed on "Romanian"
 
   @Vadim @Language
   Scenario: Double change Language
     When user navigates to "TopBar"
-    And user change language
+    And user changes language
     And user navigates to "TopBar"
-    And user change language
+    And user changes language
     Then language was changed on "Russian"
 
   @Vadim @AccessToProduct

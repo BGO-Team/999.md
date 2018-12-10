@@ -30,7 +30,7 @@ public class TopBarSteps {
         testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
     }
 
-    @When("^user change language$")
+    @When("^user changes language$")
     public void userChangeLanguage() {
         Assert.assertNotNull(topBar.getLanguageButton());
         topBar.changeLanguage();
@@ -40,9 +40,11 @@ public class TopBarSteps {
     public void languageWasChangedOn(String language) {
         switch (language){
             case "Romanian" :
+                testContext.getWait().waitFor().until(ExpectedConditions.urlContains("ro"));
                 Assert.assertEquals("ro", testContext.getWebDriverManager().getDriver().getCurrentUrl().substring(15, 17));
                 break;
             case "Russian" :
+                testContext.getWait().waitFor().until(ExpectedConditions.urlContains("ru"));
                 Assert.assertEquals("ru", testContext.getWebDriverManager().getDriver().getCurrentUrl().substring(15, 17));
                 break;
             default :
