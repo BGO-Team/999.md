@@ -30,8 +30,8 @@ public class AddNewsPageSteps {
     }
 
 
-    @And("^user add a new news$")
-    public void userAddANewNews() {
+    @And("^user add a new post with accessories for telephone$")
+    public void userAddANewPostWithAccessiriesFirTelephone() {
         addNewsPage.choseCategory("Телефоны и связь");
         testContext.getScenarioContext().setContext(Context.CATEGORY, "Телефоны и связь");
         testContext.getWait().waitFor().until(ExpectedConditions.urlContains("phone-and-communication"));

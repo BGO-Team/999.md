@@ -12,13 +12,13 @@ Feature: Corneliu's Features
 
 
   @Corneliu @AddNews @Sc2
-  Scenario: Create a new news with accessories for telephone category
+  Scenario: Create a new post with accessories for telephone
     Given user is on "HomePage"
     And user clicks on "loginButton"
     And "Second" user confirm Login and Password
     When user clicks on "addNewsButton"
-    And user add a new news
-    Then user verify if his news is displayed in My News Page
+    And user add a new post with accessories for telephone
+    Then user verify if his post is displayed in My News Page
 
 
   @Corneliu @Message @Sc3
