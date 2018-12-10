@@ -1,6 +1,6 @@
 package pageObjects;
 
-import dataProviders.ConfigFileReader;
+import dataProviders.TestDataFileReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,15 +13,12 @@ public class HomePage extends Page{
     @FindBy(css = ".main-CatalogNavigation > ul > li > a")
     private List<WebElement> categories;
 
-    @FindBy(css ="li > a[data-popup=\"login\"]" )
-    public WebElement loginButton;
-
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
     public HomePage toPage(){
-        driver.get(ConfigFileReader.getApplicationUrl());
+        driver.get(TestDataFileReader.getApplicationUrl());
         return this;
     }
 
@@ -41,7 +38,7 @@ public class HomePage extends Page{
             Random random = new Random();
             int randomCategory;
             do {
-                randomCategory = random.nextInt(categories.size()) + 1;
+                randomCategory = random.nextInt(category.size()) + 1;
             } while (randomCategory == 14);
 
             toCategory(randomCategory);

@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Random;
 
 public class CategoryPage extends Page{
-
     @FindBy(css = ".category__subCategories-collection > a")
     private List<WebElement> subCategories;
 

@@ -1,22 +1,21 @@
-package managers;
+package utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-public class LoggerManager extends AbstractWebDriverEventListener {
-    private static final Logger LOGGER = Logger.getLogger(LoggerManager.class.getName());
+public class LoggerUtil extends AbstractWebDriverEventListener {
+    private static final Logger LOGGER = Logger.getLogger(LoggerUtil.class.getName());
     private static int logCounter = 0;
     private FileHandler fileHandler;
 
-    LoggerManager() {
+    LoggerUtil() {
         try {
             ++logCounter;
             FileManager.createDirectory();
@@ -42,7 +41,7 @@ public class LoggerManager extends AbstractWebDriverEventListener {
     public void afterNavigateTo(String s, WebDriver webDriver) {
         LOGGER.info("WebDriver navigated to [" + s + "]");
         try {
-            ScreenshotManager.takeScreenshot(webDriver);
+            ScreenshotUtil.takeScreenshot(webDriver);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,7 +52,7 @@ public class LoggerManager extends AbstractWebDriverEventListener {
         LOGGER.info("WebDriver click on element - "
                 + elementDescription(webElement));
         try {
-            ScreenshotManager.takeScreenshot(webDriver);
+            ScreenshotUtil.takeScreenshot(webDriver);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -63,7 +62,7 @@ public class LoggerManager extends AbstractWebDriverEventListener {
     public void afterClickOn(WebElement webElement, WebDriver webDriver) {
         LOGGER.info("Clicked successful");
         try {
-            ScreenshotManager.takeScreenshot(webDriver);
+            ScreenshotUtil.takeScreenshot(webDriver);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -79,7 +78,7 @@ public class LoggerManager extends AbstractWebDriverEventListener {
     public void afterChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
         LOGGER.info("WebDriver changed value for element - " + elementDescription(webElement));
         try {
-            ScreenshotManager.takeScreenshot(webDriver);
+            ScreenshotUtil.takeScreenshot(webDriver);
         } catch (IOException e) {
             e.printStackTrace();
         }

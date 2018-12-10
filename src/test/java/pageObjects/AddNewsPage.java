@@ -9,11 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.Random;
 
-public class AddNewsPage {
-
-    private static AddNewsPage instance;
-    private final WebDriver driver;
-
+public class AddNewsPage extends Page{
     @FindBy(css = "#header > div.header_bar > div > div > nav > ul > li > a")
     private WebElement addNewsButton;
 
@@ -69,10 +65,8 @@ public class AddNewsPage {
     @FindBy(css = "#control_7 > option:not(:nth-child(1))")
     private List<WebElement> countryDropMenu;
 
-
     public AddNewsPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
 

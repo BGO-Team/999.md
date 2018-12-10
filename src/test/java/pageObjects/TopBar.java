@@ -1,6 +1,7 @@
 package pageObjects;
 
-import managers.WaitManager;
+import org.openqa.selenium.support.ui.Wait;
+import utils.WaitUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TopBar {
     private final WebDriver driver;
-    private WaitManager wait;
+    private WaitUtil wait;
     private String topBarName = "topbar-panel";
 
     @FindBy(id = "user-login-btn")
@@ -35,11 +36,11 @@ public class TopBar {
     public TopBar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WaitManager(driver);
+        wait = WaitUtil.getInstance(driver);
     }
 
-    public String getTopBarName() {
-        return topBarName;
+    public WebDriver getDriver() {
+        return driver;
     }
 
     public TopBar toTopBar(){
@@ -48,8 +49,17 @@ public class TopBar {
         return this;
     }
 
-    public void toLoginFrame(){
+    public WebElement getLanguageButton() {
+        return languageButton;
+    }
+
+    public String getTopBarName() {
+        return topBarName;
+    }
+
+    public LoginFrame toLoginFrame(){
         loginButton.click();
+        return new LoginFrame(driver);
     }
 
     public void changeLanguage(){

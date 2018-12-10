@@ -1,13 +1,14 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import enums.Context;
 import dataProviders.TestDataFileReader;
+import gherkin.lexer.Pa;
 import org.junit.Assert;
+import pageObjects.Page;
 import pageObjects.SettingsFrame;
 
 public class SettingsFrameSteps {
@@ -16,7 +17,7 @@ public class SettingsFrameSteps {
 
     public SettingsFrameSteps(TestContext context) {
         testContext = context;
-        settingsFrame = testContext.getPageObjectManager().getSettingsFramePage();
+        settingsFrame = (SettingsFrame) Page.getPageObject("SettingsFrame", testContext.getWebDriverManager().getDriver());
     }
 
     @Then("^a settings frame is opened$")
@@ -25,7 +26,6 @@ public class SettingsFrameSteps {
         testContext.getWait().toBeClickable(settingsFrame.getSaveButton());
         Assert.assertTrue(settingsFrame.getSaveButton().getText().equalsIgnoreCase("сохранить"));
         testContext.getScenarioContext().setContext(Context.PAGE,"SettingsFrame");
-        testContext.getScenarioContext().setContext(Context.CLASSOBJECT,settingsFrame);
     }
 
     @When("^user inserts \"(.+?)\" and \"(.+?)\"$")

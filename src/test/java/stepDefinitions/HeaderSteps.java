@@ -7,6 +7,7 @@ import dataProviders.TestDataFileReader;
 import enums.Context;
 import org.junit.Assert;
 import pageObjects.Header;
+import pageObjects.Page;
 
 public class HeaderSteps {
     private TestContext testContext;
@@ -14,7 +15,7 @@ public class HeaderSteps {
 
     public HeaderSteps(TestContext context) {
         testContext = context;
-        header = testContext.getPageObjectManager().getHeader();
+        header = (Header) Page.getPageObject("Header", testContext.getWebDriverManager().getDriver());
     }
 
     @And("user go to FavoritesPage")

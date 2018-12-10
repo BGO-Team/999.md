@@ -1,14 +1,11 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import enums.Context;
-import managers.PageObjectManager;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 import pageObjects.Page;
+import cucumber.api.java.en.When;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -20,12 +17,15 @@ public class GeneralSteps {
     }
 
     @Given("^user is on \"([^\"]*)\"$")
-    public void userIsOn(String page) throws Throwable{
-        Page.getPage(page, testContext.getWebDriverManager().getDriver());
+    public void userIsOn(String page) {
+        Page.toPage(page, testContext.getWebDriverManager().getDriver());
         testContext.getScenarioContext().setContext(Context.PAGE,page);
     }
 
     @When("^user clicks on \"([^\"]*)\"$")
+    public void userClickOn(String button) {
+        Page.clickElement(testContext.getScenarioContext().getContext(Context.PAGE),
+                button, testContext.getWebDriverManager().getDriver());
     public void userClickOn(String button) {
         Page.clickElement(testContext.getScenarioContext().getContext(Context.PAGE),
                 button, testContext.getWebDriverManager().getDriver());

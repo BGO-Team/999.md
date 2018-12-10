@@ -5,6 +5,7 @@ import enums.Context;
 import pageObjects.FavoritesPage;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
+import pageObjects.Page;
 
 public class FavoritesPageSteps {
 
@@ -13,7 +14,7 @@ public class FavoritesPageSteps {
 
     public FavoritesPageSteps(TestContext context){
         testContext = context;
-        favoritesPage = testContext.getPageObjectManager().getFavoritesPage();
+        favoritesPage = (FavoritesPage) Page.getPageObject("FavoritesPage", testContext.getWebDriverManager().getDriver());
     }
 
     @Then("product is in Favorite List")

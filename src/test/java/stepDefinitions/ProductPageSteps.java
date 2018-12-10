@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import cucumber.TestContext;
 import enums.Context;
+import pageObjects.Page;
 import pageObjects.ProductPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -13,7 +14,7 @@ public class ProductPageSteps {
 
     public ProductPageSteps(TestContext context) {
         testContext = context;
-        productPage = testContext.getPageObjectManager().getProductPage();
+        productPage = (ProductPage) Page.getPageObject("ProductPage", testContext.getWebDriverManager().getDriver());
         testContext.getScenarioContext().setContext(Context.PRODUCT, productPage.getProductName());
     }
 
