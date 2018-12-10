@@ -1,29 +1,30 @@
 #noinspection NonAsciiCharacters
 Feature: Vadim's Features
 
-  @Vadim @Login
-  Scenario: Log in
+  Background:
     Given user is on "HomePage"
-    When user clicks on "loginButton"
+
+  @Login
+  Scenario: Log in
+    When user go to the TopBar
+    And user clicks on "loginButton"
+    And a new pop up window is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is showing on Top Bar
 
   @Vadim @Language
   Scenario: Change Language
-    Given user is on "HomePage"
     When user change language
     Then language was changed on "Romanian"
 
   @Vadim @Language
   Scenario: Double change Language
-    Given user is on "HomePage"
     When user change language
     And user change language
     Then language was changed on "Russian"
 
   @Vadim @AccessToProduct
   Scenario Outline: Access to Product using Categories
-    Given user is on "HomePage"
     When user click on "<category>" category
     And user click on "<subCategory>" sub-category
     And user click on "<product>" product
@@ -35,8 +36,8 @@ Feature: Vadim's Features
 
   @Vadim @AddToFavorite
   Scenario Outline: Add Product to favorite
-    Given user is on "HomePage"
-    When user clicks on "loginButton"
+    When user go to the TopBar
+    And user clicks on "loginButton"
     And "First" user confirm Login and Password
     And user click on "<category>" category
     And user click on "<subCategory>" sub-category
@@ -47,4 +48,4 @@ Feature: Vadim's Features
     Examples:
     | category         | subCategory        |
     | Транспорт        | Велотранспорт      |
-    | Телефоны и связь | Мобильные телефоны |
+#    | Телефоны и связь | Мобильные телефоны |

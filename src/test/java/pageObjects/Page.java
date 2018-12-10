@@ -1,39 +1,52 @@
 package pageObjects;
 
-import managers.PageObjectManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public abstract class Page {
-
     public final WebDriver driver;
-
-
 
     public Page(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public static void getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
-            IllegalAccessException, InvocationTargetException, InstantiationException {
-        Class clazz = Class.forName("pageObjects." + page);
-        Method method = clazz.getMethod("toPage");
-        method.invoke(clazz.getConstructor(WebDriver.class).newInstance(driver));
-        // TODO: return clazz
+    public static void toPage(String page, WebDriver driver) {
+        Method method;
+        try {
+            method = Class.forName("pageObjects." + page).getMethod("toPage");
+            method.invoke(Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver));
+        } catch (NoSuchMethodException | ClassNotFoundException | IllegalAccessException |
+                InstantiationException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void clickElement(Object pageName, String elementName, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException {
-        WebElement webElement = null;
+    public static Object getPageObject(String page, WebDriver driver) {
+        try {
+            return Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                NoSuchMethodException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-        Class clazz = Class.forName("pageObjects." + pageName.toString());
+    public static void clickElement(Object pageName, String elementName, WebDriver driver) {
+        WebElement webElement;
+
+        Class clazz = null;
+        try {
+            clazz = Class.forName("pageObjects." + pageName.toString());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields)
             if (field.getType() == WebElement.class) {
@@ -42,7 +55,8 @@ public abstract class Page {
                     try {
                         webElement = ( WebElement ) field.get(clazz.getConstructor(WebDriver.class).newInstance(driver));
                         webElement.click();
-                    } catch (IllegalAccessException e) {
+                    } catch (IllegalAccessException | NoSuchMethodException | InstantiationException |
+                            InvocationTargetException e) {
                         e.printStackTrace();
                     }
             }

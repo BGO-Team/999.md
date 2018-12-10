@@ -1,6 +1,6 @@
 package pageObjects;
 
-import dataProviders.ConfigFileReader;
+import dataProviders.TestDataFileReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,7 +16,7 @@ public class FavoritesPage extends Page{
     }
 
     public FavoritesPage toPage(){
-        driver.get(ConfigFileReader.getApplicationUrl() + "cabinet/favorites");
+        driver.get(TestDataFileReader.getApplicationUrl() + "cabinet/favorites");
         return this;
     }
 

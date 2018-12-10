@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public class LoginFrame extends Page{
 
     @FindBy(css = "header h2")
@@ -47,7 +50,7 @@ public class LoginFrame extends Page{
         driver.switchTo().frame("topbar-popup");
     }
 
-    private void typeUsername(String username){ ;
+    private void typeUsername(String username){
         usernameInput.sendKeys(username);
     }
 
@@ -66,6 +69,18 @@ public class LoginFrame extends Page{
     }
     public WebElement getFrameTitle(){
         return frameTitle;
+    }
+
+    public String getUserLogin(String user) throws ClassNotFoundException, NoSuchMethodException,
+            InvocationTargetException, IllegalAccessException {
+        Method getUserLogin = Class.forName("dataProviders.TestDataFileReader").getDeclaredMethod("getUserLogin", String.class);
+        return (String) getUserLogin.invoke(Class.forName("dataProviders.TestDataFileReader"), user);
+    }
+
+    public String getUserPassword(String user) throws ClassNotFoundException, NoSuchMethodException,
+            InvocationTargetException, IllegalAccessException {
+        Method getUserLogin = Class.forName("dataProviders.TestDataFileReader").getDeclaredMethod("getUserPassword", String.class);
+        return (String) getUserLogin.invoke(Class.forName("dataProviders.TestDataFileReader"), user);
     }
 
     public void closeLoginFrame() {

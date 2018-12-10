@@ -1,24 +1,23 @@
-package managers;
+package utils;
 
-import dataProviders.ConfigFileReader;
+import dataProviders.TestDataFileReader;
 import enums.DriverType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class WebDriverManager {
     private WebDriver driver;
     private DriverType driverType;
     private EventFiringWebDriver eventDriver;
-    private LoggerManager loggerManager;
+    private LoggerUtil loggerUtil;
 
     public WebDriverManager(){
-        ConfigFileReader configFileReader = new ConfigFileReader();
-        driverType = ConfigFileReader.getBrowser();
+        new TestDataFileReader();
+        driverType = TestDataFileReader.getBrowser();
     }
 
     public WebDriver getDriver(){
@@ -26,8 +25,8 @@ public class WebDriverManager {
         return driver;
     }
 
-    public LoggerManager getLoggerManager() {
-        return loggerManager;
+    public LoggerUtil getLoggerUtil() {
+        return loggerUtil;
     }
 
     private WebDriver createDriver(){
@@ -44,8 +43,8 @@ public class WebDriverManager {
         driver.manage().timeouts().setScriptTimeout(30, TimeUnit.SECONDS);
 
         eventDriver = new EventFiringWebDriver(driver);
-        loggerManager = new LoggerManager();
-        eventDriver.register(loggerManager);
+        loggerUtil = new LoggerUtil();
+        eventDriver.register(loggerUtil);
         return eventDriver;
     }
 

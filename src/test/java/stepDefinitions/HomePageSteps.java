@@ -4,14 +4,17 @@ import cucumber.TestContext;
 import enums.Context;
 import pageObjects.HomePage;
 import cucumber.api.java.en.When;
+import pageObjects.Page;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class HomePageSteps{
     private TestContext testContext;
     private HomePage homePage;
 
-    public HomePageSteps(TestContext context){
+    public HomePageSteps(TestContext context) {
         testContext = context;
-        homePage = testContext.getPageObjectManager().getHomePage();
+        homePage = (HomePage) Page.getPageObject("HomePage", testContext.getWebDriverManager().getDriver());
     }
 
     @When("^user click on \"([^\"]*)\" category$")

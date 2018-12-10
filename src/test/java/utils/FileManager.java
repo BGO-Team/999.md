@@ -1,4 +1,4 @@
-package managers;
+package utils;
 
 import java.io.File;
 
@@ -20,7 +20,7 @@ public class FileManager {
         if (!dirLogs.exists())
             dirLogs.mkdir();
 
-        path += File.separator + "testLog" + LoggerManager.getLogCounter();
+        path += File.separator + "testLog" + LoggerUtil.getLogCounter();
 
         File dirLog = new File(path);
         if (!dirLog.exists())

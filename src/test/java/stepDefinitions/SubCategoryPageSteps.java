@@ -4,8 +4,10 @@ import cucumber.TestContext;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import enums.Context;
+import gherkin.lexer.Pa;
 import org.junit.Assert;
 import org.omg.PortableServer.THREAD_POLICY_ID;
+import pageObjects.Page;
 import pageObjects.SubCategoryPage;
 import cucumber.api.java.en.And;
 
@@ -15,11 +17,11 @@ public class SubCategoryPageSteps {
 
     public SubCategoryPageSteps(TestContext context){
         testContext = context;
-        subCategoryPage = testContext.getPageObjectManager().getSubCategoryPage();
+        subCategoryPage = (SubCategoryPage) Page.getPageObject("SubCategoryPage", testContext.getWebDriverManager().getDriver());
     }
 
     @And("^user click on \"([^\"]*)\" product$")
-    public void userClickOnProduct(String product) throws InterruptedException {
+    public void userClickOnProduct(String product) {
         testContext.getWait().toBeClickable(subCategoryPage.getLastListedFilter());
         subCategoryPage.toProduct(product);
     }
@@ -53,7 +55,7 @@ public class SubCategoryPageSteps {
     }
 
     @When("^user select \"([^\"]*)\" filter name$")
-    public void userSelect(String filterName) throws InterruptedException {
+    public void userSelect(String filterName) {
         testContext.getWait().toBeClickable(subCategoryPage.getLastListedFilter());
         subCategoryPage.selectFilterLevel1(filterName);
 

@@ -8,6 +8,9 @@ import enums.Context;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjects.AddNewsPage;
 import pageObjects.MyNews;
+import pageObjects.Page;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class AddNewsPageSteps {
 
@@ -18,11 +21,8 @@ public class AddNewsPageSteps {
 
     public AddNewsPageSteps(TestContext context) {
         testContext = context;
-        addNewsPage = testContext.getPageObjectManager().getAddNewsPage();
+        addNewsPage = (AddNewsPage) Page.getPageObject("AddNewsPage", testContext.getWebDriverManager().getDriver());
     }
-
-    //TODO: AddNewsPageSteps
-
 
     @When("^user is on Add a new news page$")
     public void userIsOnAddANewNewsPage() {
@@ -31,7 +31,7 @@ public class AddNewsPageSteps {
 
 
     @And("^user add a new news$")
-    public void userAddANewNews() throws InterruptedException {
+    public void userAddANewNews() {
         addNewsPage.choseCategory("Телефоны и связь");
         testContext.getScenarioContext().setContext(Context.CATEGORY, "Телефоны и связь");
         testContext.getWait().waitFor().until(ExpectedConditions.urlContains("phone-and-communication"));
