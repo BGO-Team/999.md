@@ -20,6 +20,7 @@ public class HeaderSteps {
 
     @And("user go to FavoritesPage")
     public void userGoToFavoritesPage() {
+        Assert.assertNotNull(header.getFavoritesButton());
         header.toFavorites();
     }
 

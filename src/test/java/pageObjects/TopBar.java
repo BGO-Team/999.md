@@ -36,7 +36,7 @@ public class TopBar {
     public TopBar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = WaitUtil.getInstance(driver);
+        wait = new WaitUtil(driver);
     }
 
     public WebDriver getDriver() {

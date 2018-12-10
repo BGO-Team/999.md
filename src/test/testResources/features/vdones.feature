@@ -4,25 +4,25 @@ Feature: Vadim's Features
   Background:
     Given user is on "HomePage"
 
-  @Login
+  @Vadim @Login
   Scenario: Log in
-    When user go to the TopBar
+    When user navigates to "TopBar"
     And user clicks on "loginButton"
-    And a Login frame is displayed
+    And a login frame is displayed
     And "First" user confirm Login and Password
-    Then "First" User Name is showing on Top Bar
+    Then "First" User Name is shown on Top Bar
 
   @Vadim @Language
   Scenario: Change Language
-    When user go to the TopBar
+    When user navigates to "TopBar"
     And user change language
     Then language was changed on "Romanian"
 
   @Vadim @Language
   Scenario: Double change Language
-    When user go to the TopBar
+    When user navigates to "TopBar"
     And user change language
-    And user go to the TopBar
+    And user navigates to "TopBar"
     And user change language
     Then language was changed on "Russian"
 
@@ -39,8 +39,9 @@ Feature: Vadim's Features
 
   @Vadim @AddToFavorite
   Scenario Outline: Add Product to favorite
-    When user go to the TopBar
+    When user navigates to "TopBar"
     And user clicks on "loginButton"
+    And a login frame is displayed
     And "First" user confirm Login and Password
     And user click on "<category>" category
     And user click on "<subCategory>" sub-category

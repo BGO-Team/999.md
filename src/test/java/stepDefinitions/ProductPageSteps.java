@@ -29,6 +29,7 @@ public class ProductPageSteps {
 
     @And("user add product to Favorite List")
     public void userAddProductToFavoriteList() {
+        Assert.assertNotNull(productPage.getFavoriteButton());
         productPage.addToFavorite();
     }
 

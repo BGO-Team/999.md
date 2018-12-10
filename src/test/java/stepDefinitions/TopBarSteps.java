@@ -3,6 +3,7 @@ package stepDefinitions;
 import cucumber.TestContext;
 import enums.Context;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import pageObjects.Header;
 import pageObjects.Page;
 import pageObjects.TopBar;
 import cucumber.api.java.en.Then;
@@ -20,7 +21,7 @@ public class TopBarSteps {
         topBar = (TopBar) Page.getPageObject("TopBar", testContext.getWebDriverManager().getDriver());
     }
 
-    @Then("^\"([^\"]*)\" User Name is showing on Top Bar$")
+    @Then("^\"([^\"]*)\" User Name is shown on Top Bar$")
     public void userNameIsShowingOnTopBar(String user) throws Throwable {
         topBar.toTopBar();
         Method getUserLogin = Class.forName("dataProviders.TestDataFileReader").getDeclaredMethod("getUserLogin", String.class);
@@ -31,6 +32,7 @@ public class TopBarSteps {
 
     @When("^user change language$")
     public void userChangeLanguage() {
+        Assert.assertNotNull(topBar.getLanguageButton());
         topBar.changeLanguage();
     }
 

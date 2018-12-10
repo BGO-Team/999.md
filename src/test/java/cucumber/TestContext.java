@@ -11,7 +11,7 @@ public class TestContext {
     public TestContext(){
         webDriverManager = new WebDriverManager();
         scenarioContext = ScenarioContext.getInstance();
-        waitUtil = WaitUtil.getInstance(webDriverManager.getDriver());
+        waitUtil = new WaitUtil(webDriverManager.getDriver());
     }
 
     public WebDriverManager getWebDriverManager(){

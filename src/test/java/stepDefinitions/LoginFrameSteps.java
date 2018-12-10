@@ -6,6 +6,7 @@ import cucumber.api.java.en.Then;
 import dataProviders.TestDataFileReader;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import pageObjects.Header;
 import pageObjects.LoginFrame;
 import cucumber.api.java.en.And;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -41,7 +42,7 @@ public class LoginFrameSteps {
         testContext.getWait().waitFor().until(ExpectedConditions.not(
                 ExpectedConditions.frameToBeAvailableAndSwitchToIt("topbar-popup")));
         testContext.getWebDriverManager().getDriver().switchTo().defaultContent();
-//        testContext.getWait().toBeVisible(testContext.getPageObjectManager().getHeader().getHeaderPicture());
+        testContext.getWait().toBeVisible(new Header(testContext.getWebDriverManager().getDriver()).getHeaderPicture());
     }
 
     @Then("^a login frame is displayed$")

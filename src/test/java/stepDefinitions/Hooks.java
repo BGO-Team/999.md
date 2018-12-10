@@ -16,7 +16,6 @@ public class Hooks {
         testContext = context;
     }
 
-    //TODO: hooks
 
     @Before
     public void setUp(){
