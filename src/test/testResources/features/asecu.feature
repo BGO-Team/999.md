@@ -1,9 +1,12 @@
 Feature:Andrew's features
 
+  Background:
+    Given user is on "HomePage"
+
   @Test @Login
   Scenario: Login scenario
-    Given user is on "HomePage"
-    When user clicks on "loginButton"
+    When user navigates to "TopBar"
+    And user clicks on "loginButton"
     Then a login frame is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is showing on Top Bar
@@ -59,6 +62,7 @@ Feature:Andrew's features
   @Test @asecu @T21
   Scenario Outline: Search for an existent <SearchText> item
     Given user is on "HomePage"
+    And user navigates to "TopBar"
     When user clicks on "loginButton"
     And "First" user confirm Login and Password
     Then "First" User Name is showing on Top Bar
@@ -84,6 +88,7 @@ Feature:Andrew's features
   @Test @asecu @T31
   Scenario Outline: Login and Filter <context> by <filtredProperty>
     Given user is on "HomePage"
+    And user navigates to "TopBar"
     When user clicks on "loginButton"
     And "First" user confirm Login and Password
     Then "First" User Name is showing on Top Bar
