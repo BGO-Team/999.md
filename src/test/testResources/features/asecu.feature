@@ -45,7 +45,7 @@ Feature:Andrew's features
     And insert the folowing "<dd>" "<mm>" "<yyyy>" birth details
     And set the gender to "<gender>"
     And user clicks on "saveButton"
-    Then new details are not saved
+#    Then new details are not saved
     Examples:
       | Context    | FirstName | LastName | gender | yyyy | mm | dd |
       | Fisrt Name | #$&%@$%&  | Secu     | male   | 1998 | 11 | 13 |
