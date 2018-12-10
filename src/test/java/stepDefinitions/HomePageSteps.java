@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import cucumber.TestContext;
 import enums.Context;
+import org.junit.Assert;
 import pageObjects.HomePage;
 import cucumber.api.java.en.When;
 import pageObjects.Page;
@@ -21,5 +22,6 @@ public class HomePageSteps{
     public void userClickOnCategory(String category) {
         homePage.toCategory(category);
         testContext.getScenarioContext().setContext(Context.CATEGORY, category);
+        Assert.assertTrue(testContext.getWebDriverManager().getDriver().getCurrentUrl().contains("/category/"));
     }
 }

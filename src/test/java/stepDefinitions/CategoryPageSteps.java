@@ -19,9 +19,9 @@ public class CategoryPageSteps {
 
     @And("^user click on \"([^\"]*)\" sub-category$")
     public void userClickOnSubCategory(String subCategory) {
+        Assert.assertEquals(testContext.getScenarioContext().getContext(Context.CATEGORY), categoryPage.getCategoryName().getText());
         categoryPage.toSubCategory(subCategory);
         testContext.getScenarioContext().setContext(Context.SUBCATEGORY, subCategory);
-
     }
 
     @Then("^user is on selected category page$")
