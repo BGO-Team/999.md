@@ -18,7 +18,7 @@ public abstract class Page {
     }
 
     public static void toPage(String page, WebDriver driver) {
-        Method method = null;
+        Method method;
         try {
             method = Class.forName("pageObjects." + page).getMethod("toPage");
             method.invoke(Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver));
@@ -28,9 +28,9 @@ public abstract class Page {
         }
     }
 
-    public static Page getPageObject(String page, WebDriver driver) {
+    public static Object getPageObject(String page, WebDriver driver) {
         try {
-            return (Page) Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver);
+            return Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                 NoSuchMethodException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -39,7 +39,7 @@ public abstract class Page {
     }
 
     public static void clickElement(Object pageName, String elementName, WebDriver driver) {
-        WebElement webElement = null;
+        WebElement webElement;
 
         Class clazz = null;
         try {

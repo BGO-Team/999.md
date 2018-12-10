@@ -6,7 +6,9 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import enums.Context;
 import dataProviders.TestDataFileReader;
+import gherkin.lexer.Pa;
 import org.junit.Assert;
+import pageObjects.Page;
 import pageObjects.SettingsFrame;
 
 public class SettingsFrameSteps {
@@ -15,7 +17,7 @@ public class SettingsFrameSteps {
 
     public SettingsFrameSteps(TestContext context) {
         testContext = context;
-        settingsFrame = testContext.getPageObjectManager().getSettingsFramePage();
+        settingsFrame = (SettingsFrame) Page.getPageObject("SettingsFrame", testContext.getWebDriverManager().getDriver());
     }
 
     @Then("^a settings frame is opened$")

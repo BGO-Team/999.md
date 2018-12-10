@@ -18,7 +18,7 @@ public class ChatFrameSteps {
     @When("^user go to the ChatFrame$")
     public void userGoToTheChatFrame() {
         testContext.getScenarioContext().setContext(Context.PAGE,"ChatFrame");
-        testContext.getPageObjectManager().getChatFrame().toChatFrame();
-        testContext.getWait().toBeClickable(testContext.getPageObjectManager().getChatFrame().getSentMessage());
+        chatFrame.toChatFrame();
+        testContext.getWait().toBeClickable(chatFrame.getSentMessage());
     }
 }

@@ -50,7 +50,7 @@ public class LoginFrame extends Page{
         driver.switchTo().frame("topbar-popup");
     }
 
-    private void typeUsername(String username){ ;
+    private void typeUsername(String username){
         usernameInput.sendKeys(username);
     }
 

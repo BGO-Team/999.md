@@ -39,6 +39,10 @@ public class TopBar {
         wait = WaitUtil.getInstance(driver);
     }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     public TopBar toTopBar(){
         driver.switchTo().defaultContent();
         driver.switchTo().frame(topBarName);
@@ -53,8 +57,9 @@ public class TopBar {
         return topBarName;
     }
 
-    public void toLoginFrame(){
+    public LoginFrame toLoginFrame(){
         loginButton.click();
+        return new LoginFrame(driver);
     }
 
     public void changeLanguage(){

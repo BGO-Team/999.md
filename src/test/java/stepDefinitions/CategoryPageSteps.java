@@ -8,8 +8,6 @@ import pageObjects.CategoryPage;
 import cucumber.api.java.en.And;
 import pageObjects.Page;
 
-import java.lang.reflect.InvocationTargetException;
-
 public class CategoryPageSteps {
     private TestContext testContext;
     private CategoryPage categoryPage;
