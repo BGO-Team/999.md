@@ -3,6 +3,7 @@ package stepDefinitions;
 import cucumber.TestContext;
 import enums.Context;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import pageObjects.Page;
 import pageObjects.TopBar;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -16,7 +17,7 @@ public class TopBarSteps {
 
     public TopBarSteps(TestContext context){
         testContext = context;
-        topBar = testContext.getPageObjectManager().getTopBar();
+        topBar = (TopBar) Page.getPageObject("TopBar",testContext.getWebDriverManager().getDriver());
     }
 
     @Then("^\"([^\"]*)\" User Name is showing on Top Bar$")

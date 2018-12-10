@@ -38,7 +38,7 @@ public class HomePage extends Page{
             Random random = new Random();
             int randomCategory;
             do {
-                randomCategory = random.nextInt(category.size()) + 1;
+                randomCategory = random.nextInt(categories.size()) + 1;
             } while (randomCategory == 14);
 
             toCategory(randomCategory);

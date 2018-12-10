@@ -12,11 +12,12 @@ Feature:Andrew's features
   @Test @asecu @T11
   Scenario Outline: Add <FirstName> <LastName> valid details in the system
     Given user is on "HomePage"
+    And user navigates to "TopBar"
     When user clicks on "loginButton"
-    Then a new pop up window is displayed
+    Then a login frame is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is showing on Top Bar
-    And user navigates to "TopBar" frame
+    And user navigates to "TopBar"
     And  user clicks on "settingsButton"
     Then a settings frame is opened
     When user inserts "<FirstName>" and "<LastName>"
@@ -32,11 +33,12 @@ Feature:Andrew's features
   @Test @asecu @T12 @Login1
   Scenario Outline: Add invalid <Context> in the system
     Given user is on "HomePage"
+    And user navigates to "TopBar"
     When user clicks on "loginButton"
     Then a login frame is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is showing on Top Bar
-    And user navigates to "TopBar" frame
+    And user navigates to "TopBar"
     And  user clicks on "settingsButton"
     Then a settings frame is opened
     When user inserts "<FirstName>" and "<LastName>"

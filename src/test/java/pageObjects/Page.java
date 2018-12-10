@@ -18,6 +18,7 @@ public abstract class Page {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     public static void getPage(String page, WebDriver driver) throws ClassNotFoundException, NoSuchMethodException,
             IllegalAccessException, InvocationTargetException, InstantiationException {
         Class clazz = Class.forName("pageObjects." + page);
@@ -71,31 +72,35 @@ public abstract class Page {
             }
     }
 
-    public static void goToFrame(Object frameName, WebDriver driver) throws
-            ClassNotFoundException, NoSuchMethodException, NoSuchFieldException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        driver.switchTo().defaultContent();
-        Class clazz = Class.forName("pageObjects." + frameName.toString());
-        String codeFrameName = Character.toLowerCase(frameName.toString().charAt(0)) + (frameName.toString().length() > 1 ? frameName.toString().substring(1) : "") + "Name";
+    public static void goToFrame(Object frameName, WebDriver driver) {
+        try {
+            driver.switchTo().defaultContent();
+            Class clazz = Class.forName("pageObjects." + frameName.toString());
+            String codeFrameName = Character.toLowerCase(frameName.toString().charAt(0)) + (frameName.toString().length() > 1 ? frameName.toString().substring(1) : "") + "Name";
 
-        Field field = clazz.getDeclaredField((codeFrameName));
-        field.setAccessible(true);
-        driver.switchTo().frame(( String ) field.get(clazz.getConstructor(WebDriver.class).newInstance(driver)));
+            Field field = clazz.getDeclaredField((codeFrameName));
+            field.setAccessible(true);
+            driver.switchTo().frame(( String ) field.get(clazz.getConstructor(WebDriver.class).newInstance(driver)));
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                NoSuchMethodException | ClassNotFoundException | NoSuchFieldException e) {
+            e.printStackTrace();
+        }
     }
 
 
-    public String getUrl(){
+    public String getUrl() {
         return driver.getCurrentUrl();
     }
 
-    public TopBar topBar(){
+    public TopBar topBar() {
         return new TopBar(driver);
     }
 
-    public Header header(){
+    public Header header() {
         return new Header(driver);
     }
 
-    public SettingsFrame settings(){
+    public SettingsFrame settings() {
         return new SettingsFrame(driver);
     }
 }
