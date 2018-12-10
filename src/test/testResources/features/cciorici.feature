@@ -23,8 +23,8 @@ Feature: Corneliu's Features
     Then user verify if his post is displayed in My Posts Page
 
     Examples:
-      | Category | SubCategory | SellType | Country | urlContains |
-      |          |             |          |         |             |
+      | Category         | SubCategory | SellType | Country | urlContains |
+      | Телефоны и связь | Аксессуары  | Random   | Random  |             |
 
   @Corneliu @Message @Sc3
   Scenario Outline: Write a new message to owner's post
