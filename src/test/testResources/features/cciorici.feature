@@ -16,7 +16,7 @@ Feature: Corneliu's Features
     Given user is on "HomePage"
     And user clicks on "loginButton"
     And "Second" user confirm Login and Password
-    When user is on Add a new news page
+    When user clicks on "addNewsButton"
     And user add a new news
     Then user verify if his news is displayed in My News Page
 
