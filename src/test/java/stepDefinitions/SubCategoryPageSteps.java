@@ -22,8 +22,10 @@ public class SubCategoryPageSteps {
 
     @And("^user click on \"([^\"]*)\" product$")
     public void userClickOnProduct(String product) {
+        Assert.assertEquals(testContext.getScenarioContext().getContext(Context.SUBCATEGORY), subCategoryPage.getSubCategoryName().getText());
         testContext.getWait().toBeClickable(subCategoryPage.getLastListedFilter());
         subCategoryPage.toProduct(product);
+
     }
 
     @Then("^selected sub-category is displayed$")

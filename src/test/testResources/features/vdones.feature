@@ -8,18 +8,21 @@ Feature: Vadim's Features
   Scenario: Log in
     When user go to the TopBar
     And user clicks on "loginButton"
-    And a new pop up window is displayed
+    And a Login frame is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is showing on Top Bar
 
   @Vadim @Language
   Scenario: Change Language
-    When user change language
+    When user go to the TopBar
+    And user change language
     Then language was changed on "Romanian"
 
   @Vadim @Language
   Scenario: Double change Language
-    When user change language
+    When user go to the TopBar
+    And user change language
+    And user go to the TopBar
     And user change language
     Then language was changed on "Russian"
 
@@ -48,4 +51,4 @@ Feature: Vadim's Features
     Examples:
     | category         | subCategory        |
     | Транспорт        | Велотранспорт      |
-#    | Телефоны и связь | Мобильные телефоны |
+    | Телефоны и связь | Мобильные телефоны |
