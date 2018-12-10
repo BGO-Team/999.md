@@ -5,42 +5,47 @@ Feature: Corneliu's Features
     Given user is on "HomePage"
     And user clicks on "loginButton"
     And "Second" user confirm Login and Password
-    When user go to the TopBar
+    When user navigates to "TopBar"
     And  user clicks on "settingsButton"
     And a settings frame is opened
     Then user verify his details
 
 
   @Corneliu @AddNews @Sc2
-  Scenario: Create a new post with accessories for telephone
+  Scenario Outline: Create a new post with accessories for telephone
     Given user is on "HomePage"
     And user clicks on "loginButton"
     And "Second" user confirm Login and Password
-    When user clicks on "addNewsButton"
-    And user add a new post with accessories for telephone
-    Then user verify if his post is displayed in My News Page
+    When user clicks on "addPostButton"
+    And user complete all mandatory fields
+    And user inserts "<Category>""<SubCategory>""<SellType>""<Country>"
+    And user clicks on "submitPostButton"
+    Then user verify if his post is displayed in My Posts Page
 
+    Examples:
+      | Category | SubCategory | SellType | Country | urlContains |
+      |          |             |          |         |             |
 
   @Corneliu @Message @Sc3
-  Scenario Outline: Write a new message about product
+  Scenario Outline: Write a new message to owner's post
     Given user is on "HomePage"
     When user clicks on "loginButton"
     And "First" user confirm Login and Password
     Then "First" User Name is showing on Top Bar
     When user navigate to header
     And user clicks on "searchField"
-    And inserts "<newsName>"
+    And inserts "<postName>"
     And user clicks on "searchButton"
-    And user click on news with name "<newsName>"
-    And user sent "<message>" to product's author
+    And user click on news with name "<postName>"
+    And user sent "<message>" to owner's post
     Then the notification that message was sent appeared
-    When user go to the TopBar
+    When user navigates to "TopBar"
     When user clicks on "messagesButton"
-    And user go to the ChatFrame
+    And user navigates to "ChatFrame"
     And user clicks on "sentMessage"
     Then user verify the sent "<message>"
 
     Examples:
-      | newsName                            | message                                |
+      | postName                            | message                                |
       | Iphone 5s 16Gb 500lei.Icloud curat. | Hello, it is original?                 |
       | Bmw e 60 ideal 35 euro              | Salut, dar cit costa chiria pe o luna? |

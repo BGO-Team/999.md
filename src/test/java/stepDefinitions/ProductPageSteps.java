@@ -53,8 +53,8 @@ public class ProductPageSteps {
         Assert.assertTrue("Контакты:".equalsIgnoreCase(productPage.getContactsField().getText()));
     }
 
-    @And("^user sent \"([^\"]*)\" to product's author$")
-    public void userSentMessageToProductAuthor(String message){
+    @And("^user sent \"([^\"]*)\" to owner's post$")
+    public void userSentMessageToOwnerPost(String message){
         productPage.inputMessage(message);
         productPage.sendMessageButton();
     }

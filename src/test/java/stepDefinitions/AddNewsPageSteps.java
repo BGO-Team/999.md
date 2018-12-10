@@ -16,7 +16,6 @@ public class AddNewsPageSteps {
 
     private TestContext testContext;
     private AddNewsPage addNewsPage;
-    private MyNews myNews;
 
 
     public AddNewsPageSteps(TestContext context) {
@@ -24,31 +23,39 @@ public class AddNewsPageSteps {
         addNewsPage = (AddNewsPage) Page.getPageObject("AddNewsPage", testContext.getWebDriverManager().getDriver());
     }
 
-    @When("^user is on Add a new news page$")
-    public void userIsOnAddANewNewsPage() {
+    @When("^user is on Add a new posts page$")
+    public void userIsOnAddANewNPostsPage() {
         addNewsPage.toNewsPage();
     }
 
 
-    @And("^user add a new post with accessories for telephone$")
-    public void userAddANewPostWithAccessiriesFirTelephone() {
-        addNewsPage.choseCategory("Телефоны и связь");
-        testContext.getScenarioContext().setContext(Context.CATEGORY, "Телефоны и связь");
-        testContext.getWait().waitFor().until(ExpectedConditions.urlContains("phone-and-communication"));
+    @And("^user complete all mandatory fields$")
+    public void userAddANewPostWithAccessiriesForTelephone() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+
+        addNewsPage.choseCategory("Телефоны и связь","phone-and-communication");
+
+
+
         addNewsPage.choseSubCategory("Аксессуары");
         testContext.getScenarioContext().setContext(Context.SUBCATEGORY, "Аксессуары");
         testContext.getWait().waitFor().until(ExpectedConditions.urlContains("2Faccessories"));
+
+
         addNewsPage.choseSellType("Random");
         testContext.getScenarioContext().setContext(Context.SELLTYPE, "Random");
         testContext.getWait().waitFor().until(ExpectedConditions.urlContains("77"));
+
+
         addNewsPage.choseCountry("Random");
         testContext.getScenarioContext().setContext(Context.COUNTRY, "Random");
+
+
         addNewsPage.clickNegotiablePriceCheckBox();
-        testContext.getScenarioContext().setContext(Context.TEXT,myNews.timeTitle());
+        testContext.getScenarioContext().setContext(Context.TEXT,(MyNews) Page.getPageObject("MyNews",testContext.getWebDriverManager().getDriver()));
+
         addNewsPage.titleNewsInput(TestDataFileReader.getTitleNewsInput() +
                 testContext.getScenarioContext().getContext(Context.TEXT).toString());
         addNewsPage.infoNewsInput(TestDataFileReader.getInfoNewsInput());
         addNewsPage.clickAgreeRulesCheckBox();
-        addNewsPage.submitNewsButton();
     }
 }

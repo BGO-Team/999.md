@@ -1,13 +1,10 @@
 package pageObjects;
 
-import utils.WaitUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class ChatFrame extends Page{
-    private WaitUtil wait;
+public class ChatFrame extends Page {
     private String chatFrameName = "topbar-chat";
 
 
@@ -16,16 +13,15 @@ public class ChatFrame extends Page{
 
     public ChatFrame(WebDriver driver) {
         super(driver);
-        wait = WaitUtil.getInstance(driver);
     }
 
-    public ChatFrame toChatFrame(){
+    public ChatFrame toChatFrame() {
         driver.switchTo().defaultContent();
         driver.switchTo().frame(chatFrameName);
         return this;
     }
 
-    public WebElement getSentMessage(){
+    public WebElement getSentMessage() {
         return sentMessage;
     }
 

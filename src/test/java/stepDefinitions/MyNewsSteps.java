@@ -24,8 +24,8 @@ public class MyNewsSteps {
 //        header = testContext.getPageObjectManager().getHeader();
     }
 
-    @Then("^user verify if his post is displayed in My News Page$")
-    public void userVerifyIfHisPostIsDisplayedInMyNewsPage() {
+    @Then("^user verify if his post is displayed in My Posts Page$")
+    public void userVerifyIfHisPostIsDisplayedInMyPostsPage() {
 //        header.myNews();
         Assert.assertTrue(myNews.newsAdded().equalsIgnoreCase(TestDataFileReader.getTitleNewsInput() +
                 testContext.getScenarioContext().getContext(Context.TEXT).toString()));
