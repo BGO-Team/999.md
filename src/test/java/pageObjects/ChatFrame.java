@@ -4,9 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+public class ChatFrame extends Page{
 public class ChatFrame extends Page {
     private String chatFrameName = "topbar-chat";
-
 
     @FindBy(css = "#simpalsid-chat-outbox-btn")
     private WebElement sentMessage;

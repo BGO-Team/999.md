@@ -1,12 +1,15 @@
 Feature:Andrew's features
 
-  @Test @Login
-  Scenario: Login scenario
+  Background:
     Given user is on "HomePage"
-    When user clicks on "loginButton"
+
+#  @Test @Login
+  Scenario: Login scenario
+    When user navigates to "TopBar"
+    And user clicks on "loginButton"
     Then a login frame is displayed
     And "First" user confirm Login and Password
-    Then "First" User Name is showing on Top Bar
+    Then "First" User Name is shown on Top Bar
 
 
   @Test @asecu @T11
@@ -16,7 +19,7 @@ Feature:Andrew's features
     When user clicks on "loginButton"
     Then a login frame is displayed
     And "First" user confirm Login and Password
-    Then "First" User Name is showing on Top Bar
+    Then "First" User Name is shown on Top Bar
     And user navigates to "TopBar"
     And  user clicks on "settingsButton"
     Then a settings frame is opened
@@ -37,7 +40,7 @@ Feature:Andrew's features
     When user clicks on "loginButton"
     Then a login frame is displayed
     And "First" user confirm Login and Password
-    Then "First" User Name is showing on Top Bar
+    Then "First" User Name is shown on Top Bar
     And user navigates to "TopBar"
     And  user clicks on "settingsButton"
     Then a settings frame is opened
@@ -45,7 +48,7 @@ Feature:Andrew's features
     And insert the folowing "<dd>" "<mm>" "<yyyy>" birth details
     And set the gender to "<gender>"
     And user clicks on "saveButton"
-    Then new details are not saved
+#    Then new details are not saved
     Examples:
       | Context    | FirstName | LastName | gender | yyyy | mm | dd |
       | Fisrt Name | #$&%@$%&  | Secu     | male   | 1998 | 11 | 13 |
@@ -59,9 +62,10 @@ Feature:Andrew's features
   @Test @asecu @T21
   Scenario Outline: Search for an existent <SearchText> item
     Given user is on "HomePage"
+    And user navigates to "TopBar"
     When user clicks on "loginButton"
     And "First" user confirm Login and Password
-    Then "First" User Name is showing on Top Bar
+    Then "First" User Name is shown on Top Bar
     When user navigate to header
     And user clicks on "searchField"
     And inserts "<SearchText>"
@@ -84,9 +88,10 @@ Feature:Andrew's features
   @Test @asecu @T31
   Scenario Outline: Login and Filter <context> by <filtredProperty>
     Given user is on "HomePage"
+    And user navigates to "TopBar"
     When user clicks on "loginButton"
     And "First" user confirm Login and Password
-    Then "First" User Name is showing on Top Bar
+    Then "First" User Name is shown on Top Bar
     When user click on "<categoryName>" category
     Then user is on selected category page
     When user click on "<sub-categotyName>" sub-category

@@ -23,5 +23,6 @@ public class HomePageSteps{
         Assert.assertNotNull(homePage.getLastCategory());
         homePage.toCategory(category);
         testContext.getScenarioContext().setContext(Context.CATEGORY, category);
+        Assert.assertTrue(testContext.getWebDriverManager().getDriver().getCurrentUrl().contains("/category/"));
     }
 }

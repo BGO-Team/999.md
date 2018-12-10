@@ -29,6 +29,10 @@ public class Header {
         PageFactory.initElements(driver, this);
     }
 
+    public WebElement getFavoritesButton() {
+        return favoritesButton;
+    }
+
     public WebElement getHeaderPicture() {
         return headerPicture;
     }

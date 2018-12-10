@@ -33,39 +33,28 @@ public class LoggerUtil extends AbstractWebDriverEventListener {
         return logCounter;
     }
 
-    public void close(){
+    public void close() {
         fileHandler.close();
     }
 
     @Override
     public void afterNavigateTo(String s, WebDriver webDriver) {
         LOGGER.info("WebDriver navigated to [" + s + "]");
-        try {
-            ScreenshotUtil.takeScreenshot(webDriver);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ScreenshotUtil.takeScreenshot(webDriver);
+
     }
 
     @Override
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
         LOGGER.info("WebDriver click on element - "
                 + elementDescription(webElement));
-        try {
-            ScreenshotUtil.takeScreenshot(webDriver);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ScreenshotUtil.takeScreenshot(webDriver);
     }
 
     @Override
     public void afterClickOn(WebElement webElement, WebDriver webDriver) {
         LOGGER.info("Clicked successful");
-        try {
             ScreenshotUtil.takeScreenshot(webDriver);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -77,19 +66,14 @@ public class LoggerUtil extends AbstractWebDriverEventListener {
     @Override
     public void afterChangeValueOf(WebElement webElement, WebDriver webDriver, CharSequence[] charSequences) {
         LOGGER.info("WebDriver changed value for element - " + elementDescription(webElement));
-        try {
             ScreenshotUtil.takeScreenshot(webDriver);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private String elementDescription(WebElement element) {
         String description = "[tag:" + element.getTagName();
         if (element.getAttribute("id") != null) {
             description += " id: " + element.getAttribute("id");
-        }
-        else if (element.getAttribute("name") != null) {
+        } else if (element.getAttribute("name") != null) {
             description += " name: " + element.getAttribute("name");
         }
         description += " ('" + element.getText() + "')]";

@@ -49,9 +49,8 @@ public class ProductPage extends Page {
         super(driver);
     }
 
-    public ProductPage addToFavorite() {
+    public void addToFavorite() {
         favoriteButton.click();
-        return this;
     }
 
     public String getBreadCrumbs() {
