@@ -32,7 +32,6 @@ public class TestDataFileReader {
         String browserName = properties.getProperty("browser");
         if(browserName == null || browserName.equals("chrome")) return DriverType.CHROME;
         else if (browserName.equalsIgnoreCase("firefox")) return DriverType.FIREFOX;
-        else if (browserName.equalsIgnoreCase("iexplorer")) return DriverType.IEXPLORER;
         else throw new RuntimeException("Browser Name Key value in test.properties is not matched : " + browserName);
     }
 
