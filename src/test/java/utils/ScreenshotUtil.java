@@ -13,11 +13,17 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class ScreenshotUtil {
-    public static void takeScreenshot(WebDriver driver) throws IOException {
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        LocalDateTime localDateTime = LocalDateTime.now();
-        String dateTime = localDateTime.getMonth() + "_" + localDateTime.getDayOfMonth() + "_"
-                + localDateTime.getHour() + "_" + localDateTime.getMinute() + "_" + localDateTime.getSecond();
-        FileHandler.copy(scrFile, new File(FileManager.getPath() + File.separator + dateTime + ".png"));
-    }
+    public static void takeScreenshot(WebDriver driver){
+
+      try {
+          File scrFile = (( TakesScreenshot ) driver).getScreenshotAs(OutputType.FILE);
+
+          LocalDateTime localDateTime = LocalDateTime.now();
+          String dateTime = localDateTime.getMonth() + "_" + localDateTime.getDayOfMonth() + "_"
+                  + localDateTime.getHour() + "_" + localDateTime.getMinute() + "_" + localDateTime.getSecond();
+          FileHandler.copy(scrFile, new File(FileManager.getPath() + File.separator + dateTime + ".png"));
+      }catch (IOException e){
+          e.printStackTrace();
+      }
+      }
 }
