@@ -27,12 +27,6 @@ public class TopBar {
     @FindBy(css ="li > button[data-settings=\"toggle\"]")
     private  WebElement settingsButton;
 
-    @FindBy(css ="li> ul:nth-child(2) > li:nth-child(5) > button")
-    private  WebElement logoutButton;
-
-    @FindBy(css ="button > span.user-item-btn-chat-icon")
-    private  WebElement messagesButton;
-
     public TopBar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);

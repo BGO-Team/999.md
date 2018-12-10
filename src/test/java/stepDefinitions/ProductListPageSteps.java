@@ -19,7 +19,7 @@ public class ProductListPageSteps {
 
     public ProductListPageSteps(TestContext context){
         this.testContext = context;
-        productListPage = (ProductListPage) Page.getPageObject("ProductList", testContext.getWebDriverManager().getDriver());
+        productListPage = (ProductListPage) Page.getPageObject("ProductListPage", testContext.getWebDriverManager().getDriver());
     }
 
     @Then("^a new ProductList page is displayed$")

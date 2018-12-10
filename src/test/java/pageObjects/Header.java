@@ -20,7 +20,10 @@ public class Header {
     private WebElement searchField;
 
     @FindBy(css = "#m__user_panel > ul > li:nth-child(1) > a")
-    private WebElement myNews;
+    private WebElement myPosts;
+
+    @FindBy(css = "#header > div.header_bar > div > div > nav > ul > li > a")
+    private WebElement addPostButton;
 
     public Header(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -36,9 +39,6 @@ public class Header {
 
     public void searchFor(String searchFor){
         searchField.sendKeys(searchFor);
-    }
-    public void myNews() {
-        myNews.click();
     }
 
     public WebElement getSearchField() {

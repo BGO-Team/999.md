@@ -6,28 +6,22 @@ import cucumber.api.java.en.Then;
 import dataProviders.TestDataFileReader;
 import enums.Context;
 import org.junit.Assert;
-import pageObjects.Header;
-import pageObjects.MyNews;
+import pageObjects.MyPosts;
 import pageObjects.Page;
-import pageObjects.SubCategoryPage;
 
-public class MyNewsSteps {
+public class MyPostsSteps {
 
     private TestContext testContext;
-    private MyNews myNews;
-//    private Header header;
-    private SubCategoryPage subCategoryPage;
+    private MyPosts myPosts;
 
-    public MyNewsSteps(TestContext context) {
+    public MyPostsSteps(TestContext context) {
         testContext = context;
-        myNews = (MyNews) Page.getPageObject("MyNews", testContext.getWebDriverManager().getDriver());
-//        header = testContext.getPageObjectManager().getHeader();
+        myPosts = (MyPosts) Page.getPageObject("MyPosts", testContext.getWebDriverManager().getDriver());
     }
 
     @Then("^user verify if his post is displayed in My Posts Page$")
     public void userVerifyIfHisPostIsDisplayedInMyPostsPage() {
-//        header.myNews();
-        Assert.assertTrue(myNews.newsAdded().equalsIgnoreCase(TestDataFileReader.getTitleNewsInput() +
+        Assert.assertTrue(myPosts.newsAdded().equalsIgnoreCase(TestDataFileReader.getTitleNewsInput() +
                 testContext.getScenarioContext().getContext(Context.TEXT).toString()));
         System.out.println(TestDataFileReader.getTitleNewsInput() +
                 testContext.getScenarioContext().getContext(Context.TEXT).toString());
@@ -36,7 +30,7 @@ public class MyNewsSteps {
 
     @And("^user click on news with name \"([^\"]*)\"$")
     public void userClickOnNEwsWithName(String newsName) {
-        myNews.toProduct(newsName);
+        myPosts.toProduct(newsName);
         testContext.getWebDriverManager().switchWindow();
     }
 }

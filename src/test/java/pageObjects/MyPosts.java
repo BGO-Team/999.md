@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 
-public class MyNews {
+public class MyPosts {
 
     private final WebDriver driver;
 
@@ -21,21 +21,14 @@ public class MyNews {
     private List<WebElement> products;
 
 
-    public MyNews(WebDriver driver) {
+    public MyPosts(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-
     public String newsAdded() {
         return lastNewsAddedTitle.getText();
     }
-
-    public void findMyNews() {
-
-        lastNewsAddedTitle.click();
-    }
-
 
     public static String timeTitle(){
         LocalDateTime localDateTime = LocalDateTime.now();

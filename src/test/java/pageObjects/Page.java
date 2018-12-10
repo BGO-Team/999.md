@@ -48,8 +48,8 @@ public abstract class Page {
         return null;
     }
 
-    public static void clickElement(Object pageName, String elementName, WebDriver driver) {
-        WebElement webElement;
+    public static WebElement clickElement(Object pageName, String elementName, WebDriver driver) {
+        WebElement webElement = null;
 
         Class clazz = null;
         try {
@@ -70,6 +70,7 @@ public abstract class Page {
                         e.printStackTrace();
                     }
             }
+            return webElement;
     }
 
     public static void goToFrame(Object frameName, WebDriver driver) {
