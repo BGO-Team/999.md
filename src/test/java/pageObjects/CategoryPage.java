@@ -22,6 +22,10 @@ public class CategoryPage extends Page{
         super(driver);
     }
 
+    public WebElement getLastSubCategory(){
+        return subCategories.get(subCategories.size()-1);
+    }
+
     public void toSubCategory(int number){
         if (number < 1 || number > subCategories.size())
             throw new IllegalArgumentException("Does not exist such sub-category");

@@ -1,12 +1,16 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import enums.Context;
 import managers.PageObjectManager;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
+import pageObjects.Page;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class GeneralSteps {
     private TestContext testContext;
@@ -17,14 +21,21 @@ public class GeneralSteps {
 
     @Given("^user is on \"([^\"]*)\"$")
     public void userIsOn(String page) throws Throwable{
-        PageObjectManager.getPage(page, testContext.getWebDriverManager().getDriver());
+        Page.getPage(page, testContext.getWebDriverManager().getDriver());
         testContext.getScenarioContext().setContext(Context.PAGE,page);
-        testContext.getScenarioContext().setContext(Context.CLASSOBJECT, testContext.getPageObjectManager().getHomePage());
     }
 
     @When("^user clicks on \"([^\"]*)\"$")
-    public void userClickOn(String button) throws ClassNotFoundException{
-        testContext.getPageObjectManager().clickElement(testContext.getScenarioContext().getContext(Context.PAGE),
-                button, testContext.getScenarioContext().getContext(Context.CLASSOBJECT));
+    public void userClickOn(String button) {
+        Page.clickElement(testContext.getScenarioContext().getContext(Context.PAGE),
+                button, testContext.getWebDriverManager().getDriver());
+    }
+
+    @And("^user navigates to \"([^\"]*)\" frame$")
+    public void userNavigatesTo(String frameName) throws NoSuchMethodException, NoSuchFieldException, ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
+        testContext.getScenarioContext().setContext(Context.PAGE,frameName);
+        Page.goToFrame(frameName,testContext.getWebDriverManager().getDriver());
+
+
     }
 }

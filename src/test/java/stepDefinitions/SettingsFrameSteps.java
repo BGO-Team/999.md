@@ -30,7 +30,12 @@ public class SettingsFrameSteps {
 
     @When("^user inserts \"(.+?)\" and \"(.+?)\"$")
     public void userInsertsAnd(String firstName, String lastName) {
-        settingsFrame.setNameDetails(firstName, lastName);
+        try{
+            Assert.assertNotNull(settingsFrame.getSaveButton());
+            settingsFrame.setNameDetails(firstName, lastName);
+        }catch (AssertionError assertionError){
+            System.out.println("The user is not on a right page");
+        }
     }
 
     @And("^insert the folowing \"(.+?)\" \"(.+?)\" \"(.+?)\" birth details$")
@@ -45,12 +50,20 @@ public class SettingsFrameSteps {
 
     @And("^set the gender to \"([^\"]*)\"$")
     public void setTheGenderTo(String gender) {
-        settingsFrame.selectGender(gender);
+        try {
+            Assert.assertNotNull(settingsFrame.getDateOfBirthField());
+            settingsFrame.selectGender(gender);
+        }catch (AssertionError assertionError){
+            System.out.println("DateOfBirth field is not present on this page");
+        }
+
     }
 
     @Then("^new details are not saved$")
     public void newDetailsAreNotSaved() {
+
         Assert.assertFalse(settingsFrame.getSuccessMessage().equalsIgnoreCase("СОХРАНЕНО"));
+
     }
 
     @Then("^user verify his details$")
