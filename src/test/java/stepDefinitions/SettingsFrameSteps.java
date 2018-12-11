@@ -4,9 +4,8 @@ import cucumber.TestContext;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import enums.Context;
 import dataProviders.TestDataFileReader;
-import gherkin.lexer.Pa;
+import enums.Context;
 import org.junit.Assert;
 import pageObjects.Page;
 import pageObjects.SettingsFrame;
@@ -25,15 +24,15 @@ public class SettingsFrameSteps {
         settingsFrame.changeFrame();
         testContext.getWait().toBeClickable(settingsFrame.getSaveButton());
         Assert.assertTrue(settingsFrame.getSaveButton().getText().equalsIgnoreCase("сохранить"));
-        testContext.getScenarioContext().setContext(Context.PAGE,"SettingsFrame");
+        testContext.getScenarioContext().setContext(Context.PAGE, "SettingsFrame");
     }
 
     @When("^user inserts \"(.+?)\" and \"(.+?)\"$")
     public void userInsertsAnd(String firstName, String lastName) {
-        try{
+        try {
             Assert.assertNotNull(settingsFrame.getSaveButton());
             settingsFrame.setNameDetails(firstName, lastName);
-        }catch (AssertionError assertionError){
+        } catch (AssertionError assertionError) {
             System.out.println("The user is not on a right page");
         }
     }
@@ -53,17 +52,14 @@ public class SettingsFrameSteps {
         try {
             Assert.assertNotNull(settingsFrame.getDateOfBirthField());
             settingsFrame.selectGender(gender);
-        }catch (AssertionError assertionError){
+        } catch (AssertionError assertionError) {
             System.out.println("DateOfBirth field is not present on this page");
         }
-
     }
 
     @Then("^new details are not saved$")
     public void newDetailsAreNotSaved() {
-
         Assert.assertFalse(settingsFrame.getSuccessMessage().equalsIgnoreCase("СОХРАНЕНО"));
-
     }
 
     @Then("^user verify his details$")
@@ -77,13 +73,8 @@ public class SettingsFrameSteps {
         System.out.println(settingsFrame.emailVerify());
     }
 
-    @Then("^user verify the incoming \"([^\"]*)\"$")
-    public void userVerifyTheIncoming(String message){
-        Assert.assertEquals(message, settingsFrame.getIncomingMessage());
-    }
-
     @Then("^user verify the sent \"([^\"]*)\"$")
-    public void userVerifyTheSentMessage(String message){
+    public void userVerifyTheSentMessage(String message) {
         Assert.assertEquals(message, settingsFrame.getSentMessage());
     }
 }

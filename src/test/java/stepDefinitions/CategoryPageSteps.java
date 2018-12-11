@@ -33,6 +33,5 @@ public class CategoryPageSteps {
         }catch (AssertionError e){
             System.out.print("The actual category page " + testContext.getWebDriverManager().getDriver().getCurrentUrl() + " It is not matching with the selected category from previous page" );
         }
-
     }
 }

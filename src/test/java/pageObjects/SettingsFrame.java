@@ -39,10 +39,10 @@ public class SettingsFrame {
     @FindBy(css = "select[name=\"sex\"] > option")
     private List<WebElement> genderOptions;
 
-    @FindBy(css = "#pjax-container > aside > ul > li:nth-child(2) > a")
+    @FindBy(css = ".simpalsid-settings-tab-btn.has-icon--email")
     private WebElement emailSettings;
 
-    @FindBy(css = "#simpalsid-settings-tab > form > div:nth-child(4) > input")
+    @FindBy(css = ".simpalsid-modal-content-form-control-input[type=text]")
     private WebElement emailField;
 
     @FindBy(css = "button.simpalsid-modal-content-form-submit-btn")
@@ -51,10 +51,7 @@ public class SettingsFrame {
     @FindBy(id = "simpalsid-settings-tab-success")
     private WebElement successMessage;
 
-    @FindBy(css = ".simpalsid-chat-content-box-message:nth-child(1) >div:nth-child(3)")
-    private WebElement incomingMessage;
-
-    @FindBy(css = ".simpalsid-chat-content-box-message:nth-child(1) >div:nth-child(3)")
+    @FindBy(css = ".simpalsid-chat-content-box-message:first-child>.simpalsid-chat-content-box-message-body")
     private WebElement sentMessage;
 
     public SettingsFrame(WebDriver driver) {
@@ -154,10 +151,6 @@ public class SettingsFrame {
 
     public void emailSettings() {
         emailSettings.click();
-    }
-
-    public String getIncomingMessage() {
-        return incomingMessage.getText();
     }
 
     public String getSentMessage() {

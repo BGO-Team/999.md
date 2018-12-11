@@ -1,18 +1,15 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import enums.Context;
 import org.junit.Assert;
 import pageObjects.Header;
 import pageObjects.HomePage;
-import cucumber.api.java.en.When;
 import pageObjects.Page;
 
-import java.lang.reflect.InvocationTargetException;
-
-public class HomePageSteps{
+public class HomePageSteps {
     private TestContext testContext;
     private HomePage homePage;
 

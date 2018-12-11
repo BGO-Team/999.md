@@ -55,35 +55,35 @@ public class TestDataFileReader {
         String titleNews1 = properties.getProperty("testNews1.titleNews");
         if (titleNews1 != null) return titleNews1;
         else
-            throw new RuntimeException("Application login not specified in the test.properties file for the Key:login");
+            throw new RuntimeException("Application titleNews not specified in the test.properties file for the Key:titleNews");
     }
 
-    public static String getInfoNewsInput() {
+    public static String getInfoPostInput() {
         String infoNews1 = properties.getProperty("testNews1.infoNews");
         if (infoNews1 != null) return infoNews1;
         else
-            throw new RuntimeException("Application login not specified in the test.properties file for the Key:login");
+            throw new RuntimeException("Application infoNews not specified in the test.properties file for the Key:infoNews");
     }
 
     public static String getFirstName() {
         String firstname = properties.getProperty("testUserSecond.firstname");
         if (firstname != null) return firstname;
         else
-            throw new RuntimeException("Application login not specified in the test.properties file for the Key:login");
+            throw new RuntimeException("Application firstname not specified in the test.properties file for the Key:firstname");
     }
 
     public static String getLastName() {
         String secondname = properties.getProperty("testUserSecond.secondname");
         if (secondname != null) return secondname;
         else
-            throw new RuntimeException("Application login not specified in the test.properties file for the Key:login");
+            throw new RuntimeException("Application secondname not specified in the test.properties file for the Key:secondname");
     }
 
     public static String getEmailAdress() {
         String email = properties.getProperty("testUserSecond.email");
         if (email != null) return email;
         else
-            throw new RuntimeException("Application login not specified in the test.properties file for the Key:login");
+            throw new RuntimeException("Application email not specified in the test.properties file for the Key:email");
     }
 
 

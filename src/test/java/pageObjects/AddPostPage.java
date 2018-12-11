@@ -4,132 +4,71 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 import java.util.Random;
 
-public class AddNewsPage extends Page{
-    @FindBy(css = "#header > div.header_bar > div > div > nav > ul > li > a")
-    private WebElement addNewsButton;
-
-    @FindBy(css = "#category")
-    private WebElement clickCategoryButton;
-
-    @FindBy(css = "#category > option:nth-child(4)")
-    private WebElement choseCategoryTellCategory;
-
-    @FindBy(css = "#js-pjax-container > section.board__content__group.board__content__group__category.m-open.container_25 > div > dl:nth-child(2) > dd > form > select")
-    private WebElement clickSubCategoryButton;
-
-    @FindBy(css = "#js-pjax-container > section > div > dl:nth-child(2) > dd > form > select > option:nth-child(3)")
-    private WebElement choseAccesSubCategory;
-
-    @FindBy(css = "#js-pjax-container > section.board__content__group.board__content__group__category.m-open.container_25 > div > dl:nth-child(3) > dd > form > select")
-    private WebElement clickTypeSellBuyButton;
-
-    @FindBy(css = "#js-pjax-container > section.board__content__group.board__content__group__category.m-open.container_25 > div > dl:nth-child(3) > dd > form > select > option:nth-child(2)")
-    private WebElement choseSellType;
-
-    @FindBy(id = "control_7")
-    private WebElement clickRegionButton;
-
-    @FindBy(css = "#control_7 > option:nth-child(2)")
-    private WebElement choseChisinauRegion;
+public class AddPostPage extends Page {
 
     @FindBy(id = "form--negotiable-checkbox")
     private WebElement clickNegotiablePriceCheckBox;
 
     @FindBy(id = "control_12")
-    private WebElement titleNewsInput;
+    private WebElement titlePostInput;
 
     @FindBy(id = "control_13")
-    private WebElement infoNewsInput;
+    private WebElement infoPostInput;
 
     @FindBy(id = "agree")
     private WebElement clickAgreeRulesCheckBox;
 
     @FindBy(css = "#js-add-form > section.board__content__group.container_25 > div > div > button")
-    private WebElement submitNewsButton;
+    private WebElement submitPostButton;
 
-
-    @FindBy(css = "#category > option:not(:nth-child(1))")
+    @FindBy(css = "#category > option:not(:first-child)")
     private List<WebElement> categoryDropMenu;
 
-    @FindBy(css = "#js-pjax-container > section.board__content__group.board__content__group__category.m-open.container_25 > div > dl:nth-child(2) > dd > form > select > option:not(:nth-child(1))")
+    @FindBy(css = "#js-pjax-container select[name=subcategory] > option:not(:first-child)")
     private List<WebElement> subCategoryDropMenu;
 
-    @FindBy(css = "#js-pjax-container > section > div > dl:nth-child(3) > dd > form > select > option:not(:nth-child(1))")
+    @FindBy(css = "#js-pjax-container select[name=offer_type] > option:not(:first-child)")
     private List<WebElement> sellTypeDropMenu;
 
-    @FindBy(css = "#control_7 > option:not(:nth-child(1))")
+    @FindBy(css = "#control_7 > option:not(:first-child)")
     private List<WebElement> countryDropMenu;
 
-    public AddNewsPage(WebDriver driver) {
+    @FindBy(css = "#control_2")
+    private WebElement inputPrice;
+
+    public AddPostPage(WebDriver driver) {
         super(driver);
     }
 
-
-    public Header toNewsPage() {
-        addNewsButton.click();
-        return new Header(driver);
-    }
-
-
-    public HomePage clickTypeSellBuyButton() {
-        clickTypeSellBuyButton.click();
-        return new HomePage(driver);
-    }
-
-    public HomePage choseSellType() {
-        choseSellType.click();
-        return new HomePage(driver);
-    }
-
-    public HomePage clickRegionButton() {
-        clickRegionButton.click();
-        return new HomePage(driver);
-    }
-
-    public HomePage choseChisinauRegion() {
-        choseChisinauRegion.click();
-        return new HomePage(driver);
-    }
-
-    public HomePage clickNegotiablePriceCheckBox() {
+    public void clickNegotiablePriceCheckBox() {
         clickNegotiablePriceCheckBox.click();
-        return new HomePage(driver);
     }
 
-    public AddNewsPage titleNewsInput(String titleNews1) {
-        titleNewsInput.sendKeys(titleNews1);
+    public AddPostPage titlePostInput(String titleNews1) {
+        titlePostInput.sendKeys(titleNews1);
         return this;
     }
 
-    public AddNewsPage infoNewsInput(String infoNews1) {
-        infoNewsInput.sendKeys(infoNews1);
+    public AddPostPage infoPostInput(String infoNews1) {
+        infoPostInput.sendKeys(infoNews1);
         return this;
     }
 
-    public HomePage clickAgreeRulesCheckBox() {
+    public void clickAgreeRulesCheckBox() {
         clickAgreeRulesCheckBox.click();
-        return new HomePage(driver);
     }
 
-    public HomePage submitNewsButton() {
-        submitNewsButton.submit();
-        return new HomePage(driver);
-
-    }
-
-
-    public void choseCategory(int number) {
+    public void chooseCategory(int number) {
         if (number < 1 || number > categoryDropMenu.size())
             throw new IllegalArgumentException("Does not exist such category");
         categoryDropMenu.get(number - 1).click();
     }
 
-    public void choseCategory(String categoryName) {
+    public void chooseCategory(String categoryName, String urlContains) {
         categoryDropMenu = driver.findElements(By.cssSelector("#category > option"));
         if (categoryName.equals("Random")) {
             Random random = new Random();
@@ -138,7 +77,7 @@ public class AddNewsPage extends Page{
                 randomCategory = random.nextInt(categoryDropMenu.size()) + 1;
             } while (randomCategory == 14);
 
-            choseCategory(randomCategory);
+            chooseCategory(randomCategory);
         } else {
             boolean existCategory = true;
             for (WebElement element : categoryDropMenu)
@@ -150,19 +89,20 @@ public class AddNewsPage extends Page{
             if (existCategory)
                 throw new IllegalArgumentException("This category does not exist");
         }
+
     }
 
-    public void choseSubCategory(int number) {
+    public void chooseSubCategory(int number) {
         if (number < 1 || number > subCategoryDropMenu.size())
             throw new IllegalArgumentException("Does not exist such sub-category");
         subCategoryDropMenu.get(number - 1).click();
     }
 
-    public void choseSubCategory(String subCategoryName) {
+    public void chooseSubCategory(String subCategoryName, String urlContains) {
         if (subCategoryName.equals("Random")) {
             Random random = new Random();
             int randomSubCategory = random.nextInt(subCategoryDropMenu.size()) + 1;
-            choseSubCategory(randomSubCategory);
+            chooseSubCategory(randomSubCategory);
         } else {
             boolean existSubCategory = true;
             for (WebElement element : subCategoryDropMenu)
@@ -176,17 +116,17 @@ public class AddNewsPage extends Page{
         }
     }
 
-    public void choseSellType(int number) {
+    public void chooseSellType(int number) {
         if (number < 1 || number > sellTypeDropMenu.size())
             throw new IllegalArgumentException("Does not exist such sell type");
         sellTypeDropMenu.get(number - 1).click();
     }
 
-    public void choseSellType(String sellTypeName) {
+    public void chooseSellType(String sellTypeName, String urlContains) {
         if (sellTypeName.equals("Random")) {
             Random random = new Random();
             int randomSellType = random.nextInt(sellTypeDropMenu.size()) + 1;
-            choseSellType(randomSellType);
+            chooseSellType(randomSellType);
         } else {
             boolean existSellType = true;
             for (WebElement element : sellTypeDropMenu)
@@ -200,17 +140,17 @@ public class AddNewsPage extends Page{
         }
     }
 
-    public void choseCountry(int number) {
+    public void chooseCountry(int number) {
         if (number < 1 || number > countryDropMenu.size())
             throw new IllegalArgumentException("Does not exist such country");
         countryDropMenu.get(number - 1).click();
     }
 
-    public void choseCountry(String countryName) {
+    public void chooseCountry(String countryName) {
         if (countryName.equals("Random")) {
             Random random = new Random();
             int randomCountry = random.nextInt(countryDropMenu.size()) + 1;
-            choseCountry(randomCountry);
+            chooseCountry(randomCountry);
         } else {
             boolean existCountry = true;
             for (WebElement element : countryDropMenu)
@@ -224,5 +164,13 @@ public class AddNewsPage extends Page{
         }
     }
 
+    public void clickSubmitPostButton() {
+        submitPostButton.submit();
+    }
+
+    public boolean fillPriceField() {
+        return inputPrice.isDisplayed();
+    }
 }
+
 

@@ -33,7 +33,7 @@ public class ProductPage extends Page {
     @FindBy(css = "#js-ad-message-textarea")
     private WebElement inputMessage;
 
-    @FindBy(css = ".button")
+    @FindBy(css = "div.adPage__content__message__send > button")
     private WebElement sendMessage;
 
     @FindBy(css = ".m-value > .adPage__content__features__key")
@@ -87,6 +87,10 @@ public class ProductPage extends Page {
 
     public void inputMessage(String message) {
         inputMessage.sendKeys(message);
+    }
+
+    public String getInputMessage() {
+        return inputMessage.getText();
     }
 
     public void sendMessageButton(){

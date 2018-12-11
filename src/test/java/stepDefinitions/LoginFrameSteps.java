@@ -1,29 +1,24 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import dataProviders.TestDataFileReader;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjects.Header;
 import pageObjects.LoginFrame;
-import cucumber.api.java.en.And;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjects.Page;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public class LoginFrameSteps {
     private TestContext testContext;
     private LoginFrame loginFrame;
 
-    public LoginFrameSteps(TestContext context){
+    public LoginFrameSteps(TestContext context) {
         testContext = context;
         loginFrame = (LoginFrame) Page.getPageObject("LoginFrame", testContext.getWebDriverManager().getDriver());
     }
-
 
     @And("^\"([^\"]*)\" user confirm Login and Password$")
     public void userConfirmLoginAndPassword(String user) throws ClassNotFoundException, NoSuchMethodException,
@@ -46,7 +41,7 @@ public class LoginFrameSteps {
     }
 
     @Then("^a login frame is displayed$")
-    public void aNewPopUpWindowIsDisplayed(){
+    public void aNewPopUpWindowIsDisplayed() {
         testContext.getWait().waitFor().until(ExpectedConditions.visibilityOf(loginFrame.getFrameTitle()));
         Assert.assertEquals("popup-login-header-title",loginFrame.getFrameTitle().getAttribute("class"));
         testContext.getWait().toBeClickable(loginFrame.getSubmitLoginButton());

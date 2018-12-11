@@ -38,7 +38,7 @@ public abstract class Page {
     }
 
     public static void clickElement(Object pageName, String elementName, WebDriver driver) {
-        WebElement webElement;
+        WebElement webElement = null;
 
         Class clazz = null;
         try {
