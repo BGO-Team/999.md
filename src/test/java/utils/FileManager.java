@@ -29,4 +29,5 @@ public class FileManager {
         logPath = path + File.separator + "testLog.log";
         new File(logPath);
     }
+
 }
