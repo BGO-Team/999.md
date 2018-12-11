@@ -3,10 +3,9 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
+import utils.EncryptionUtil;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
 public class LoginFrame extends Page{
 
     @FindBy(css = "header h2")
@@ -64,7 +63,7 @@ public class LoginFrame extends Page{
 
     public void loginAs(String username, String password) {
         typeUsername(username);
-        typePassword(password);
+        typePassword(EncryptionUtil.decrypt(password));
         submitLogin();
     }
     public WebElement getFrameTitle(){

@@ -14,9 +14,8 @@ Feature:Andrew's features
 
   @Test @asecu @T11
   Scenario Outline: Add <FirstName> <LastName> valid details in the system
-    Given user is on "HomePage"
-    And user navigates to "TopBar"
-    When user clicks on "loginButton"
+    When user navigates to "TopBar"
+    And user clicks on "loginButton"
     Then a login frame is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is shown on Top Bar
@@ -35,9 +34,8 @@ Feature:Andrew's features
 
   @Test @asecu @T12 @Login1
   Scenario Outline: Add invalid <Context> in the system
-    Given user is on "HomePage"
-    And user navigates to "TopBar"
-    When user clicks on "loginButton"
+    When user navigates to "TopBar"
+    And user clicks on "loginButton"
     Then a login frame is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is shown on Top Bar
@@ -48,7 +46,7 @@ Feature:Andrew's features
     And insert the folowing "<dd>" "<mm>" "<yyyy>" birth details
     And set the gender to "<gender>"
     And user clicks on "saveButton"
-#    Then new details are not saved
+    Then new details are not saved
     Examples:
       | Context    | FirstName | LastName | gender | yyyy | mm | dd |
       | Fisrt Name | #$&%@$%&  | Secu     | male   | 1998 | 11 | 13 |
@@ -61,9 +59,9 @@ Feature:Andrew's features
 
   @Test @asecu @T21
   Scenario Outline: Search for an existent <SearchText> item
-    Given user is on "HomePage"
-    And user navigates to "TopBar"
-    When user clicks on "loginButton"
+    When user navigates to "TopBar"
+    And user clicks on "loginButton"
+    Then a login frame is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is shown on Top Bar
     When user navigate to header
@@ -84,12 +82,44 @@ Feature:Andrew's features
       | samsung        |
       | apple          |
 
+  @Test @asecu @T22
+  Scenario Outline: Search for a white space item
+    When user navigates to "TopBar"
+    And user clicks on "loginButton"
+    Then a login frame is displayed
+    And "First" user confirm Login and Password
+    Then "First" User Name is shown on Top Bar
+    When user navigate to header
+    And user clicks on "searchField"
+    And inserts "<SearchText>"
+    And user clicks on "searchButton"
+    Then user remains on HomePage
+    Examples:
+      | SearchText |
+      |            |
+
+  @Test @asecu @T23
+  Scenario Outline: Search for a product that does not exist in the system space item
+#    When user navigates to "TopBar"
+#    And user clicks on "loginButton"
+#    Then a login frame is displayed
+#    And "First" user confirm Login and Password
+#    Then "First" User Name is shown on Top Bar
+    When user navigate to header
+    And user clicks on "searchField"
+    And inserts "<SearchText>"
+    And user clicks on "searchButton"
+    Then a new ProductList page is displayed
+    And no products was found
+    Examples:
+      | SearchText       |
+      | 312rwsdfa4343wef |
+
 
   @Test @asecu @T31
   Scenario Outline: Login and Filter <context> by <filtredProperty>
-    Given user is on "HomePage"
-    And user navigates to "TopBar"
-    When user clicks on "loginButton"
+    When user navigates to "TopBar"
+    And user clicks on "loginButton"
     And "First" user confirm Login and Password
     Then "First" User Name is shown on Top Bar
     When user click on "<categoryName>" category
@@ -105,8 +135,6 @@ Feature:Andrew's features
       | context | categoryName       | sub-categotyName    | filtredProperty      | propertyValue |
       | Car     | Транспорт          | Легковые автомобили | количество мест      | 5             |
       | Car     | Транспорт          | Легковые автомобили | состояние            | Без пробега   |
-      | Car     | Транспорт          | Легковые автомобили | цвет                 | Красный       |
-      | Car     | Транспорт          | Легковые автомобили | регистрация          | Молдова       |
       | Phone   | Телефоны и связь   | Мобильные телефоны  | Состояние            | Б\У           |
       | Phone   | Телефоны и связь   | Мобильные телефоны  | Операционная система | Android       |
       | Phone   | Телефоны и связь   | Мобильные телефоны  | Встроенная память    | 64 Gb         |

@@ -3,7 +3,11 @@ package stepDefinitions;
 import cucumber.TestContext;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import utils.WaitUtil;
+import dataProviders.TestDataFileWriter;
+
+import java.io.IOException;
+
+import static dataProviders.TestDataFileWriter.WritePropertiesFile;
 
 public class Hooks {
 //    private WebDriverManager webDriverManager;
@@ -18,11 +22,10 @@ public class Hooks {
 
 
     @Before
-    public void setUp(){
-//        webDriverManager = new WebDriverManager();
-//        pageObjectManager = new PageObjectManager(webDriverManager.getDriver());
-//        scenarioContext = ScenarioContext.getInstance();
-//        waitUtil = WaitUtil.getInstance(testContext.getWebDriverManager().getDriver());
+    public void setUp() {
+//        TestDataFileWriter.WritePropertiesFile("testUserFirst", "qwerty123");
+//        TestDataFileWriter.WritePropertiesFile("testUserSecond", "qwerty123");
+//        TestDataFileWriter.WritePropertiesFile("testUserThird", "ProBook6570b");
     }
 
     @After
