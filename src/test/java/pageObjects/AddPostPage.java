@@ -25,6 +25,9 @@ public class AddPostPage extends Page {
     @FindBy(css = "#js-add-form > section.board__content__group.container_25 > div > div > button")
     private WebElement submitPostButton;
 
+    @FindBy(css = "dt > label[for=\"control_12\"]")
+    private WebElement infoTextIsDisplayed;
+
     @FindBy(css = "#category > option:not(:first-child)")
     private List<WebElement> categoryDropMenu;
 
@@ -39,6 +42,9 @@ public class AddPostPage extends Page {
 
     @FindBy(css = "#control_2")
     private WebElement inputPrice;
+
+    @FindBy(css = "dt > label[for=\"control_12\"]")
+    private WebElement titleTextIsDisplayed;
 
     public AddPostPage(WebDriver driver) {
         super(driver);
@@ -168,8 +174,24 @@ public class AddPostPage extends Page {
         submitPostButton.submit();
     }
 
+    public WebElement getSubmitPostButton() {
+        return submitPostButton;
+    }
+
     public boolean fillPriceField() {
         return inputPrice.isDisplayed();
+    }
+
+    public boolean ruleCheckBoxIsSelectect() {
+        return clickAgreeRulesCheckBox.isSelected();
+    }
+
+    public boolean titleTextIsDisplayed() {
+        return titleTextIsDisplayed.isDisplayed();
+    }
+
+    public boolean infoTextIsDisplayed() {
+        return infoTextIsDisplayed.isDisplayed();
     }
 }
 

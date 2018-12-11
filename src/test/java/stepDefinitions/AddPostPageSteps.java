@@ -51,7 +51,7 @@ public class AddPostPageSteps {
     @And("^user choose Negotiable Price$")
     public void userChooseNegotiablePrice() {
         addPostPage.clickNegotiablePriceCheckBox();
-        Assert.assertEquals(true, addPostPage.fillPriceField());
+        Assert.assertTrue(addPostPage.fillPriceField());
     }
 
     @And("^user fill Title field$")
@@ -59,24 +59,24 @@ public class AddPostPageSteps {
         testContext.getScenarioContext().setContext(Context.TEXT, MyPosts.timeTitle());
         addPostPage.titlePostInput(TestDataFileReader.getTitleNewsInput() +
                 testContext.getScenarioContext().getContext(Context.TEXT).toString());
-        Assert.assertNotNull(testContext.getWebDriverManager().getDriver().findElements(By.id("control_12")));
+        Assert.assertTrue(addPostPage.titleTextIsDisplayed());
     }
 
     @And("^user fill Information field$")
     public void userFillInformationField() {
         addPostPage.infoPostInput(TestDataFileReader.getInfoPostInput());
-        Assert.assertEquals(TestDataFileReader.getInfoPostInput(), "New phone IPHONE 999 , last version");
+        Assert.assertTrue(addPostPage.infoTextIsDisplayed());
     }
 
     @And("^user choose that he is agree with rules$")
     public void userChooseThatHeIsAgreeWithRules() {
         addPostPage.clickAgreeRulesCheckBox();
-        Assert.assertTrue(testContext.getWebDriverManager().getDriver().findElement(By.id("agree")).isSelected());
+        Assert.assertTrue(addPostPage.ruleCheckBoxIsSelectect());
     }
 
     @And("^user submit new post$")
     public void userSubmitNewPost() {
+        Assert.assertNotNull(addPostPage.getSubmitPostButton());
         addPostPage.clickSubmitPostButton();
-        Assert.assertTrue(testContext.getWebDriverManager().getDriver().findElement(By.cssSelector("div.wallet-tab-header")).isDisplayed());
     }
 }

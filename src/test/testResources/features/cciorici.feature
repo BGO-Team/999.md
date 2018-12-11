@@ -1,8 +1,11 @@
 Feature: Corneliu's Features
 
+  Background:
+    Given user is on "HomePage"
+
+
   @Corneliu @User @Sc1 @Test
   Scenario: Verify user-detailes information
-    Given user is on "HomePage"
     When user navigates to "TopBar"
     And user clicks on "loginButton"
     And "Second" user confirm Login and Password
@@ -15,7 +18,6 @@ Feature: Corneliu's Features
 
   @Corneliu @AddNews @Sc2 @Test
   Scenario Outline: Create a new post with accessories for telephone
-    Given user is on "HomePage"
     When user navigates to "TopBar"
     And user clicks on "loginButton"
     And "Second" user confirm Login and Password
@@ -41,7 +43,6 @@ Feature: Corneliu's Features
 
   @Corneliu @Message @Sc3 @Test
   Scenario Outline: Write a new message to owner's post
-    Given user is on "HomePage"
     When user navigates to "TopBar"
     And user clicks on "loginButton"
     And "First" user confirm Login and Password
