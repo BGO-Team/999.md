@@ -3,15 +3,6 @@ Feature:Andrew's features
   Background:
     Given user is on "HomePage"
 
-#  @Test @Login
-  Scenario: Login scenario
-    When user navigates to "TopBar"
-    And user clicks on "loginButton"
-    Then a login frame is displayed
-    And "First" user confirm Login and Password
-    Then "First" User Name is shown on Top Bar
-
-
   @Test @asecu @T11
   Scenario Outline: Add <FirstName> <LastName> valid details in the system
     When user navigates to "TopBar"
@@ -19,7 +10,7 @@ Feature:Andrew's features
     Then a login frame is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is shown on Top Bar
-    And user navigates to "TopBar"
+    When user navigates to "TopBar"
     And  user clicks on "settingsButton"
     Then a settings frame is opened
     When user inserts "<FirstName>" and "<LastName>"
@@ -100,11 +91,11 @@ Feature:Andrew's features
 
   @Test @asecu @T23
   Scenario Outline: Search for a product that does not exist in the system space item
-#    When user navigates to "TopBar"
-#    And user clicks on "loginButton"
-#    Then a login frame is displayed
-#    And "First" user confirm Login and Password
-#    Then "First" User Name is shown on Top Bar
+    When user navigates to "TopBar"
+    And user clicks on "loginButton"
+    Then a login frame is displayed
+    And "First" user confirm Login and Password
+    Then "First" User Name is shown on Top Bar
     When user navigate to header
     And user clicks on "searchField"
     And inserts "<SearchText>"
@@ -114,6 +105,7 @@ Feature:Andrew's features
     Examples:
       | SearchText       |
       | 312rwsdfa4343wef |
+      | yugy6fuyrdufi7t  |
 
 
   @Test @asecu @T31
