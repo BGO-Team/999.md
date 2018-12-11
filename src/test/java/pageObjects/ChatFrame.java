@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ChatFrame extends Page{
 public class ChatFrame extends Page {
     private String chatFrameName = "topbar-chat";
 
@@ -24,5 +23,4 @@ public class ChatFrame extends Page {
     public WebElement getSentMessage() {
         return sentMessage;
     }
-
 }

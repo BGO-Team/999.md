@@ -1,12 +1,12 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import enums.Context;
-import pageObjects.Page;
-import pageObjects.ProductPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import enums.Context;
 import org.junit.Assert;
+import pageObjects.Page;
+import pageObjects.ProductPage;
 
 public class ProductPageSteps {
     private TestContext testContext;
@@ -35,8 +35,7 @@ public class ProductPageSteps {
 
     @Then("^Product Name or Product description contains \"([^\"]*)\"$")
     public void productNameOrProductDescriptionContains(String searchedText) {
-        try
-        {
+        try {
             testContext.getWait().toBeVisible(productPage.getDescriptionArea());
             testContext.getWait().toBeVisible(productPage.getContactsField());
             Assert.assertTrue(productPage.nameContains(searchedText)
@@ -54,25 +53,26 @@ public class ProductPageSteps {
         Assert.assertTrue("Контакты:".equalsIgnoreCase(productPage.getContactsField().getText()));
     }
 
-    @And("^user sent \"([^\"]*)\" to owner's post$")
-    public void userSentMessageToOwnerPost(String message){
+    @And("^user Write \"([^\"]*)\" to owner's post$")
+    public void userWriteMessageToOwnerPost(String message) {
         productPage.inputMessage(message);
-        productPage.sendMessageButton();
-    }
-
-    @Then("^the notification that message was sent appeared$")
-    public void theNotificationThatMessageWasSentAppeared(){
-        Assert.assertTrue(productPage.getNotificationMessage());
+        Assert.assertNotNull(productPage.getInputMessage());
     }
 
     @Then("^the value of \"([^\"]*)\" property is \"([^\"]*)\"$")
     public void theValueOfPropertyIs(String key, String value) {
-       try {
-           testContext.getWait().toBeVisible(productPage.getLastProperty());
-           Assert.assertTrue(value.equalsIgnoreCase(productPage.getValueOfProperty(key.toLowerCase())));
-       }catch (AssertionError e){
-           System.out.print("The curent property value does not match with the context of the following: ");
-           System.out.println(testContext.getWebDriverManager().getDriver().getCurrentUrl());
-       }
+        try {
+            testContext.getWait().toBeVisible(productPage.getLastProperty());
+            Assert.assertTrue(value.equalsIgnoreCase(productPage.getValueOfProperty(key.toLowerCase())));
+        } catch (AssertionError e) {
+            System.out.print("The curent property value does not match with the context of the following: ");
+            System.out.println(testContext.getWebDriverManager().getDriver().getCurrentUrl());
+        }
+    }
+
+    @Then("^user clicks on submit message button$")
+    public void userClicksOnSubmitMessageButton() {
+        productPage.sendMessageButton();
+        Assert.assertTrue(productPage.getNotificationMessage());
     }
 }

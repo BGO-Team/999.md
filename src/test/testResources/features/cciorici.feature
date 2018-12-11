@@ -6,7 +6,7 @@ Feature: Corneliu's Features
     When user navigates to "TopBar"
     And user clicks on "loginButton"
     And "Second" user confirm Login and Password
-    Then "Second" User Name is showing on Top Bar
+    Then "Second" User Name is shown on Top Bar
     When user navigates to "TopBar"
     And  user clicks on "settingsButton"
     And a settings frame is opened
@@ -19,7 +19,7 @@ Feature: Corneliu's Features
     When user navigates to "TopBar"
     And user clicks on "loginButton"
     And "Second" user confirm Login and Password
-    Then "Second" User Name is showing on Top Bar
+    Then "Second" User Name is shown on Top Bar
     When user navigate to header
     And user clicks on "addPostButton"
     And user choose the Category "<Category>" "<urlContains1>"
@@ -45,7 +45,7 @@ Feature: Corneliu's Features
     When user navigates to "TopBar"
     And user clicks on "loginButton"
     And "First" user confirm Login and Password
-    Then "First" User Name is showing on Top Bar
+    Then "First" User Name is shown on Top Bar
     When user navigate to header
     And user clicks on "searchField"
     And inserts "<postName>"
@@ -53,10 +53,10 @@ Feature: Corneliu's Features
     When a new ProductList page is displayed
     And user navigate to a "Random" product
     And a new product page window is displayed
-    And user sent "<message>" to owner's post
-    Then the notification that message was sent appeared
+    And user Write "<message>" to owner's post
+    Then user clicks on submit message button
     When user navigates to "TopBar"
-    When user clicks on "messagesButton"
+    And user clicks on message button
     And user navigates to "ChatFrame"
     And user clicks on "sentMessage"
     Then user verify the sent "<message>"

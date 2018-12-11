@@ -1,7 +1,6 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import dataProviders.TestDataFileReader;
 import enums.Context;
@@ -25,12 +24,5 @@ public class MyPostsSteps {
                 testContext.getScenarioContext().getContext(Context.TEXT).toString()));
         System.out.println(TestDataFileReader.getTitleNewsInput() +
                 testContext.getScenarioContext().getContext(Context.TEXT).toString());
-    }
-
-
-    @And("^user click on news with name \"([^\"]*)\"$")
-    public void userClickOnNEwsWithName(String newsName) {
-        myPosts.toProduct(newsName);
-        testContext.getWebDriverManager().switchWindow();
     }
 }

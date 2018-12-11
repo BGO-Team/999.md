@@ -25,13 +25,13 @@ public class GeneralSteps {
 
     @When("^user clicks on \"([^\"]*)\"$")
     public void userClickOn(String button) {
-        testContext.getWait().toBeVisible(Page.clickElement(testContext.getScenarioContext().getContext(Context.PAGE),
-                button, testContext.getWebDriverManager().getDriver()));
+        Page.clickElement(testContext.getScenarioContext().getContext(Context.PAGE),
+                button, testContext.getWebDriverManager().getDriver());
         Assert.assertTrue(testContext.getWebDriverManager().getDriver().getCurrentUrl().contains(TestDataFileReader.getApplicationUrl()));
     }
 
     @And("^user navigates to \"([^\"]*)\"$")
-    public void userNavigatesToFrame(String frameName) throws InterruptedException {
+    public void userNavigatesToFrame(String frameName) {
         testContext.getScenarioContext().setContext(Context.PAGE, frameName);
         Page.goToFrame(frameName, testContext.getWebDriverManager().getDriver());
     }

@@ -19,7 +19,7 @@ public class Header {
     @FindBy(id = "js-search-input")
     private WebElement searchField;
 
-    @FindBy(css = "#m__user_panel > ul > li:nth-child(1) > a")
+    @FindBy(css = "#m__user_panel > ul > li:first-child > a")
     private WebElement myPosts;
 
     @FindBy(css = "#header > div.header_bar > div > div > nav > ul > li > a")

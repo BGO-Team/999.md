@@ -1,18 +1,14 @@
 package pageObjects;
 
-import cucumber.TestContext;
-import enums.Context;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.Random;
 
 public class AddPostPage extends Page {
-
 
     @FindBy(id = "form--negotiable-checkbox")
     private WebElement clickNegotiablePriceCheckBox;
@@ -29,17 +25,20 @@ public class AddPostPage extends Page {
     @FindBy(css = "#js-add-form > section.board__content__group.container_25 > div > div > button")
     private WebElement submitPostButton;
 
-    @FindBy(css = "#category > option:not(:nth-child(1))")
+    @FindBy(css = "#category > option:not(:first-child)")
     private List<WebElement> categoryDropMenu;
 
-    @FindBy(css = "#js-pjax-container > section.board__content__group.board__content__group__category.m-open.container_25 > div > dl:nth-child(2) > dd > form > select > option:not(:nth-child(1))")
+    @FindBy(css = "#js-pjax-container select[name=subcategory] > option:not(:first-child)")
     private List<WebElement> subCategoryDropMenu;
 
-    @FindBy(css = "#js-pjax-container > section > div > dl:nth-child(3) > dd > form > select > option:not(:nth-child(1))")
+    @FindBy(css = "#js-pjax-container select[name=offer_type] > option:not(:first-child)")
     private List<WebElement> sellTypeDropMenu;
 
-    @FindBy(css = "#control_7 > option:not(:nth-child(1))")
+    @FindBy(css = "#control_7 > option:not(:first-child)")
     private List<WebElement> countryDropMenu;
+
+    @FindBy(css = "#control_2")
+    private WebElement inputPrice;
 
     public AddPostPage(WebDriver driver) {
         super(driver);
@@ -164,8 +163,13 @@ public class AddPostPage extends Page {
                 throw new IllegalArgumentException("This country does not exist");
         }
     }
+
     public void clickSubmitPostButton() {
         submitPostButton.submit();
+    }
+
+    public boolean fillPriceField() {
+        return inputPrice.isDisplayed();
     }
 }
 
