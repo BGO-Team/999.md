@@ -14,9 +14,8 @@ Feature:Andrew's features
 
   @Test @asecu @T11
   Scenario Outline: Add <FirstName> <LastName> valid details in the system
-    Given user is on "HomePage"
-    And user navigates to "TopBar"
-    When user clicks on "loginButton"
+    When user navigates to "TopBar"
+    And user clicks on "loginButton"
     Then a login frame is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is shown on Top Bar
@@ -35,9 +34,8 @@ Feature:Andrew's features
 
   @Test @asecu @T12 @Login1
   Scenario Outline: Add invalid <Context> in the system
-    Given user is on "HomePage"
-    And user navigates to "TopBar"
-    When user clicks on "loginButton"
+    When user navigates to "TopBar"
+    And user clicks on "loginButton"
     Then a login frame is displayed
     And "First" user confirm Login and Password
     Then "First" User Name is shown on Top Bar
@@ -48,7 +46,7 @@ Feature:Andrew's features
     And insert the folowing "<dd>" "<mm>" "<yyyy>" birth details
     And set the gender to "<gender>"
     And user clicks on "saveButton"
-#    Then new details are not saved
+    Then new details are not saved
     Examples:
       | Context    | FirstName | LastName | gender | yyyy | mm | dd |
       | Fisrt Name | #$&%@$%&  | Secu     | male   | 1998 | 11 | 13 |
@@ -87,9 +85,8 @@ Feature:Andrew's features
 
   @Test @asecu @T31
   Scenario Outline: Login and Filter <context> by <filtredProperty>
-    Given user is on "HomePage"
-    And user navigates to "TopBar"
-    When user clicks on "loginButton"
+    When user navigates to "TopBar"
+    And user clicks on "loginButton"
     And "First" user confirm Login and Password
     Then "First" User Name is shown on Top Bar
     When user click on "<categoryName>" category
