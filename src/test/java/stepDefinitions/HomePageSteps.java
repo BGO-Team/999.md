@@ -1,8 +1,11 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.PendingException;
+import cucumber.api.java.en.Then;
 import enums.Context;
 import org.junit.Assert;
+import pageObjects.Header;
 import pageObjects.HomePage;
 import cucumber.api.java.en.When;
 import pageObjects.Page;
@@ -24,5 +27,11 @@ public class HomePageSteps{
         homePage.toCategory(category);
         testContext.getScenarioContext().setContext(Context.CATEGORY, category);
         Assert.assertTrue(testContext.getWebDriverManager().getDriver().getCurrentUrl().contains("/category/"));
+    }
+
+    @Then("^user remains on HomePage$")
+    public void userRemainsOnHomePage() {
+        testContext.getWait().toBeVisible(new Header(testContext.getWebDriverManager().getDriver()).getHeaderPicture());
+        Assert.assertTrue(testContext.getWebDriverManager().getDriver().getCurrentUrl().equalsIgnoreCase("https://999.md/ru/"));
     }
 }
