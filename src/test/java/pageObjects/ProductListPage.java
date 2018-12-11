@@ -12,6 +12,9 @@ public class ProductListPage extends Page {
     @FindBy(css = "#js-ads-container > ul > li > div > a > img")
     private List<WebElement> allElements;
 
+    @FindBy(className = "empty__search__title")
+    private WebElement errorText;
+
     public ProductListPage(WebDriver driver) {
         super(driver);
     }
@@ -42,5 +45,9 @@ public class ProductListPage extends Page {
 
     public WebElement getLastElement() {
         return allElements.get(allElements.size() - 1);
+    }
+
+    public WebElement getErrorText(){
+        return errorText;
     }
 }
