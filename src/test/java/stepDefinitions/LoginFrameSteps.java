@@ -50,5 +50,6 @@ public class LoginFrameSteps {
         testContext.getWait().waitFor().until(ExpectedConditions.visibilityOf(loginFrame.getFrameTitle()));
         Assert.assertEquals("popup-login-header-title",loginFrame.getFrameTitle().getAttribute("class"));
         testContext.getWait().toBeClickable(loginFrame.getSubmitLoginButton());
+//        testContext.getWait().toBeVisible(new Header(testContext.getWebDriverManager().getDriver()).getHeaderPicture());
     }
 }

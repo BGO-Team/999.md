@@ -10,8 +10,8 @@ import static utils.EncryptionUtil.encrypt;
 
 public class TestDataFileWriter {
     public static void WritePropertiesFile(String key, String data) throws IOException {
-        FileOutputStream fileOut = null;
-        FileInputStream fileIn = null;
+        FileOutputStream fileOut;
+        FileInputStream fileIn;
         Properties configProperty = new Properties();
 
         File file = new File("src/test/testResources/test.properties");
