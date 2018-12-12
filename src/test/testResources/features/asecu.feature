@@ -21,10 +21,10 @@ Feature:Andrew's features
     Examples:
       | FirstName | LastName | gender | yyyy | mm | dd |
       | Andrei    | Secu     | male   | 1990 | 11 | 11 |
-      | Elena     | Avram    | female | 2018 | 4  | 3  |
+#      | Elena     | Avram    | female | 2018 | 4  | 3  |
 
   @Test @asecu @T12 @Login1
-  Scenario Outline: Add invalid <Context> in the system
+  Scenario Outline: Add invalid <Context> user details in the system
     When user navigates to "TopBar"
     And user clicks on "loginButton"
     Then a login frame is displayed
@@ -40,13 +40,13 @@ Feature:Andrew's features
     Then new details are not saved
     Examples:
       | Context    | FirstName | LastName | gender | yyyy | mm | dd |
-      | Fisrt Name | #$&%@$%&  | Secu     | male   | 1998 | 11 | 13 |
-      | Last Name  | Gicu      | ##@$#    | male   | 1995 | 10 | 11 |
       | Gender     | Vitalie   | Boghian  | herzon | 1990 | 2  | 30 |
-      | Birth Date | Ion       | Vasile   | male   | 1990 | 2  | 30 |
-      | Birth Date | Maria     | Pojoga   | female | 2018 | 12 | 30 |
-      | Birth Date | Nicu      | Elvoir   | female | 2018 | 12 | 7  |
-      |            |           |          |        | 1990 | 2  | 30 |
+#      | Birth Date | Ion       | Vasile   | male   | 1990 | 2  | 30 |
+#      | Birth Date | Maria     | Pojoga   | female | 2018 | 12 | 30 |
+#      | Birth Date | Nicu      | Elvoir   | female | 2018 | 12 | 7  |
+#      |            |           |          |        | 1990 | 2  | 30 |
+#      | Fisrt Name | #$&%@$%&  | Secu     | male   | 1998 | 11 | 13 |
+#      | Last Name  | Gicu      | ##@$#    | male   | 1995 | 10 | 11 |
 
   @Test @asecu @T21
   Scenario Outline: Search for an existent <SearchText> item
@@ -67,19 +67,14 @@ Feature:Andrew's features
       | SearchText     |
       | telefon  mobil |
       | Mercedes       |
-      | inel           |
-      | stare buna     |
-      | haine          |
-      | samsung        |
-      | apple          |
+#      | inel           |
+#      | stare buna     |
+#      | haine          |
+#      | samsung        |
+#      | apple          |
 
   @Test @asecu @T22
   Scenario Outline: Search for a white space item
-    When user navigates to "TopBar"
-    And user clicks on "loginButton"
-    Then a login frame is displayed
-    And "First" user confirm Login and Password
-    Then "First" User Name is shown on Top Bar
     When user navigate to header
     And user clicks on "searchField"
     And inserts "<SearchText>"
@@ -105,7 +100,7 @@ Feature:Andrew's features
     Examples:
       | SearchText       |
       | 312rwsdfa4343wef |
-      | yugy6fuyrdufi7t  |
+#      | yugy6fuyrdufi7t  |
 
 
   @Test @asecu @T31
@@ -126,11 +121,11 @@ Feature:Andrew's features
     Examples:
       | context | categoryName       | sub-categotyName    | filtredProperty      | propertyValue |
       | Car     | Транспорт          | Легковые автомобили | количество мест      | 5             |
-      | Car     | Транспорт          | Легковые автомобили | состояние            | Без пробега   |
-      | Phone   | Телефоны и связь   | Мобильные телефоны  | Состояние            | Б\У           |
-      | Phone   | Телефоны и связь   | Мобильные телефоны  | Операционная система | Android       |
-      | Phone   | Телефоны и связь   | Мобильные телефоны  | Встроенная память    | 64 Gb         |
-      | Animals | Питомцы и растения | Кошки               | Пол                  | Кот           |
-      | Animals | Питомцы и растения | Птицы               | Возраст              | Детеныш       |
-      | Animals | Питомцы и растения | Собаки              | Размер               | Средняя       |
+#      | Car     | Транспорт          | Легковые автомобили | состояние            | Без пробега   |
+#      | Phone   | Телефоны и связь   | Мобильные телефоны  | Состояние            | Б\У           |
+#      | Phone   | Телефоны и связь   | Мобильные телефоны  | Операционная система | Android       |
+#      | Phone   | Телефоны и связь   | Мобильные телефоны  | Встроенная память    | 64 Gb         |
+#      | Animals | Питомцы и растения | Кошки               | Пол                  | Кот           |
+#      | Animals | Питомцы и растения | Птицы               | Возраст              | Детеныш       |
+#      | Animals | Питомцы и растения | Собаки              | Размер               | Средняя       |
 

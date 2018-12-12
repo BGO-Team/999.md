@@ -33,7 +33,7 @@ public class HomePage extends Page{
     }
 
     public void toCategory(String categoryName){
-        categories = driver.findElements(By.cssSelector(".main-CatalogNavigation > ul > li > a"));
+//        categories = driver.findElements(By.cssSelector(".main-CatalogNavigation > ul > li > a"));
         if (categoryName.equals("Random")) {
             Random random = new Random();
             int randomCategory;

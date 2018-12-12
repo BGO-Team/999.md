@@ -41,6 +41,6 @@ public class ProductListPageSteps {
     public void noProductsWasFound() {
         testContext.getWait().toBeVisible(productListPage.getErrorText());
         Assert.assertTrue(productListPage.getErrorText().getText().equalsIgnoreCase("К сожалению, по Вашему запросу ничего не найдено."));
-
+//TODO:Hamcrest
     }
 }

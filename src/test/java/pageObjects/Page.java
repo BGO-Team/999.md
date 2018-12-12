@@ -32,13 +32,12 @@ public abstract class Page {
             return Class.forName("pageObjects." + page).getConstructor(WebDriver.class).newInstance(driver);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                 NoSuchMethodException | ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
     public static void clickElement(Object pageName, String elementName, WebDriver driver) {
-        WebElement webElement = null;
+        WebElement webElement;
 
         Class clazz = null;
         try {

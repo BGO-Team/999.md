@@ -111,7 +111,7 @@ public class ProductPage extends Page {
     }
     public String getValueOfProperty(String Key){
         Map<String,String> propertyCouple = new HashMap<>();
-        for (int i = 0 ; i < propertyValue.size()-1; i++){
+        for (int i = 0 ; i < propertyValue.size(); i++){
             propertyCouple.put(propertyKey.get(i).getText().toLowerCase(),propertyValue.get(i).getText());
         }
 
